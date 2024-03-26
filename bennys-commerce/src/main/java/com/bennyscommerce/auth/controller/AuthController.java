@@ -13,15 +13,16 @@ import com.bennyscommerce.auth.payload.LoginDto;
 import com.bennyscommerce.auth.payload.RegisterDto;
 import com.bennyscommerce.auth.service.AuthService;
 
-import lombok.AllArgsConstructor;
-
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
-@AllArgsConstructor
 public class AuthController {
 
     private AuthService authService;
+
+    public AuthController(AuthService authService) {
+	this.authService = authService;
+    }
 
     @PostMapping(value = { "/login", "/signin" })
     public ResponseEntity<JWTAuthResponse> login(@RequestBody LoginDto loginDto) {

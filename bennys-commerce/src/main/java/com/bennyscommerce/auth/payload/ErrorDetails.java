@@ -2,17 +2,30 @@ package com.bennyscommerce.auth.payload;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@AllArgsConstructor
-@NoArgsConstructor
 public class ErrorDetails {
-    @SuppressWarnings("unused")
+
     private Date timestamp;
-    @SuppressWarnings("unused")
+
     private String message;
-    @SuppressWarnings("unused")
+
     private String details;
+
+    public ErrorDetails(Date timestamp, String message, String details) {
+	this.timestamp = timestamp;
+	this.message = message;
+	this.details = details;
+    }
+
+    public Date getTimestamp() {
+	return timestamp;
+    }
+
+    public String getMessage() {
+	return message;
+    }
+
+    public String getDetails() {
+	return details;
+    }
 
 }
