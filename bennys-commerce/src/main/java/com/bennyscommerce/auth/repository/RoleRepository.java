@@ -8,5 +8,6 @@ import com.bennyscommerce.auth.entity.Erole;
 import com.bennyscommerce.auth.entity.Role;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
+
     Optional<Role> findByErole(Erole erole);
 }
