@@ -19,6 +19,6 @@ public interface ArticoliDao extends JpaRepository<Articoli, Long>, PagingAndSor
     Optional<List<Articoli>> getAllArticoliByPrezzo(String s1, String s2);
 
     // filtro per ordinare gli articoli in base al loro nome
-    @Query("SELECT a FROM Articoli a WHERE a.nomeArticolo LIKE: name")
+    @Query("SELECT a FROM Articoli a WHERE a.nomeArticolo LIKE :name")
     Optional<List<Articoli>> getAllArticoliByNome(String name);
 }

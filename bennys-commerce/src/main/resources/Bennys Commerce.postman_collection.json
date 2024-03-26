@@ -1,0 +1,898 @@
+{
+	"info": {
+		"_postman_id": "4a2003f9-2c84-417d-a4b1-263dd40a8ab0",
+		"name": "Bennys Commerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25787737"
+	},
+	"item": [
+		{
+			"name": "JWT Autenticazione",
+			"item": [
+				{
+					"name": "Registrazione",
+					"item": [
+						{
+							"name": "Registrazione USER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstname\": \"User\",\r\n    \"lastname\": \"Tester\",\r\n    \"username\": \"TEST-r.user\",\r\n    \"email\": \"tester.U@example.com\",\r\n    \"password\": \"pOtf8r$4Nb!\",\r\n    \"dataNascita\": \"19/06/2002\",\r\n    \"indirizzo\": \"Via Test\",\r\n    \"numeroTelefono\": \"+39 336 2544875\",\r\n    \"roles\": [\r\n        \"ROLE_USER\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Registrazione ADMIN",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstname\": \"Admin\",\r\n    \"lastname\": \"Tester\",\r\n    \"username\": \"TEST-r.admin\",\r\n    \"email\": \"tester.A@example.com\",\r\n    \"password\": \"d9sfgG8sle?\",\r\n    \"dataNascita\": \"19/06/2002\",\r\n    \"indirizzo\": \"Via Test\",\r\n    \"numeroTelefono\": \"+39 336 2544875\",\r\n    \"roles\": [\r\n        \"ROLE_ADMIN\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login USER",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"TEST-r.user\",\r\n    \"password\": \"pOtf8r$4Nb!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login ADMIN",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"TEST-r.admin\",\r\n    \"password\": \"d9sfgG8sle?\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Articoli",
+			"item": [
+				{
+					"name": "Crud Base",
+					"item": [
+						{
+							"name": "Trova tutti gli articoli",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/articolo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trova un articolo dall'id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMTQ4MTM4OCwiZXhwIjoxNzEyMDg2MTg4fQ.jCnohfUHDjlIwHBuXBmRgfxdxfterwQ_cMT7VWaZ1-H5U-_jNZAkw2DVaYH0M1NV",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/articolo/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trova articoli dal prezzo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/articolo/prezzo/:s1/:s2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo",
+										"prezzo",
+										":s1",
+										":s2"
+									],
+									"variable": [
+										{
+											"key": "s1",
+											"value": "0"
+										},
+										{
+											"key": "s2",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trova articoli dal nome",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/articolo/name/:name",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo",
+										"name",
+										":name"
+									],
+									"variable": [
+										{
+											"key": "name",
+											"value": "Mouse Wireless"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifica un articolo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4Mzg0NDk2NywiZXhwIjoxNjg0NDQ5NzY3fQ.Qy9iesm6TDZooRTrTHngKJzwvqB34aCRWDotfZVV6NI4LGocesNTMiekIwlxsDj_",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 5,\r\n    \"nome\": \"PROVA\",\r\n    \"prezzo\": \"$ 307,06\",\r\n    \"descrizione\": \"orchid\",\r\n    \"marca\": \"Jewelry & Toys\",\r\n    \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n    \"quantità\": 28\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/articolo/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Elimina un articolo",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDg0MDIyMSwiZXhwIjoxNjg1NDQ1MDIxfQ.Cc2Fq8JeGRzwtlFb4UkXGS0v3-3JwUYipx1bYfkyuYIYat9n-IaB7ShXYCMrwdQf",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/articolo/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Carrello",
+			"item": [
+				{
+					"name": "Crud Base",
+					"item": [
+						{
+							"name": "Trova tutti i carrelli",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTM3MDYyMSwiZXhwIjoxNjg1OTc1NDIxfQ.ygidoMjpy9hH_OAk2vzasqI69yfbPuxY2OIhwy9VzuVksxP4nByLh5dbVmXiJSEU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carrello",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carrello"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trova un carrello dall'id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDg1MDYzNCwiZXhwIjoxNjg1NDU1NDM0fQ.Xo5E3fErplaonhYinOmfRj6qMP0fRzuzpQykXpxgzpv3XvHfbWi-gkgUbsv3uYeV",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carrello/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carrello",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Aggiungi un articolo al carrello",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTk3OTAyMSwiZXhwIjoxNjg2NTgzODIxfQ.BRMTA19G7sIPGAYAZ0VsUhiWkku80VNMyrim3miR6SqEvgUfpa4VgCoFMdghRW3o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"articoli\": [\r\n        {\r\n            \"id\": 2,\r\n            \"nome\": \"Heavy Duty Bronze Hat\",\r\n            \"prezzo\": \"$ 343,61\",\r\n            \"descrizione\": \"magenta\",\r\n            \"marca\": \"Beauty & Industrial\",\r\n            \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n            \"quantità\": 82\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"nome\": \"Durable Paper Hat\",\r\n            \"prezzo\": \"$ 485,76\",\r\n            \"descrizione\": \"cyan\",\r\n            \"marca\": \"Books & Industrial\",\r\n            \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n            \"quantità\": 59\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"nome\": \"Lightweight Bronze Knife\",\r\n            \"prezzo\": \"$ 412,76\",\r\n            \"descrizione\": \"white\",\r\n            \"marca\": \"Grocery\",\r\n            \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n            \"quantità\": 38\r\n        }\r\n    ],\r\n    \"user\": {\r\n        \"id\": 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/carrello/:idCarrello/articoli/:idArticoli",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carrello",
+										":idCarrello",
+										"articoli",
+										":idArticoli"
+									],
+									"variable": [
+										{
+											"key": "idCarrello",
+											"value": "1"
+										},
+										{
+											"key": "idArticoli",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Elimina un articolo dal carrello dall'id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTUzODgwOCwiZXhwIjoxNjg2MTQzNjA4fQ.Z-51D3z0DrSl03ECh-JL-ny5ibTJQxPakPtULiHn2QvOySbFIA1ZuZ7c3p8XmOZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carrello/:idCarrello/articoli/:idArticoli",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carrello",
+										":idCarrello",
+										"articoli",
+										":idArticoli"
+									],
+									"variable": [
+										{
+											"key": "idCarrello",
+											"value": "1"
+										},
+										{
+											"key": "idArticoli",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ordini",
+			"item": [
+				{
+					"name": "Crud Base",
+					"item": [
+						{
+							"name": "Trova tutti gli ordini",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTk3OTAyMSwiZXhwIjoxNjg2NTgzODIxfQ.BRMTA19G7sIPGAYAZ0VsUhiWkku80VNMyrim3miR6SqEvgUfpa4VgCoFMdghRW3o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/ordine",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"ordine"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trova un ordine dall'id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDc2ODExMSwiZXhwIjoxNjg1MzcyOTExfQ.cuHyfwadUs76OdFM8r8kYSSiBERY2btqaWBOiElhUkXG3IOKK3ayZ6NvsKSRhKbw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/ordine/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"ordine",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Aggiungi un ordine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTk3OTAyMSwiZXhwIjoxNjg2NTgzODIxfQ.BRMTA19G7sIPGAYAZ0VsUhiWkku80VNMyrim3miR6SqEvgUfpa4VgCoFMdghRW3o",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/ordine/user/:idUser/carrello/:idCarrello",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"ordine",
+										"user",
+										":idUser",
+										"carrello",
+										":idCarrello"
+									],
+									"variable": [
+										{
+											"key": "idUser",
+											"value": "1"
+										},
+										{
+											"key": "idCarrello",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifica un ordine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDgwMTA4NiwiZXhwIjoxNjg1NDA1ODg2fQ.vaCqkbUc0k7JAKVjYWzc3LCwEQRuoZ-3luEH7qXUnRPjyo_zmJrZ6i1dgZADb4VB",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 21,\r\n    \"numero\": 2257,\r\n    \"riepilogo\": \"RIEPILOGO\",\r\n    \"dataOrdine\": \"2023-05-12\",\r\n    \"dataConsegna\": \"2023-05-15\",\r\n    \"statoOrdine\": \"IN_CONSEGNA\",\r\n    \"prezzoConsegna\": 2.99,\r\n    \"fattura\": {\r\n        \"id\": 5,\r\n        \"quantitaArtcolo\": 15,\r\n        \"importoTotale\": 500\r\n    },\r\n    \"azienda\": {\r\n        \"id\": 1,\r\n        \"nome\": \"FUTURE GAMING\",\r\n        \"partitaIva\": 894661018,\r\n        \"codiceFiscale\": 894661018,\r\n        \"pec\": \"f.gaming@pec.it\",\r\n        \"città\": \"Torino\",\r\n        \"corrieri\": [\r\n            {\r\n                \"id\": 1,\r\n                \"corriere\": \"GLS\"\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"corriere\": \"UPS\"\r\n            },\r\n            {\r\n                \"id\": 3,\r\n                \"corriere\": \"GLS\"\r\n            }\r\n        ]\r\n    },\r\n  \r\n    \"user\": {\r\n        \"id\": 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/ordine/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"ordine",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Elimina un ordine dall'id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDgwMjgxNCwiZXhwIjoxNjg1NDA3NjE0fQ.VwZtWI5Kjicmbpe1QpYpF5TmS_pZZkmnsc9pK-VAe-VjJ_lzmWiHCDpkPu8IuO5g",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/ordine/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"ordine",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "21"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Utenti",
+			"item": [
+				{
+					"name": "Crud Base",
+					"item": [
+						{
+							"name": "Trova tutti gli utenti",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMTQ4MDE4MCwiZXhwIjoxNzEyMDg0OTgwfQ.SNxV-1Ig9SK8O90G5YOBtXimQRLuDFXoJLuoEY9C7kwgPUVG06yZ-tZueL_D8hFs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trova un utente dall'id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTk4MjM5NCwiZXhwIjoxNjg2NTg3MTk0fQ.9-u8bfW-Tiv3F1wUTMnshVn_IvkbA4l2MpQ7ojJOeTkONpymaAPBm0YAkNytpaHh",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/user/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modifica un utente",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTcxMTg2MSwiZXhwIjoxNjg2MzE2NjYxfQ.Ill2z0l_oNSfSuGpUSlaFfgA-aMlA2W-Tx5SonlAW8m7whsTn-DQjwvQLUSOVERw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"firstname\": \"ok\",\r\n    \"lastname\": \"Tester\",\r\n    \"username\": \"TEST-r.admin\",\r\n    \"email\": \"tester.A@example.com\",\r\n    \"password\": \"$2a$10$MIY9wEntFwVDQTjcI6b4heiTzbvknTlH.ov9kS4pYNlto9wG3vYcK\",\r\n    \"dataNascita\": \"19/06/2002\",\r\n    \"indirizzo\": \"Via Test\",\r\n    \"numeroTelefono\": \"+39 336 2544875\",\r\n    \"roles\": [\r\n        {\r\n            \"id\": 1,\r\n            \"roleName\": \"ROLE_ADMIN\"\r\n        }\r\n    ],\r\n    \"ordini\": [],\r\n    \"carrello\": {\r\n        \"id\": 1,\r\n        \"articoli\": []\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/user/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Elimina un utente dall'id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTcxMTg2MSwiZXhwIjoxNjg2MzE2NjYxfQ.Ill2z0l_oNSfSuGpUSlaFfgA-aMlA2W-Tx5SonlAW8m7whsTn-DQjwvQLUSOVERw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/user/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
