@@ -46,6 +46,60 @@ public class ArticoliService {
     @Autowired
     @Qualifier("Mouse9")
     private ObjectProvider<Articoli> objArticoli9;
+    @Autowired
+    @Qualifier("Monitor1")
+    private ObjectProvider<Articoli> objArticoli10;
+    @Autowired
+    @Qualifier("Monitor2")
+    private ObjectProvider<Articoli> objArticoli11;
+    @Autowired
+    @Qualifier("Monitor3")
+    private ObjectProvider<Articoli> objArticoli12;
+    @Autowired
+    @Qualifier("Monitor4")
+    private ObjectProvider<Articoli> objArticoli13;
+    @Autowired
+    @Qualifier("Monitor5")
+    private ObjectProvider<Articoli> objArticoli14;
+    @Autowired
+    @Qualifier("Monitor6")
+    private ObjectProvider<Articoli> objArticoli15;
+    @Autowired
+    @Qualifier("Monitor7")
+    private ObjectProvider<Articoli> objArticoli16;
+    @Autowired
+    @Qualifier("Monitor8")
+    private ObjectProvider<Articoli> objArticoli17;
+    @Autowired
+    @Qualifier("Monitor9")
+    private ObjectProvider<Articoli> objArticoli18;
+    @Autowired
+    @Qualifier("Keyboard1")
+    private ObjectProvider<Articoli> objArticoli19;
+    @Autowired
+    @Qualifier("Keyboard2")
+    private ObjectProvider<Articoli> objArticoli20;
+    @Autowired
+    @Qualifier("Keyboard3")
+    private ObjectProvider<Articoli> objArticoli21;
+    @Autowired
+    @Qualifier("Keyboard4")
+    private ObjectProvider<Articoli> objArticoli22;
+    @Autowired
+    @Qualifier("Keyboard5")
+    private ObjectProvider<Articoli> objArticoli23;
+    @Autowired
+    @Qualifier("Keyboard6")
+    private ObjectProvider<Articoli> objArticoli24;
+    @Autowired
+    @Qualifier("Keyboard7")
+    private ObjectProvider<Articoli> objArticoli25;
+    @Autowired
+    @Qualifier("Keyboard8")
+    private ObjectProvider<Articoli> objArticoli26;
+    @Autowired
+    @Qualifier("Keyboard9")
+    private ObjectProvider<Articoli> objArticoli27;
 
     public void createArticolo1() {
 	Articoli a = objArticoli1.getObject();
@@ -89,6 +143,96 @@ public class ArticoliService {
 
     public void createArticolo9() {
 	Articoli a = objArticoli9.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo10() {
+	Articoli a = objArticoli10.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo11() {
+	Articoli a = objArticoli11.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo12() {
+	Articoli a = objArticoli12.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo13() {
+	Articoli a = objArticoli13.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo14() {
+	Articoli a = objArticoli14.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo15() {
+	Articoli a = objArticoli15.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo16() {
+	Articoli a = objArticoli16.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo17() {
+	Articoli a = objArticoli17.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo18() {
+	Articoli a = objArticoli18.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo19() {
+	Articoli a = objArticoli19.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo20() {
+	Articoli a = objArticoli20.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo21() {
+	Articoli a = objArticoli21.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo22() {
+	Articoli a = objArticoli22.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo23() {
+	Articoli a = objArticoli23.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo24() {
+	Articoli a = objArticoli24.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo25() {
+	Articoli a = objArticoli25.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo26() {
+	Articoli a = objArticoli26.getObject();
+	articoliDao.save(a);
+    }
+
+    public void createArticolo27() {
+	Articoli a = objArticoli27.getObject();
 	articoliDao.save(a);
     }
 
