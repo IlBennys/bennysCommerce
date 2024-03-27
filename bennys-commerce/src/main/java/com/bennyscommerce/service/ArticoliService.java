@@ -127,7 +127,7 @@ public class ArticoliService {
 	return articoliDao.findAll();
     }
 
-    public Optional<List<Articoli>> findAllByPrezzo(String s1, String s2) {
+    public Optional<List<Articoli>> findAllByPrezzo(Double s1, Double s2) {
 	return articoliDao.getAllArticoliByPrezzo(s1, s2);
     }
 

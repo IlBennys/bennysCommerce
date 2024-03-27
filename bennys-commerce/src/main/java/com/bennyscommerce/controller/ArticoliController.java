@@ -34,7 +34,7 @@ public class ArticoliController {
     }
 
     @GetMapping("/prezzo/{s1}&{s2}")
-    public ResponseEntity<?> findArticoliByPrezzo(@PathVariable String s1, @PathVariable String s2) {
+    public ResponseEntity<?> findArticoliByPrezzo(@PathVariable Double s1, @PathVariable Double s2) {
 	return new ResponseEntity<>(articoliService.findAllByPrezzo(s1, s2), HttpStatus.OK);
     }
 

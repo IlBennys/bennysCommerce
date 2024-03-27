@@ -61,12 +61,10 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public String register(RegisterDto registerDto) {
 
-	// add check for username exists in database
 	if (userRepository.existsByUsername(registerDto.getUsername())) {
 	    throw new MyAPIException(HttpStatus.BAD_REQUEST, "Username is already exists!.");
 	}
 
-	// add check for email exists in database
 	if (userRepository.existsByEmail(registerDto.getEmail())) {
 	    throw new MyAPIException(HttpStatus.BAD_REQUEST, "Email is already exists!.");
 	}
