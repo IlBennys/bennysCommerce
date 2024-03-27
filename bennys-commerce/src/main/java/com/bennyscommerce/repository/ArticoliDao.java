@@ -1,8 +1,12 @@
 package com.bennyscommerce.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -21,4 +25,20 @@ public interface ArticoliDao extends JpaRepository<Articoli, Long>, PagingAndSor
     // filtro per ordinare gli articoli in base al loro nome
     @Query("SELECT a FROM Articoli a WHERE a.nomeArticolo LIKE :name")
     Optional<List<Articoli>> getAllArticoliByNome(String name);
+
+    default List<Page<Articoli>> getArticoliByPage() {
+	List<Page<Articoli>> pages = new ArrayList<>();
+
+	for (int i = 0; i < 3; i++) {
+	    Pageable pageable = PageRequest.of(i, 9);
+	    pages.add(findAll(pageable));
+	}
+
+	return pages;
+    }
+
+    default Optional<Page<Articoli>> getArticoliByPageNum(int pageNumber, int pageSize) {
+	Pageable pageable = PageRequest.of(pageNumber, pageSize);
+	return Optional.of(findAll(pageable));
+    }
 }

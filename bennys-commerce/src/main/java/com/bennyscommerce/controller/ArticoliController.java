@@ -43,6 +43,16 @@ public class ArticoliController {
 	return new ResponseEntity<>(articoliService.findAllByName(name), HttpStatus.OK);
     }
 
+    @GetMapping("/page")
+    public ResponseEntity<?> findArticoliByPage() {
+	return new ResponseEntity<>(articoliService.findArticoliByPage(), HttpStatus.OK);
+    }
+
+    @GetMapping("/page/{pageNumber}/{pageSize}")
+    public ResponseEntity<?> findArticoliByPageNum(@PathVariable int pageNumber, @PathVariable int pageSize) {
+	return new ResponseEntity<>(articoliService.findArticoliByPageNum(pageNumber, pageSize), HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> updateArticolo(@RequestBody Articoli a) {
 	return new ResponseEntity<String>(articoliService.updateArticolo(a), HttpStatus.OK);

@@ -232,7 +232,7 @@
 									"variable": [
 										{
 											"key": "s1",
-											"value": "0"
+											"value": "10"
 										},
 										{
 											"key": "s2",
@@ -272,6 +272,66 @@
 							"response": []
 						},
 						{
+							"name": "Trova tutti gli articoli dalla pagina",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/articolo/page",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo",
+										"page"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Trova gli articoli dal numero pagina",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/articolo/page/:pageNum/:pageSize",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"articolo",
+										"page",
+										":pageNum",
+										":pageSize"
+									],
+									"variable": [
+										{
+											"key": "pageNum",
+											"value": "2"
+										},
+										{
+											"key": "pageSize",
+											"value": "9"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Modifica un articolo",
 							"request": {
 								"auth": {
@@ -288,7 +348,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": 5,\r\n    \"nome\": \"PROVA\",\r\n    \"prezzo\": \"$ 307,06\",\r\n    \"descrizione\": \"orchid\",\r\n    \"marca\": \"Jewelry & Toys\",\r\n    \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n    \"quantità\": 28\r\n}",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"nomeArticolo\": \"Mouse Wireless\",\r\n    \"prezzo\": 9.0,\r\n    \"descrizioneArticolo\": \"Logitech M185, 2,4 GHz con Mini Ricevitore USB, Durata Batteria di 12 Mesi, Tracciamento Ottico 1000 DPI, Ambidestro - Grigio\",\r\n    \"img\": \"https://cdn.discordapp.com/attachments/1062713292226830409/1222589317713629286/M1-removebg-preview.png?ex=6616c407&is=66044f07&hm=5e9885dcc01907c0eb537b91e7c93c5c212e7193f9f78f0e90eb7cdafd6604f1&\",\r\n    \"brand\": \"Logitech\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -664,7 +724,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": 21,\r\n    \"numero\": 2257,\r\n    \"riepilogo\": \"RIEPILOGO\",\r\n    \"dataOrdine\": \"2023-05-12\",\r\n    \"dataConsegna\": \"2023-05-15\",\r\n    \"statoOrdine\": \"IN_CONSEGNA\",\r\n    \"prezzoConsegna\": 2.99,\r\n    \"fattura\": {\r\n        \"id\": 5,\r\n        \"quantitaArtcolo\": 15,\r\n        \"importoTotale\": 500\r\n    },\r\n    \"azienda\": {\r\n        \"id\": 1,\r\n        \"nome\": \"FUTURE GAMING\",\r\n        \"partitaIva\": 894661018,\r\n        \"codiceFiscale\": 894661018,\r\n        \"pec\": \"f.gaming@pec.it\",\r\n        \"città\": \"Torino\",\r\n        \"corrieri\": [\r\n            {\r\n                \"id\": 1,\r\n                \"corriere\": \"GLS\"\r\n            },\r\n            {\r\n                \"id\": 2,\r\n                \"corriere\": \"UPS\"\r\n            },\r\n            {\r\n                \"id\": 3,\r\n                \"corriere\": \"GLS\"\r\n            }\r\n        ]\r\n    },\r\n  \r\n    \"user\": {\r\n        \"id\": 1\r\n    }\r\n}",
+									"raw": "{\r\n    \"id\": 21,\r\n    \"numero\": 2257,\r\n    \"riepilogo\": \"RIEPILOGO\",\r\n    \"dataOrdine\": \"2023-05-12\",\r\n    \"dataConsegna\": \"2023-05-15\",\r\n    \"statoOrdine\": \"IN_CONSEGNA\",\r\n    \"prezzoConsegna\": 2.99,\r\n    \"user\": {\r\n        \"id\": 1\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"

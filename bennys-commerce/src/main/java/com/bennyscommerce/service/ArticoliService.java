@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.bennyscommerce.model.Articoli;
@@ -279,4 +280,11 @@ public class ArticoliService {
 	return articoliDao.getAllArticoliByNome(name);
     }
 
+    public List<Page<Articoli>> findArticoliByPage() {
+	return articoliDao.getArticoliByPage();
+    }
+
+    public Optional<Page<Articoli>> findArticoliByPageNum(int pageNumber, int pageSize) {
+	return articoliDao.getArticoliByPageNum(pageNumber, pageSize);
+    }
 }
