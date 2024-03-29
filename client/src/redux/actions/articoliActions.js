@@ -1,26 +1,77 @@
+import axios from "axios";
 export const ARTICOLI = "ARTICOLI";
+export const RANGEPREZZOARTICOLI = "RANGEPREZZOARTICOLI";
+export const NOMEARTICOLI = "NOMEARTICOLI";
+export const PAGINAARTICOLI = "PAGINAARTICOLI";
 
-const axios = require("axios").default;
-
-export async function getArticoli(token, dispatch) {
-  try {
-    const response = await axios.get("http://localhost/api/articolo", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(response);
-    if (response.status === 200) {
-      const data = await response;
-
-      dispatch({
-        type: ARTICOLI,
-        payload: data,
-      });
+export const getArticoli = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost/api/articolo");
+      if (response.status === 200) {
+        dispatch({
+          type: ARTICOLI,
+          payload: response.data,
+        });
+      }
+    } catch (error) {
+      console.log("errore fetch articoli", error);
     }
-  } catch (error) {
-    console.log("errore fetch articoli", error);
-  }
-}
+  };
+};
+
+export const getArticoliByPrezzo = (s1, s2) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost/api/articolo/prezzo/${s1}/${s2}`
+      );
+      if (response.status === 200) {
+        dispatch({
+          type: RANGEPREZZOARTICOLI,
+          payload: response.data,
+        });
+      }
+    } catch (error) {
+      console.log("errore nel getArticoliByPrezzo", error);
+    }
+  };
+};
+
+export const getArticoliByName = (name) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost/api/articolo/name/${name}`
+      );
+      console.log("risposta", response);
+      if (response.status === 200) {
+        dispatch({
+          type: NOMEARTICOLI,
+          payload: response.data,
+        });
+      }
+    } catch (error) {
+      console.log("errore nel getArticoliByName", error);
+    }
+  };
+};
+
+export const getArticoliByPage = (pageNum, pageSize) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost/api/articolo/page/${pageNum}/${pageSize}`
+      );
+      console.log("risposta", response);
+      if (response.status === 200) {
+        dispatch({
+          type: PAGINAARTICOLI,
+          payload: response.data,
+        });
+      }
+    } catch (error) {
+      console.log("errore nel getArticoliByPage", error);
+    }
+  };
+};

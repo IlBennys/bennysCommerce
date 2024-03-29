@@ -3,23 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { getArticoli } from "../redux/actions/articoliActions";
 
 const Articoli = () => {
-  const articoli = useSelector((state) => state.user.Articoli);
-  const token = useSelector((state) => state.user.token);
+  const articolo = useSelector((state) => state.user.articoli);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getArticoli(token));
-  }, [dispatch, token]);
+    dispatch(getArticoli());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
-      (
-      <div>
-        {articoli.map((e, i) => (
-          <div>
-            <p>{e.prezzo}</p>
-          </div>
-        ))}
-      </div>
-      ):(<p>caricamento...</p>)
+      {articolo ? (
+        <div>
+          {articolo.map((e, i) => (
+            <div key={i}>
+              <p>{e.nomeArticolo}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>caricamento...</p>
+      )}
     </>
   );
 };
