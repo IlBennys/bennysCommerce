@@ -2,7 +2,11 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import userReducer from "../reducers/ArticoliReducers";
+import userReducer from "../reducers/userReducers";
+import articoliReducer from "../reducers/articoliReducers";
+import carrelloReducer from "../reducers/carrelloReducers";
+import ordiniReducer from "../reducers/ordiniReducers";
+
 import { encryptTransform } from "redux-persist-transform-encrypt";
 
 const persistConfig = {
@@ -17,6 +21,9 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
+  articolo: articoliReducer,
+  carrello: carrelloReducer,
+  ordine: ordiniReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

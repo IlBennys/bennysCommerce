@@ -20,12 +20,23 @@ export const getArticoli = () => {
   };
 };
 
+export const getArticoliById = (articoloId) => {
+  return async () => {
+    try {
+      const response = await axios.get(`http://localhost/api/articolo/${articoloId}`);
+      if (response.status === 200) {
+        //console.log(response);
+      }
+    } catch (error) {
+      console.log("errore fetch articoli", error);
+    }
+  };
+};
+
 export const getArticoliByPrezzo = (s1, s2) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `http://localhost/api/articolo/prezzo/${s1}/${s2}`
-      );
+      const response = await axios.get(`http://localhost/api/articolo/prezzo/${s1}/${s2}`);
       if (response.status === 200) {
         dispatch({
           type: RANGEPREZZOARTICOLI,
@@ -41,9 +52,7 @@ export const getArticoliByPrezzo = (s1, s2) => {
 export const getArticoliByName = (name) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `http://localhost/api/articolo/name/${name}`
-      );
+      const response = await axios.get(`http://localhost/api/articolo/name/${name}`);
       console.log("risposta", response);
       if (response.status === 200) {
         dispatch({
@@ -60,9 +69,7 @@ export const getArticoliByName = (name) => {
 export const getArticoliByPage = (pageNum, pageSize) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `http://localhost/api/articolo/page/${pageNum}/${pageSize}`
-      );
+      const response = await axios.get(`http://localhost/api/articolo/page/${pageNum}/${pageSize}`);
       console.log("risposta", response);
       if (response.status === 200) {
         dispatch({
@@ -72,6 +79,40 @@ export const getArticoliByPage = (pageNum, pageSize) => {
       }
     } catch (error) {
       console.log("errore nel getArticoliByPage", error);
+    }
+  };
+};
+
+export const updateArticolo = (articoloId, input, token) => {
+  return async () => {
+    try {
+      const response = await axios.put(`http://localhost/api/articolo/${articoloId}`, input, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.status === 200) {
+        console.log("Articolo aggiornato con successo:", response.data);
+      }
+    } catch (error) {
+      console.error("Errore durante l'aggiornamento dell'articolo:", error);
+    }
+  };
+};
+
+export const deleteArticolo = (articoloId, token) => {
+  return async () => {
+    try {
+      const response = await axios.delete(`http://localhost/api/articolo/${articoloId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.status === 200) {
+        console.log("Articolo eliminato con successo");
+      }
+    } catch (error) {
+      console.error("Errore durante l'aggiornamento dell'articolo:", error);
     }
   };
 };

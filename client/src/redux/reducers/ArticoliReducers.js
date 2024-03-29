@@ -1,9 +1,4 @@
-import {
-  ARTICOLI,
-  NOMEARTICOLI,
-  PAGINAARTICOLI,
-  RANGEPREZZOARTICOLI,
-} from "../actions/articoliActions";
+import { ARTICOLI, NOMEARTICOLI, PAGINAARTICOLI, RANGEPREZZOARTICOLI } from "../actions/articoliActions";
 
 const initialState = {
   articoli: [],
@@ -11,7 +6,8 @@ const initialState = {
   nomearticoli: [],
   paginaarticoli: [],
 };
-const userReducer = (state = initialState, action) => {
+
+const articoliReducer = (state = initialState, action) => {
   switch (action.type) {
     case ARTICOLI:
       return { ...state, articoli: action.payload };
@@ -27,4 +23,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default articoliReducer;
