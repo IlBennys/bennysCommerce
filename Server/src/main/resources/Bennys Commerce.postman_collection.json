@@ -27,12 +27,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/auth/register",
+									"raw": "http://localhost/api/auth/register",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"auth",
@@ -57,12 +56,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/auth/register",
+									"raw": "http://localhost/api/auth/register",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"auth",
@@ -95,12 +93,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/auth/login",
+									"raw": "http://localhost/api/auth/login",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"auth",
@@ -125,12 +122,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/auth/login",
+									"raw": "http://localhost/api/auth/login",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"auth",
@@ -159,12 +155,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/articolo",
+									"raw": "http://localhost/api/articolo",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo"
@@ -189,12 +184,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/articolo/:id",
+									"raw": "http://localhost/api/articolo/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo",
@@ -216,12 +210,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/articolo/prezzo/:s1/:s2",
+									"raw": "http://localhost/api/articolo/prezzo/:s1/:s2",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo",
@@ -249,12 +242,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/articolo/name/:name",
+									"raw": "http://localhost/api/articolo/name/:name",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo",
@@ -280,12 +272,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/articolo/page",
+									"raw": "http://localhost/api/articolo/page",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo",
@@ -304,12 +295,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/articolo/page/:pageNum/:pageSize",
+									"raw": "http://localhost/api/articolo/page/:pageNum/:pageSize",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo",
@@ -356,12 +346,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/articolo/:id",
+									"raw": "http://localhost/api/articolo/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo",
@@ -393,12 +382,11 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/articolo/:id",
+									"raw": "http://localhost/api/articolo/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"articolo",
@@ -440,12 +428,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/carrello",
+									"raw": "http://localhost/api/carrello",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"carrello"
@@ -470,12 +457,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/carrello/:id",
+									"raw": "http://localhost/api/carrello/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"carrello",
@@ -516,12 +502,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/carrello/:idCarrello/articoli/:idArticoli",
+									"raw": "http://localhost/api/carrello/:idCarrello/articoli/:idArticoli",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"carrello",
@@ -559,12 +544,11 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/carrello/:idCarrello/articoli/:idArticoli",
+									"raw": "http://localhost/api/carrello/:idCarrello/articoli/:idArticoli",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"carrello",
@@ -612,12 +596,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/ordine",
+									"raw": "http://localhost/api/ordine",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"ordine"
@@ -642,12 +625,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/ordine/:id",
+									"raw": "http://localhost/api/ordine/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"ordine",
@@ -679,12 +661,11 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/ordine/user/:idUser/carrello/:idCarrello",
+									"raw": "http://localhost/api/ordine/user/:idUser/carrello/:idCarrello",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"ordine",
@@ -732,12 +713,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/ordine/:id",
+									"raw": "http://localhost/api/ordine/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"ordine",
@@ -769,12 +749,11 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/ordine/:id",
+									"raw": "http://localhost/api/ordine/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"ordine",
@@ -816,12 +795,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/user",
+									"raw": "http://localhost/api/user",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"user"
@@ -846,12 +824,11 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/user/:id",
+									"raw": "http://localhost/api/user/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"user",
@@ -892,12 +869,11 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/api/user/:id",
+									"raw": "http://localhost/api/user/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"user",
@@ -929,12 +905,11 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/user/:id",
+									"raw": "http://localhost/api/user/:id",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8080",
 									"path": [
 										"api",
 										"user",
