@@ -1,7 +1,11 @@
 import "../assets/sass/Home.scss";
 
 const Home = () => {
-  return <></>;
+  return (
+    <>
+      <div className="main"></div>
+    </>
+  );
 };
 
 export default Home;

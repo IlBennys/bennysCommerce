@@ -1,3 +1,41 @@
-.column2 {
-  gap: 8%;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.nav-main {
+  background-color: transparent;
+  position: sticky;
+  top: 0;
+  .column2 {
+    gap: 6%;
+  }
+  .div-img {
+    background-image: url("../img/Group\ 3.png");
+    background-size: cover;
+    background-position: center;
+    width: 320px;
+    height: 55px;
+    padding: 13%;
+  }
+  .text-nav {
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    border-color: #652f6f;
+  }
+  .text-nav:hover {
+    color: white;
+    border-bottom: 2px solid #652f6f;
+  }
+  .profilo-btn {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: #652f6f;
+    color: white;
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    border-color: #652f6f;
+  }
+  .profilo-btn:hover {
+    background-color: white;
+    color: #652f6f;
+  }
 }

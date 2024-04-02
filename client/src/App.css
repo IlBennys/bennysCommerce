@@ -1,7 +1,35 @@
 .App {
   text-align: center;
 }
+body {
+  background-color: #08070c;
+  --sb-track-color: #232e33;
+  --sb-thumb-color: #652f6f;
+  --sb-size: 13px;
+  background-image: url("./assets/img/bg_home.png");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
 
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 30px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 30px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

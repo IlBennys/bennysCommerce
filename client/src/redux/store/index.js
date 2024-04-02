@@ -3,7 +3,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import userReducer from "../reducers/userReducers";
-import articoliReducer from "../reducers/articoliReducers";
+import articoliReducer from "../reducers/ArticoliReducers";
 import carrelloReducer from "../reducers/carrelloReducers";
 import ordiniReducer from "../reducers/ordiniReducers";
 
