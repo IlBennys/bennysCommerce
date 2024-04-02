@@ -1,8 +1,7 @@
 import axios from "axios";
 import { ARTICOLI } from "./articoliActions";
 import { ADD_ID_CARRELLO, CARRELLO, trovaIdCarrello } from "./carrelloActions";
-import { ADD_ID_ORDINE, ORDINI } from "./ordiniActions";
-import { ORDINE } from "../../../../PROGETTO FINALE/Capstone-FE/src/redux/action";
+import { ADD_ID_ORDINE, ORDINI, ADD_ORDINE } from "./ordiniActions";
 
 export const USER = "USER";
 export const ADD_TOKEN = "ADD_TOKEN";
@@ -12,11 +11,15 @@ export const USERNAME = "USERNAME";
 export const registrazioneUser = (input) => {
   return async () => {
     try {
-      const response = await axios.post("http://localhost/api/auth/register", input, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost/api/auth/register",
+        input,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         window.location.href = "http://localhost:3000/login";
       } else if (response.status === 400) {
@@ -31,11 +34,15 @@ export const registrazioneUser = (input) => {
 export const loginUser = (input) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost/api/auth/register", input, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost/api/auth/register",
+        input,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: ADD_TOKEN,
@@ -87,7 +94,7 @@ export function logoutUser() {
       payload: {},
     });
     dispatch({
-      type: ORDINE,
+      type: ADD_ORDINE,
       payload: {},
     });
     dispatch({
@@ -112,7 +119,9 @@ export const trovaIdUser = (token, username) => {
         },
       });
       if (response.status === 200) {
-        const userFiltrato = response.data.filter((e) => e.username === username);
+        const userFiltrato = response.data.filter(
+          (e) => e.username === username
+        );
         dispatch({
           type: ADD_ID_USER,
           payload: userFiltrato,
@@ -150,12 +159,16 @@ export const getUser = (token, idUser) => {
 export const putUser = (idUser, token, input, username) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`http://localhost/api/user/${idUser}`, input, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.put(
+        `http://localhost/api/user/${idUser}`,
+        input,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: USER,
