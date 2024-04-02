@@ -84,7 +84,7 @@ export const getArticoliByPage = (pageNum, pageSize) => {
 };
 
 export const updateArticolo = (articoloId, input, token) => {
-  return async () => {
+  return async (dispatch) => {
     try {
       const response = await axios.put(`http://localhost/api/articolo/${articoloId}`, input, {
         headers: {
@@ -92,6 +92,11 @@ export const updateArticolo = (articoloId, input, token) => {
         },
       });
       if (response.status === 200) {
+        dispatch({
+          type: ARTICOLI,
+          payload: [],
+        });
+        dispatch(getArticoli());
         console.log("Articolo aggiornato con successo:", response.data);
       }
     } catch (error) {

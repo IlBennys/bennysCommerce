@@ -32,6 +32,27 @@ export const trovaIdOrdine = (token, idUser, idCarrello, carrello) => {
   };
 };
 
+export const getOrdine = (idOrdine, token) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost/api/ordine/${idOrdine}`, {
+        headers: {
+          Authorization: ` Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        dispatch({
+          type: ADD_ORDINE,
+          payload: response.data,
+        });
+      }
+    } catch (error) {
+      console.log("Errore nel getOrdine", error);
+    }
+  };
+};
+
 export const getOrdini = (token, idUser, idCarrello) => {
   return async (dispatch) => {
     try {
@@ -54,29 +75,8 @@ export const getOrdini = (token, idUser, idCarrello) => {
   };
 };
 
-export const getOrdine = (idOrdine, token) => {
-  return async (dispatch) => {
-    try {
-      const response = await axios.get(`http://localhost/api/ordine/${idOrdine}`, {
-        headers: {
-          Authorization: ` Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.status === 200) {
-        dispatch({
-          type: ADD_ORDINE,
-          payload: response.data,
-        });
-      }
-    } catch (error) {
-      console.log("Errore nel getOrdine", error);
-    }
-  };
-};
-
 export const postOrdine = (token, idUser, idCarrello) => {
-  return async (dispatch) => {
+  return async () => {
     try {
       const response = await axios.post(`http://localhost:8080/api/ordine/user/${idUser}/carrello/${idCarrello}`, {
         headers: {
@@ -85,7 +85,7 @@ export const postOrdine = (token, idUser, idCarrello) => {
         },
       });
       if (response.status === 200) {
-        window.location.href = "/ordine";
+        window.location.href = "/ordini";
       }
     } catch (error) {
       console.log("Errore nel postOrdine", error);

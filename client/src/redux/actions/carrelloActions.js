@@ -18,6 +18,7 @@ export const trovaIdCarrello = (idUser, token) => {
           type: ADD_ID_CARRELLO,
           payload: carrelloFiltrato[0].id,
         });
+        dispatch(getCarrelloById(carrelloFiltrato[0].id, token));
       }
     } catch (error) {
       console.log("Errore nel trovaIdCarrello", error);
@@ -76,5 +77,14 @@ export const deleteCarrello = (idCarrello, idArticolo, token) => {
     } catch (error) {
       console.error("Errore nel deleteCarrello", error);
     }
+  };
+};
+
+export const svuotaCarrello = () => {
+  return (dispatch) => {
+    dispatch({
+      type: CARRELLO,
+      payload: {},
+    });
   };
 };

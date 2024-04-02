@@ -1,8 +1,9 @@
-import { USER, ADD_TOKEN, USERNAME } from "../actions/userActions";
+import { USER, ADD_TOKEN, USERNAME, ADD_ID_USER } from "../actions/userActions";
 
 const initialState = {
   user: [],
   token: "",
+  idUser: "",
   username: "",
 };
 
@@ -12,6 +13,8 @@ const userReducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case ADD_TOKEN:
       return { ...state, token: action.payload };
+    case ADD_ID_USER:
+      return { ...state, idUser: action.payload };
     case USERNAME:
       return { ...state, username: action.payload };
     default:
