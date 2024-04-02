@@ -29,11 +29,14 @@ export const trovaIdCarrello = (idUser, token) => {
 export const getCarrelloById = (idCarrello, token) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost/api/carrello/${idCarrello}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `http://localhost/api/carrello/${idCarrello}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: CARRELLO,
@@ -49,12 +52,15 @@ export const getCarrelloById = (idCarrello, token) => {
 export const postCarrello = (idCarrello, idArticolo, token) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (response.status === 200) {
+      const response = await axios.post(
+        `http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 201) {
         dispatch(getCarrelloById(idCarrello, token));
       }
     } catch (error) {
@@ -66,11 +72,14 @@ export const postCarrello = (idCarrello, idArticolo, token) => {
 export const deleteCarrello = (idCarrello, idArticolo, token) => {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(`http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(
+        `http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch(getCarrelloById(idCarrello, token));
       }

@@ -8,7 +8,7 @@ export const ADD_TOKEN = "ADD_TOKEN";
 export const ADD_ID_USER = "ADD_ID_USER";
 export const USERNAME = "USERNAME";
 
-export const registrazioneUser = (input) => {
+export function registrazioneUser(input) {
   return async () => {
     try {
       const response = await axios.post(
@@ -20,22 +20,22 @@ export const registrazioneUser = (input) => {
           },
         }
       );
-      if (response.status === 200) {
-        window.location.href = "http://localhost:3000/login";
-      } else if (response.status === 400) {
-        alert("EMAIL O PASSWORD GIA' ESISTENTI!");
+
+      if (response.status === 201) {
+        console.log(response);
+        window.location.href = "/login";
       }
     } catch (error) {
-      console.log("Errore registrazione user!", error);
+      alert("testComment", error);
     }
   };
-};
+}
 
 export const loginUser = (input) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        "http://localhost/api/auth/register",
+        "http://localhost/api/auth/login",
         input,
         {
           headers: {
@@ -44,6 +44,7 @@ export const loginUser = (input) => {
         }
       );
       if (response.status === 200) {
+        console.log(response);
         dispatch({
           type: ADD_TOKEN,
           payload: response.data.accessToken,

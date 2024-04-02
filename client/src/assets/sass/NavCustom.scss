@@ -1,11 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+$viola: #652f6f;
 
 .nav-main {
   background-color: transparent;
   position: sticky;
   top: 0;
-  .column2 {
-    gap: 6%;
+  .dropdown-menu.show {
+    background-color: $viola;
+  }
+  .dropdown-item:hover {
+    outline: 2px solid white;
+    border-radius: 10px;
+    background-color: $viola;
   }
   .div-img {
     background-image: url("../img/Group\ 3.png");
@@ -19,23 +25,23 @@
     color: white;
     font-family: "Inter", sans-serif;
     font-style: italic;
-    border-color: #652f6f;
+    border-color: $viola;
   }
   .text-nav:hover {
     color: white;
-    border-bottom: 2px solid #652f6f;
+    border-bottom: 2px solid $viola;
   }
   .profilo-btn {
     border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
-    background-color: #652f6f;
+    background-color: $viola;
     color: white;
     font-family: "Inter", sans-serif;
     font-style: italic;
-    border-color: #652f6f;
+    border-color: $viola;
   }
   .profilo-btn:hover {
     background-color: white;
-    color: #652f6f;
+    color: $viola;
   }
 }

@@ -35,12 +35,15 @@ export const trovaIdOrdine = (token, idUser, idCarrello, carrello) => {
 export const getOrdine = (idOrdine, token) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost/api/ordine/${idOrdine}`, {
-        headers: {
-          Authorization: ` Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.get(
+        `http://localhost/api/ordine/${idOrdine}`,
+        {
+          headers: {
+            Authorization: ` Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: ADD_ORDINE,
@@ -63,7 +66,9 @@ export const getOrdini = (token, idUser, idCarrello) => {
         },
       });
       if (response.status === 200) {
-        const ordiniFiltrati = response.data.filter((e) => e.user.id === idUser && e.carrello.id === idCarrello);
+        const ordiniFiltrati = response.data.filter(
+          (e) => e.user.id === idUser && e.carrello.id === idCarrello
+        );
         dispatch({
           type: ORDINI,
           payload: ordiniFiltrati,
@@ -78,13 +83,16 @@ export const getOrdini = (token, idUser, idCarrello) => {
 export const postOrdine = (token, idUser, idCarrello) => {
   return async () => {
     try {
-      const response = await axios.post(`http://localhost:8080/api/ordine/user/${idUser}/carrello/${idCarrello}`, {
-        headers: {
-          Authorization: ` Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.status === 200) {
+      const response = await axios.post(
+        `http://localhost:8080/api/ordine/user/${idUser}/carrello/${idCarrello}`,
+        {
+          headers: {
+            Authorization: ` Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.status === 201) {
         window.location.href = "/ordini";
       }
     } catch (error) {

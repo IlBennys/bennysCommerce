@@ -54,10 +54,9 @@ public class SecurityConfig {
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.POST, "/api/carrello", "/api/ordine")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.PUT, "/api/ordine", "/api/user")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.DELETE, "/api/carrello", "/api/user")
-			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.POST, "/api/articolo").hasRole("ADMIN")
-			.requestMatchers(HttpMethod.PUT, "/api/articolo").hasRole("ADMIN")
-			.requestMatchers(HttpMethod.DELETE, "/api/articolo", "/api/ordine").hasRole("ADMIN")
-			.anyRequest().authenticated())
+			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.PUT, "/api/articolo/**")
+			.hasRole("ADMIN").requestMatchers(HttpMethod.DELETE, "/api/articolo/**", "/api/ordine/**")
+			.hasRole("ADMIN").anyRequest().authenticated())
 		.exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationEntryPoint))
 		.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
