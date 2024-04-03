@@ -11,15 +11,11 @@ export const USERNAME = "USERNAME";
 export function registrazioneUser(input) {
   return async () => {
     try {
-      const response = await axios.post(
-        "http://localhost/api/auth/register",
-        input,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("http://localhost/api/auth/register", input, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.status === 201) {
         console.log(response);
@@ -31,18 +27,14 @@ export function registrazioneUser(input) {
   };
 }
 
-export const loginUser = (input) => {
+export function loginUser(input) {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        "http://localhost/api/auth/login",
-        input,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("http://localhost/api/auth/login", input, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (response.status === 200) {
         console.log(response);
         dispatch({
@@ -62,7 +54,7 @@ export const loginUser = (input) => {
       console.log("Errore registrazione user!", error);
     }
   };
-};
+}
 
 export function logoutUser() {
   return (dispatch) => {
@@ -74,7 +66,7 @@ export function logoutUser() {
       type: USERNAME,
       payload: "",
     });
-    dispatch({
+    /* dispatch({
       type: ADD_ID_USER,
       payload: "",
     });
@@ -105,12 +97,12 @@ export function logoutUser() {
     dispatch({
       type: ARTICOLI,
       payload: [],
-    });
+    }); */
     window.location.href = "/";
   };
 }
 
-export const trovaIdUser = (token, username) => {
+export function trovaIdUser(token, username) {
   return async (dispatch) => {
     try {
       const response = await axios.get("http://localhost/api/user", {
@@ -120,9 +112,7 @@ export const trovaIdUser = (token, username) => {
         },
       });
       if (response.status === 200) {
-        const userFiltrato = response.data.filter(
-          (e) => e.username === username
-        );
+        const userFiltrato = response.data.filter((e) => e.username === username);
         dispatch({
           type: ADD_ID_USER,
           payload: userFiltrato,
@@ -134,9 +124,9 @@ export const trovaIdUser = (token, username) => {
       console.log("Errore nel trovaIdUser", error);
     }
   };
-};
+}
 
-export const getUser = (token, idUser) => {
+export function getUser(token, idUser) {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost/api/user/${idUser}`, {
@@ -155,21 +145,17 @@ export const getUser = (token, idUser) => {
       console.log("Errore nel getUser", error);
     }
   };
-};
+}
 
-export const putUser = (idUser, token, input, username) => {
+export function putUser(idUser, token, input, username) {
   return async (dispatch) => {
     try {
-      const response = await axios.put(
-        `http://localhost/api/user/${idUser}`,
-        input,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.put(`http://localhost/api/user/${idUser}`, input, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (response.status === 200) {
         dispatch({
           type: USER,
@@ -181,4 +167,4 @@ export const putUser = (idUser, token, input, username) => {
       console.log("Errore nel putUser", error);
     }
   };
-};
+}

@@ -2,7 +2,7 @@ import axios from "axios";
 export const CARRELLO = "CARRELLO";
 export const ADD_ID_CARRELLO = "ADD_ID_CARRELLO";
 
-export const trovaIdCarrello = (idUser, token) => {
+export function trovaIdCarrello(idUser, token) {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:8080/api/carrello`, {
@@ -24,19 +24,16 @@ export const trovaIdCarrello = (idUser, token) => {
       console.log("Errore nel trovaIdCarrello", error);
     }
   };
-};
+}
 
-export const getCarrelloById = (idCarrello, token) => {
+export function getCarrelloById(idCarrello, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `http://localhost/api/carrello/${idCarrello}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`http://localhost/api/carrello/${idCarrello}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status === 200) {
         dispatch({
           type: CARRELLO,
@@ -47,19 +44,16 @@ export const getCarrelloById = (idCarrello, token) => {
       console.error("Errore nel getCarrelloById", error);
     }
   };
-};
+}
 
-export const postCarrello = (idCarrello, idArticolo, token) => {
+export function postCarrello(idCarrello, idArticolo, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        `http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status === 201) {
         dispatch(getCarrelloById(idCarrello, token));
       }
@@ -67,19 +61,16 @@ export const postCarrello = (idCarrello, idArticolo, token) => {
       console.error("Errore nel postCarrello", error);
     }
   };
-};
+}
 
-export const deleteCarrello = (idCarrello, idArticolo, token) => {
+export function deleteCarrello(idCarrello, idArticolo, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`http://localhost:8080/api/carrello/${idCarrello}/articoli/${idArticolo}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status === 200) {
         dispatch(getCarrelloById(idCarrello, token));
       }
@@ -87,13 +78,13 @@ export const deleteCarrello = (idCarrello, idArticolo, token) => {
       console.error("Errore nel deleteCarrello", error);
     }
   };
-};
+}
 
-export const svuotaCarrello = () => {
+export function svuotaCarrello() {
   return (dispatch) => {
     dispatch({
       type: CARRELLO,
       payload: {},
     });
   };
-};
+}
