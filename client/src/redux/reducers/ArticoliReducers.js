@@ -1,10 +1,15 @@
-import { ARTICOLI, NOMEARTICOLI, PAGINAARTICOLI, RANGEPREZZOARTICOLI } from "../actions/articoliActions";
+import {
+  ARTICOLI,
+  NOMEARTICOLI,
+  PAGINAARTICOLI,
+  RANGEPREZZOARTICOLI,
+} from "../actions/articoliActions";
 
 const initialState = {
   articoli: [],
-  rangeprezzoarticoli: [],
-  nomearticoli: [],
-  paginaarticoli: [],
+  rangePrezzoArticoli: [],
+  nomeArticoli: [],
+  paginaArticoli: {},
 };
 
 const articoliReducer = (state = initialState, action) => {
@@ -12,11 +17,11 @@ const articoliReducer = (state = initialState, action) => {
     case ARTICOLI:
       return { ...state, articoli: action.payload };
     case PAGINAARTICOLI:
-      return { ...state, paginaarticoli: action.payload };
+      return { ...state, paginaArticoli: action.payload };
     case RANGEPREZZOARTICOLI:
-      return { ...state, rangeprezzoarticoli: action.payload };
+      return { ...state, rangePrezzoArticoli: action.payload };
     case NOMEARTICOLI:
-      return { ...state, nomearticoli: action.payload };
+      return { ...state, nomeArticoli: action.payload };
 
     default:
       return state;

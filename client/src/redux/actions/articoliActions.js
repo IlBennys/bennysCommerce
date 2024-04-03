@@ -136,3 +136,9 @@ export const deleteArticolo = (articoloId, token) => {
     }
   };
 };
+
+export const svuotaArticoli = () => {
+  return (dispatch) => {
+    dispatch({ type: PAGINAARTICOLI, payload: {} });
+  };
+};

@@ -1,0 +1,84 @@
+$viola: #652f6f;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+.column {
+  div {
+    background-color: white;
+    margin-left: 30px;
+    width: 100px;
+    aspect-ratio: 2/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 2px solid white;
+    background-color: transparent;
+    span {
+      color: white;
+    }
+  }
+}
+.div-col3 {
+  position: sticky;
+  top: 115px;
+}
+
+.div-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 2px solid white;
+
+  button {
+    background-color: transparent;
+    border: none;
+    margin-left: 15px;
+
+    &:nth-child(n + 2) {
+      margin-top: 30px;
+    }
+  }
+  button:hover {
+    background-color: transparent;
+    outline: 2px solid $viola;
+  }
+}
+
+.card-main {
+  background-color: transparent;
+  width: 18rem;
+  height: 45rem;
+  border: none;
+  font-family: "Inter", sans-serif;
+  .img-card {
+    width: 100%;
+    object-fit: contain;
+    background-color: #f1f1f1;
+    padding: 3%;
+    position: relative;
+  }
+  .carrello-btn {
+    background-color: #8e8d8d;
+    position: absolute;
+    top: 11px;
+    right: 23px;
+    width: 14%;
+    height: 4%;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: $viola;
+  }
+  .titolo-card {
+    font-family: "Inter", sans-serif;
+  }
+  .body-card-main {
+    color: white;
+    height: 280px;
+    overflow: hidden;
+    font-family: "Inter", sans-serif;
+  }
+}
+@media screen and (max-width: 992px) {
+  .card-row {
+    justify-content: center;
+  }
+}

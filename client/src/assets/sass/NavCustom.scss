@@ -2,9 +2,10 @@
 $viola: #652f6f;
 
 .nav-main {
-  background-color: transparent;
+  background-color: #08070cbd;
   position: sticky;
   top: 0;
+  z-index: 3;
   .dropdown-menu.show {
     background-color: $viola;
   }
@@ -43,5 +44,15 @@ $viola: #652f6f;
   .profilo-btn:hover {
     background-color: white;
     color: $viola;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .div-img {
+    display: none;
+  }
+  .main-cont {
+    display: flex;
+    justify-content: center !important;
   }
 }

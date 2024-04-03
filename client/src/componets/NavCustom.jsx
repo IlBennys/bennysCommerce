@@ -1,20 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/sass/NavCustom.scss";
-import {
-  Badge,
-  Button,
-  Container,
-  Nav,
-  NavDropdown,
-  Navbar,
-} from "react-bootstrap";
+import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useEffect } from "react";
 import { logoutUser, trovaIdUser } from "../redux/actions/userActions";
+import { svuotaArticoli } from "../redux/actions/articoliActions";
 
 const NavCustom = () => {
   const token = useSelector((state) => state.user.token);
   const username = useSelector((state) => state.user.username);
-  const carrello = useSelector((state) => state.carrello.carrello);
 
   const dispatch = useDispatch();
 
@@ -25,8 +18,8 @@ const NavCustom = () => {
 
   return (
     <>
-      <Navbar className="nav-main">
-        <Container className="d-flex justify-content-between align-items-center">
+      <Navbar className="nav-main mb-3">
+        <Container className="main-cont d-flex justify-content-between align-items-center">
           <Nav className="column1">
             <Nav.Link href="/">
               <div className="div-img"></div>
@@ -39,7 +32,11 @@ const NavCustom = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link className="ms-3 text-nav" href="/articoli">
+              <Nav.Link
+                className="ms-3 text-nav"
+                href="/articoli"
+                onClick={() => dispatch(svuotaArticoli())}
+              >
                 Articoli
               </Nav.Link>
             </Nav>

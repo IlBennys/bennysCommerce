@@ -71,7 +71,7 @@ public class CommerceConfiguration {
     @Bean("Mouse5")
     @Scope("prototype")
     public Articoli Articolo5() {
-	return Articoli.builder().prezzo((double) fake.number().numberBetween(10, 20)).nomeArticolo("Mouse Cablato")
+	return Articoli.builder().prezzo((double) fake.number().numberBetween(10, 20)).nomeArticolo("Mouse Wireless")
 		.img("https://cdn.discordapp.com/attachments/1062713292226830409/1222590705747234827/M4-removebg-preview.png?ex=6616c552&is=66045052&hm=f12216fd9fb4c63f19550fbd276789812f00685de5f118097c22157ad2835659&")
 		.brand("Trust Verto")
 		.descrizioneArticolo(
