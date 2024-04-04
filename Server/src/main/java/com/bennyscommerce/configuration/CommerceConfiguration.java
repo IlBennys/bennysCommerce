@@ -131,7 +131,7 @@ public class CommerceConfiguration {
     @Scope("prototype")
     public Articoli Articolo10() {
 	return Articoli.builder().prezzo(fake.number().randomDouble(2, 90, 100)).nomeArticolo("Monitor").img(
-		"https://media.discordapp.net/attachments/1062713292226830409/1222572386436644884/OK.png?ex=6616b443&is=66043f43&hm=e5f78c1241cf1717f73a7260407967ce7d49125279a89815526b0d6dbb44954d&=&format=webp&quality=lossless&width=536&height=437")
+		"https://cdn.discordapp.com/attachments/1062713292226830409/1222571736285970513/M1-removebg-preview1.png?ex=661fee28&is=660d7928&hm=06c9651123d788994dfb055a216d362bf433275dd06993e4429923c14c5669c5&")
 		.brand("KOORUI")
 		.descrizioneArticolo(
 			"24 pollici full HD, 75 Hz, 5 ms, Eye Comfort, gamma di colori sRGB 99%, (1920 x 1080, HDMI, VGA, inclinabile, VESA 75x75) - nero")
@@ -218,7 +218,8 @@ public class CommerceConfiguration {
     @Bean("Monitor9")
     @Scope("prototype")
     public Articoli Articolo18() {
-	return Articoli.builder().prezzo(fake.number().randomDouble(2, 350, 500)).nomeArticolo("Monitor").img(null)
+	return Articoli.builder().prezzo(fake.number().randomDouble(2, 350, 500)).nomeArticolo("Monitor").img(
+		"https://cdn.discordapp.com/attachments/1062713292226830409/1222588333327126588/M10-removebg-preview.png?ex=661ffd9d&is=660d889d&hm=d4e4270f8d33be50cbea154b9a2c00d1d69662cecf016a3076bc7f4d00ac1f47&")
 		.brand("MSI")
 		.descrizioneArticolo(
 			"Optix MAG274QRF-QD Monitor Gaming 27\" 16:9 (WQHD) 2560x1440, Rapid IPS Quantum Dot, 165Hz, 1ms GtG, HDR Ready, G-SYNC compatibile, Night Vision, USB Type-C, Gaming OSD App, VESA 100x100 - nero")
