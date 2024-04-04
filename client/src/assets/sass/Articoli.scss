@@ -57,15 +57,20 @@ $viola: #652f6f;
     position: relative;
   }
   .carrello-btn {
-    background-color: #8e8d8d;
+    //background-color: #8e8d8d;
     position: absolute;
     top: 11px;
     right: 23px;
     width: 14%;
     height: 4%;
     text-align: center;
-    font-family: "Inter", sans-serif;
-    color: $viola;
+    filter: drop-shadow(7px 4px 1px $viola);
+  }
+  .carrello-btn:hover {
+    box-shadow: 5px 5px $viola;
+    background-color: black;
+    filter: none;
+    cursor: pointer;
   }
   .titolo-card {
     font-family: "Inter", sans-serif;

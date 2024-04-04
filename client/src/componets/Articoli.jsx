@@ -1,5 +1,5 @@
 import "../assets/sass/Articoli.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getArticoli,
@@ -7,16 +7,19 @@ import {
   svuotaArticoli,
 } from "../redux/actions/articoliActions";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-import { FaCartPlus } from "react-icons/fa6";
+import cart from "../assets/img/shopping-cart.png";
+import { postCarrello } from "../redux/actions/carrelloActions";
 
 const Articoli = () => {
   const articolo = useSelector((state) => state.articolo.articoli);
   const pageArticoli = useSelector((state) => state.articolo.paginaArticoli);
-  //console.log(pageArticoli);
+  const idCarrello = useSelector((state) => state.carrello.idCarrello);
+  const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
+  const [isOnline, setIsOnline] = useState(false);
 
   useEffect(() => {
-    dispatch(getArticoli());
+    dispatch(getArticoli()).then(() => setIsOnline(true));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
@@ -73,85 +76,11 @@ const Articoli = () => {
                 </div>
               </Row>
               <Row className="card-row">
-                {pageArticoli.content
-                  ? pageArticoli.content[0].id === 1
-                    ? pageArticoli.content.map((e) => {
-                        return (
-                          <>
-                            <Card key={e.id} className="m-1 card-main">
-                              <Card.Img
-                                variant="top"
-                                className="img-card rounded-3 h-50"
-                                src={e.img}
-                              />
-                              <p className="carrello-btn rounded-2">
-                                <FaCartPlus />
-                              </p>
-                              <Card.Body className="body-card-main">
-                                <Card.Title className="titolo-card text-center">
-                                  {e.nomeArticolo}
-                                </Card.Title>
-                                <Card.Text className="text-center">
-                                  {e.brand}
-                                </Card.Text>
-                                <Card.Text>{e.descrizioneArticolo}</Card.Text>
-                              </Card.Body>
-                            </Card>
-                          </>
-                        );
-                      })
-                    : pageArticoli.content[0].id === 10
-                    ? pageArticoli.content.map((e) => {
-                        return (
-                          <>
-                            <Card key={e.id} className="m-1 card-main">
-                              <Card.Img
-                                className="img-card rounded-3 h-50"
-                                variant="top"
-                                src={e.img}
-                              />
-                              <p className="carrello-btn rounded-2">
-                                <FaCartPlus />
-                              </p>
-                              <Card.Body className="body-card-main">
-                                <Card.Title className="titolo-card text-center">
-                                  {e.nomeArticolo}
-                                </Card.Title>
-                                <Card.Text className="text-center">
-                                  {e.brand}
-                                </Card.Text>
-                                <Card.Text>{e.descrizioneArticolo}</Card.Text>
-                              </Card.Body>
-                            </Card>
-                          </>
-                        );
-                      })
-                    : pageArticoli.content.map((e) => {
-                        return (
-                          <>
-                            <Card key={e.id} className="m-1 card-main">
-                              <Card.Img
-                                variant="top"
-                                className="img-card rounded-3 h-50"
-                                src={e.img}
-                              />
-                              <p className="carrello-btn rounded-2">
-                                <FaCartPlus />
-                              </p>
-                              <Card.Body className="body-card-main">
-                                <Card.Title className="titolo-card text-center">
-                                  {e.nomeArticolo}
-                                </Card.Title>
-                                <Card.Text className="text-center">
-                                  {e.brand}
-                                </Card.Text>
-                                <Card.Text>{e.descrizioneArticolo}</Card.Text>
-                              </Card.Body>
-                            </Card>
-                          </>
-                        );
-                      })
-                  : articolo.map((e) => {
+                {!isOnline ? (
+                  <h1 className="text-center text-white">caricamento...</h1>
+                ) : pageArticoli.content ? (
+                  pageArticoli.content[0].id === 1 ? (
+                    pageArticoli.content.map((e) => {
                       return (
                         <>
                           <Card key={e.id} className="m-1 card-main">
@@ -160,10 +89,13 @@ const Articoli = () => {
                               className="img-card rounded-3 h-50"
                               src={e.img}
                             />
-                            <div className="carrello-btn rounded-2 ">
-                              <p>
-                                <FaCartPlus />
-                              </p>
+                            <div
+                              onClick={() =>
+                                dispatch(postCarrello(idCarrello, e.id, token))
+                              }
+                              className="carrello-btn rounded-2"
+                            >
+                              <img src={cart} alt="" />
                             </div>
                             <Card.Body className="body-card-main">
                               <Card.Title className="titolo-card text-center">
@@ -177,13 +109,109 @@ const Articoli = () => {
                           </Card>
                         </>
                       );
-                    })}
+                    })
+                  ) : pageArticoli.content[0].id === 10 ? (
+                    pageArticoli.content.map((e) => {
+                      return (
+                        <>
+                          <Card key={e.id} className="m-1 card-main">
+                            <Card.Img
+                              className="img-card rounded-3 h-50"
+                              variant="top"
+                              src={e.img}
+                            />
+                            <div
+                              onClick={() =>
+                                dispatch(postCarrello(idCarrello, e.id, token))
+                              }
+                              className="carrello-btn rounded-2"
+                            >
+                              <img src={cart} alt="" />
+                            </div>
+                            <Card.Body className="body-card-main">
+                              <Card.Title className="titolo-card text-center">
+                                {e.nomeArticolo}
+                              </Card.Title>
+                              <Card.Text className="text-center">
+                                {e.brand}
+                              </Card.Text>
+                              <Card.Text>{e.descrizioneArticolo}</Card.Text>
+                            </Card.Body>
+                          </Card>
+                        </>
+                      );
+                    })
+                  ) : (
+                    pageArticoli.content.map((e) => {
+                      return (
+                        <>
+                          <Card key={e.id} className="m-1 card-main">
+                            <Card.Img
+                              variant="top"
+                              className="img-card rounded-3 h-50"
+                              src={e.img}
+                            />
+                            <div
+                              onClick={() =>
+                                dispatch(postCarrello(idCarrello, e.id, token))
+                              }
+                              className="carrello-btn rounded-2"
+                            >
+                              <img src={cart} alt="" />
+                            </div>
+                            <Card.Body className="body-card-main">
+                              <Card.Title className="titolo-card text-center">
+                                {e.nomeArticolo}
+                              </Card.Title>
+                              <Card.Text className="text-center">
+                                {e.brand}
+                              </Card.Text>
+                              <Card.Text>{e.descrizioneArticolo}</Card.Text>
+                            </Card.Body>
+                          </Card>
+                        </>
+                      );
+                    })
+                  )
+                ) : (
+                  articolo.map((e) => {
+                    return (
+                      <>
+                        <Card key={e.id} className="m-1 card-main">
+                          <Card.Img
+                            variant="top"
+                            className="img-card rounded-3 h-50"
+                            src={e.img}
+                          />
+
+                          <div
+                            onClick={() =>
+                              dispatch(postCarrello(idCarrello, e.id, token))
+                            }
+                            className="carrello-btn rounded-2"
+                          >
+                            <img src={cart} alt="" />
+                          </div>
+                          <Card.Body className="body-card-main">
+                            <Card.Title className="titolo-card text-center">
+                              {e.nomeArticolo}
+                            </Card.Title>
+                            <Card.Text className="text-center">
+                              {e.brand}
+                            </Card.Text>
+                            <Card.Text>{e.descrizioneArticolo}</Card.Text>
+                          </Card.Body>
+                        </Card>
+                      </>
+                    );
+                  })
+                )}
               </Row>
             </Col>
           </Row>
         </Container>
       ) : (
-        <p>caricamento...</p>
+        <h1 className="text-center text-white">caricamento...</h1>
       )}
     </>
   );
