@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/sass/NavCustom.scss";
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Badge, Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useEffect } from "react";
 import { logoutUser, trovaIdUser } from "../redux/actions/userActions";
 import { svuotaArticoli } from "../redux/actions/articoliActions";
@@ -8,6 +8,7 @@ import { svuotaArticoli } from "../redux/actions/articoliActions";
 const NavCustom = () => {
   const token = useSelector((state) => state.user.token);
   const username = useSelector((state) => state.user.username);
+  const carrello = useSelector((state) => state.carrello.carrello);
 
   const dispatch = useDispatch();
 
@@ -32,12 +33,8 @@ const NavCustom = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link
-                className="ms-3 text-nav"
-                href="/articoli"
-                onClick={() => dispatch(svuotaArticoli())}
-              >
-                Shop
+              <Nav.Link className="ms-3 text-nav" href="/articoli" onClick={() => dispatch(svuotaArticoli())}>
+                Articoli
               </Nav.Link>
             </Nav>
             {token !== "" ? (
@@ -45,13 +42,10 @@ const NavCustom = () => {
                 <Nav>
                   <Nav.Link className="ms-3 text-nav" href="/carrello">
                     Carrello
+                    {carrello.articoli !== undefined ? <Badge bg="badge">{carrello.articoli.length}</Badge> : <p></p>}
                   </Nav.Link>
                 </Nav>
-                <NavDropdown
-                  className="ms-3 text-nav mainDrop"
-                  title={`Ciao ${username}`}
-                  id="basic-nav-dropdown"
-                >
+                <NavDropdown className="ms-3 text-nav mainDrop" title={`Ciao ${username}`} id="basic-nav-dropdown">
                   <NavDropdown.Item className="text-white mb-2" href="/profilo">
                     Il mio profilo
                   </NavDropdown.Item>
@@ -59,10 +53,7 @@ const NavCustom = () => {
                     I miei ordini
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item
-                    onClick={() => dispatch(logoutUser())}
-                    className="text-white mb-2"
-                  >
+                  <NavDropdown.Item onClick={() => dispatch(logoutUser())} className="text-white mb-2">
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>

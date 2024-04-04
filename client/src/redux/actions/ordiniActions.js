@@ -17,7 +17,7 @@ export function trovaIdOrdine(token, idUser, idCarrello, carrello) {
           (e) =>
             e.user.id === idUser &&
             e.carrello.id === idCarrello &&
-            e.carrello.articoli.length === carrello.length &&
+            e.carrello.articoli.length === carrello.articoli.length &&
             e.id === response.data.length - 1 + 1
         );
         dispatch({
@@ -78,7 +78,7 @@ export function getOrdini(token, idUser, idCarrello) {
 export function postOrdine(token, idUser, idCarrello) {
   return async () => {
     try {
-      const response = await axios.post(`http://localhost:8080/api/ordine/user/${idUser}/carrello/${idCarrello}`, {
+      const response = await axios.post(`http://localhost/api/ordine/user/${idUser}/carrello/${idCarrello}`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
