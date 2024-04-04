@@ -1,5 +1,7 @@
 import axios from "axios";
-import { trovaIdCarrello } from "./carrelloActions";
+import { ADD_ID_CARRELLO, CARRELLO, trovaIdCarrello } from "./carrelloActions";
+import { ADD_ID_ORDINE, ADD_ORDINE, ORDINI } from "./ordiniActions";
+import { ARTICOLI } from "./articoliActions";
 
 export const USER = "USER";
 export const ADD_TOKEN = "ADD_TOKEN";
@@ -74,7 +76,7 @@ export function logoutUser() {
       type: USERNAME,
       payload: "",
     });
-    /* dispatch({
+    dispatch({
       type: ADD_ID_USER,
       payload: "",
     });
@@ -105,7 +107,7 @@ export function logoutUser() {
     dispatch({
       type: ARTICOLI,
       payload: [],
-    }); */
+    });
     window.location.href = "/";
   };
 }

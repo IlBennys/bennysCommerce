@@ -9,6 +9,7 @@ const Ordini = () => {
   const token = useSelector((state) => state.user.token);
   const idUser = useSelector((state) => state.user.idUser);
   const addOrdine = useSelector((state) => state.ordine.addOrdine);
+  console.log(addOrdine);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,11 +21,15 @@ const Ordini = () => {
       <Card>
         <Card.Header>ORDINE</Card.Header>
         <Card.Body>
-          {addOrdine.articoli.map((e) => (
-            <div key={e.id}>{e.nomeArticolo}</div>
-          ))}
+          {addOrdine && addOrdine.articoli ? (
+            addOrdine.articoli.map((e) => (
+              <div key={e.id}>{e.nomeArticolo}</div>
+            ))
+          ) : (
+            <div>Nessun articolo nell'ordine</div>
+          )}
           <Button variant="primary" href="/pagamento">
-            Vai al pagemento
+            Vai al pagamento
           </Button>
         </Card.Body>
       </Card>
