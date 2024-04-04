@@ -33,19 +33,34 @@ const NavCustom = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link className="ms-3 text-nav" href="/articoli" onClick={() => dispatch(svuotaArticoli())}>
-                Articoli
+              <Nav.Link
+                className="ms-3 text-nav"
+                href="/articoli"
+                onClick={() => dispatch(svuotaArticoli())}
+              >
+                Shop
               </Nav.Link>
             </Nav>
             {token !== "" ? (
               <>
                 <Nav>
-                  <Nav.Link className="ms-3 text-nav" href="/carrello">
+                  <Nav.Link
+                    className="ms-3 text-carrello text-nav"
+                    href="/carrello"
+                  >
                     Carrello
-                    {carrello.articoli !== undefined ? <Badge bg="badge">{carrello.articoli.length}</Badge> : <p></p>}
+                    {carrello.articoli !== undefined ? (
+                      <Badge>{carrello.articoli.length}</Badge>
+                    ) : (
+                      0
+                    )}
                   </Nav.Link>
                 </Nav>
-                <NavDropdown className="ms-3 text-nav mainDrop" title={`Ciao ${username}`} id="basic-nav-dropdown">
+                <NavDropdown
+                  className="ms-3 text-nav mainDrop"
+                  title={`Ciao ${username}`}
+                  id="basic-nav-dropdown"
+                >
                   <NavDropdown.Item className="text-white mb-2" href="/profilo">
                     Il mio profilo
                   </NavDropdown.Item>
@@ -53,7 +68,10 @@ const NavCustom = () => {
                     I miei ordini
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={() => dispatch(logoutUser())} className="text-white mb-2">
+                  <NavDropdown.Item
+                    onClick={() => dispatch(logoutUser())}
+                    className="text-white mb-2"
+                  >
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>

@@ -14,6 +14,7 @@ $viola: #652f6f;
     border-radius: 10px;
     background-color: $viola;
   }
+
   .div-img {
     background-image: url("../img/Group\ 3.png");
     background-size: cover;
@@ -27,6 +28,14 @@ $viola: #652f6f;
     font-family: "Inter", sans-serif;
     font-style: italic;
     border-color: $viola;
+  }
+  .text-carrello {
+    position: relative;
+    span {
+      position: absolute;
+      top: 0;
+      background-color: $viola !important;
+    }
   }
   .text-nav:hover {
     color: white;

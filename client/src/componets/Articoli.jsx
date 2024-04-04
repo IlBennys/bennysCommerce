@@ -71,9 +71,9 @@ const Articoli = () => {
               </div>
             </Col>
             <Col md={9}>
-              <Row className="card-row mt-2">
+              <Row className="card-row mt-2 justify-content-evenly ">
                 {!isOnline ? (
-                  <div className="mt-5 div-spinner d-flex  align-items-center flex-wrap">
+                  <div className="mt-5 div-spinner d-flex align-items-center flex-wrap">
                     <h1>Caricamento...</h1>
                     <p className="loader"></p>
                   </div>
