@@ -37,7 +37,7 @@ const NavCustom = () => {
                 href="/articoli"
                 onClick={() => dispatch(svuotaArticoli())}
               >
-                Articoli
+                Shop
               </Nav.Link>
             </Nav>
             {token !== "" ? (

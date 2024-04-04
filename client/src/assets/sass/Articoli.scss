@@ -1,22 +1,7 @@
 $viola: #652f6f;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
-.column {
-  div {
-    background-color: white;
-    margin-left: 30px;
-    width: 100px;
-    aspect-ratio: 2/1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: 2px solid white;
-    background-color: transparent;
-    span {
-      color: white;
-    }
-  }
-}
 .div-col3 {
   position: sticky;
   top: 115px;
@@ -46,19 +31,35 @@ $viola: #652f6f;
 .card-main {
   background-color: transparent;
   width: 18rem;
-  height: 45rem;
+  height: 40rem;
   border: none;
   font-family: "Inter", sans-serif;
+  .text-brand {
+    font-family: "Inter", sans-serif;
+  }
+  .badge-h6 {
+    position: absolute;
+    top: 63%;
+    z-index: 3;
+    left: 4%;
+    background-color: red !important;
+    box-shadow: 5px 8px 12px #343333;
+    span {
+      background-color: red !important;
+    }
+  }
   .img-card {
     width: 100%;
     object-fit: contain;
     background-color: #f1f1f1;
     padding: 3%;
     position: relative;
+    height: 70% !important;
   }
+
   .carrello-btn {
-    //background-color: #8e8d8d;
     position: absolute;
+    z-index: 3;
     top: 11px;
     right: 23px;
     width: 14%;
@@ -73,17 +74,113 @@ $viola: #652f6f;
     cursor: pointer;
   }
   .titolo-card {
-    font-family: "Inter", sans-serif;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    font-style: italic;
   }
   .body-card-main {
     color: white;
-    height: 280px;
     overflow: hidden;
     font-family: "Inter", sans-serif;
   }
 }
+
+.div-spinner {
+  h1 {
+    font-family: "Inter", sans-serif;
+    color: whitesmoke;
+    margin-right: 15%;
+  }
+}
+.card-main {
+  position: relative;
+}
+
+.img-card {
+  position: relative;
+  z-index: 2;
+}
+
+.invi {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 11px;
+  width: 93%;
+  height: 0;
+  background-color: rgb(8 7 12 / 80%);
+  z-index: 3;
+  overflow: hidden;
+  text-align: center;
+  padding: 3%;
+  p {
+    margin-top: 9rem;
+  }
+}
+
+.img-card:hover + .invi,
+.invi:hover {
+  display: block;
+  height: 70%;
+  animation: slideDown 2s linear;
+}
+
+.invi:before {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+}
+@keyframes slideDown {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 70%;
+  }
+}
+
+.loader {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  background-image: linear-gradient(#fff 16px, transparent 0),
+    linear-gradient(#2f00ff 16px, transparent 0),
+    linear-gradient($viola 16px, transparent 0),
+    linear-gradient(#fff 16px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: left top, left bottom, right top, right bottom;
+  animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    width: 64px;
+    height: 64px;
+    transform: rotate(0deg);
+  }
+  50% {
+    width: 30px;
+    height: 30px;
+    transform: rotate(180deg);
+  }
+  100% {
+    width: 64px;
+    height: 64px;
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 992px) {
   .card-row {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .div-spinner {
+    flex-direction: column !important;
   }
 }
