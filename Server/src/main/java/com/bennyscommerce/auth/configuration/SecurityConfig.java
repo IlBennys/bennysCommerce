@@ -50,7 +50,7 @@ public class SecurityConfig {
 	http.cors().and().csrf().disable()
 		.authorizeHttpRequests((authorize) -> authorize.requestMatchers(HttpMethod.POST, "/api/auth/**")
 			.permitAll().requestMatchers(HttpMethod.GET, "/api/articolo/**").permitAll()
-			.requestMatchers(HttpMethod.GET, "/api/carrello/", "/api/ordine", "/api/user/")
+			.requestMatchers(HttpMethod.GET, "/api/carrello", "/api/ordine", "/api/user/")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.POST, "/api/carrello", "/api/ordine")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.PUT, "/api/ordine", "/api/user")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.DELETE, "/api/carrello", "/api/user")
