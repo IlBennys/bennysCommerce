@@ -122,7 +122,7 @@ $viola: #652f6f;
 .invi:hover {
   display: block;
   height: 70%;
-  animation: slideDown 2s linear;
+  animation: slideDown 2s ease-out;
 }
 
 .invi:before {
