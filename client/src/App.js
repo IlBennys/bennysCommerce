@@ -2,18 +2,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NavCustom from "./componets/NavCustom";
-import Home from "./componets/Home";
-import PageNotFound from "./componets/PageNotFound";
-import Articoli from "./componets/Articoli";
-import Login from "./componets/Login";
-import Register from "./componets/Register";
-import Profilo from "./componets/Profilo";
-import Ordini from "./componets/Ordini";
-import Pagamento from "./componets/Pagamento";
-import Carrello from "./componets/Carrello";
-import Footer from "./componets/Footer";
-import About from "./componets/About";
+import NavCustom from "./components/NavCustom";
+import Home from "./components/Home";
+import PageNotFound from "./components/PageNotFound";
+import Articoli from "./components/Articoli";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Profilo from "./components/Profilo";
+import Ordine from "./components/Ordine";
+import Pagamento from "./components/Pagamento";
+import Carrello from "./components/Carrello";
+import Footer from "./components/Footer";
+import About from "./components/About";
+import Ordini from "./components/Ordini";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profilo" element={<Profilo />} />
+        <Route path="/ordine" element={<Ordine />} />
         <Route path="/ordini" element={<Ordini />} />
         <Route path="/pagamento" element={<Pagamento />} />
         <Route path="/carrello" element={<Carrello />} />

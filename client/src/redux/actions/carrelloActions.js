@@ -64,6 +64,30 @@ export function postCarrello(idCarrello, idArticolo, token) {
   };
 }
 
+export function countOccurrences(array, property, value) {
+  return () => {
+    let count = 0;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i][property] === value) {
+        count++;
+      }
+    }
+    return count;
+  };
+}
+
+export function filterArticles(articoli) {
+  return () => {
+    const uniqueArticles = [];
+    articoli.forEach((articolo) => {
+      if (!uniqueArticles.some((item) => item.id === articolo.id)) {
+        uniqueArticles.push(articolo);
+      }
+    });
+    return uniqueArticles;
+  };
+}
+
 export function deleteCarrello(idCarrello, idArticolo, token) {
   return async (dispatch) => {
     try {
@@ -81,16 +105,16 @@ export function deleteCarrello(idCarrello, idArticolo, token) {
   };
 }
 
-export function deleteArticoliCarrello(idCarrello, idArticolo, token) {
-  return async () => {
+export function deleteAllCarrello(idCarrello, token) {
+  return async (dispatch) => {
     try {
-      const response = await axios.delete(`http://localhost/api/carrello/${idCarrello}/articoli/${idArticolo}`, {
+      const response = await axios.delete(`http://localhost/api/carrello/tutti/articoli/${idCarrello}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       if (response.status === 200) {
-        console.log("funziona");
+        dispatch(getCarrelloById(idCarrello, token));
       }
     } catch (error) {
       console.error("Errore nel deleteCarrello", error);
@@ -98,18 +122,16 @@ export function deleteArticoliCarrello(idCarrello, idArticolo, token) {
   };
 }
 
-export function svuotaCarrello(carrello, idCarrello, token) {
+export function svuotaCarrello(idCarrello, token) {
   return (dispatch) => {
-    const idArticoliCarrello = carrello.articoli.map((e) => e.id);
-    idArticoliCarrello.forEach((e) => {
-      console.log(e);
-      deleteArticoliCarrello(idCarrello, e, token);
-      dispatch(getCarrelloById(idCarrello, token));
-    });
-    console.log(carrello);
-    /* dispatch({
+    dispatch(deleteAllCarrello(idCarrello, token));
+    dispatch({
       type: CARRELLO,
       payload: [],
-    }); */
+    });
+    const home = () => {
+      window.location.href = "/";
+    };
+    window.setTimeout(home, 100);
   };
 }
