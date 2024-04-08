@@ -1,5 +1,7 @@
 package com.bennyscommerce.repository;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.bennyscommerce.model.Articoli;
@@ -27,10 +29,25 @@ public class CarrelloArticoliDao {
     }
 
     @Transactional
+    public void rimuoviTuttiDalCarrello(Long carrelloId) {
+	Carrello carrello = entityManager.find(Carrello.class, carrelloId);
+	if (carrello != null) {
+	    List<Articoli> articoli = carrello.getArticoli();
+	    carrello.getArticoli().removeAll(articoli);
+	}
+    }
+
+    @Transactional
     public void rimuoviDalCarrello(Long articoloId, Long carrelloId) {
 	Carrello carrello = entityManager.find(Carrello.class, carrelloId);
 	if (carrello != null) {
-	    carrello.getArticoli().removeIf(articolo -> articolo.getId() == articoloId);
+	    List<Articoli> articoli = carrello.getArticoli();
+	    for (int i = 0; i < articoli.size(); i++) {
+		if (articoli.get(i).getId() == articoloId) {
+		    articoli.remove(i);
+		    break;
+		}
+	    }
 	}
     }
 }

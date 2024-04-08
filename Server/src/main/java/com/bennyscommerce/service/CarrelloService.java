@@ -43,6 +43,15 @@ public class CarrelloService {
 	}
     }
 
+    public String deleteAllArticoliByCarrello(Long carrelloId) {
+	if (carrelloDao.existsById(carrelloId)) {
+	    carrelloArticoliDao.rimuoviTuttiDalCarrello(carrelloId);
+	    return "Tutti gli articoli sono stati rimossi dal carrello";
+	} else {
+	    throw new EntityNotFoundException("Carrello with ID --> " + carrelloId + " doesn't exists on Database!");
+	}
+    }
+
     public Carrello FindCarrelloById(Long id) {
 	if (carrelloDao.existsById(id)) {
 	    return carrelloDao.findById(id).get();

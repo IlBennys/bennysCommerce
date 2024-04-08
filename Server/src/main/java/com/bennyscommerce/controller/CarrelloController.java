@@ -37,6 +37,11 @@ public class CarrelloController {
 		HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/tutti/articoli/{carrelloId}")
+    public ResponseEntity<String> rimuoviTuttiArticoliDalCarrello(@PathVariable("carrelloId") Long carrelloId) {
+	return new ResponseEntity<>(carrelloService.deleteAllArticoliByCarrello(carrelloId), HttpStatus.OK);
+    }
+
     @DeleteMapping("/{carrelloId}/articoli/{articoloId}")
     public ResponseEntity<String> rimuoviArticoloDalCarrello(@PathVariable("carrelloId") Long carrelloId,
 	    @PathVariable("articoloId") Long articoloId) {
