@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  countOccurrences,
+  quantita,
   deleteAllCarrello,
   deleteCarrello,
   filterArticles,
@@ -17,11 +17,11 @@ const Carrello = () => {
   const token = useSelector((state) => state.user.token);
   const idUser = useSelector((state) => state.user.idUser);
   const dispatch = useDispatch();
-
   const articoliFiltrati = dispatch(filterArticles(carrello.articoli));
 
   useEffect(() => {
     dispatch(getCarrelloById(idCarrello, token));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -29,22 +29,45 @@ const Carrello = () => {
       <Card>
         <Card.Header>CARRELLO</Card.Header>
         <Card.Body>
-          {carrello && carrello.articoli ? (
+          {carrello.articoli < 1 ? (
+            <div>Nessun articolo nel carrello</div>
+          ) : carrello && carrello.articoli ? (
             articoliFiltrati.map((e, i) => (
               <div key={i}>
-                {e.nomeArticolo}
-                {e.id}
-                Quantità: {dispatch(countOccurrences(carrello.articoli, "id", e.id))}
-                <Button onClick={() => dispatch(deleteCarrello(idCarrello, e.id, token))}>Elimina</Button>
+                nome articolo: {e.nomeArticolo}
+                <br />
+                prezzo:
+                {(
+                  e.prezzo * dispatch(quantita(carrello.articoli, "id", e.id))
+                ).toFixed(2)}
+                <br />
+                Quantità:
+                {dispatch(quantita(carrello.articoli, "id", e.id))}
+                <br />
+                <Button
+                  onClick={() =>
+                    dispatch(deleteCarrello(idCarrello, e.id, token))
+                  }
+                >
+                  Elimina
+                </Button>
               </div>
             ))
-          ) : (
-            <div>Nessun articolo nel carrello</div>
-          )}
+          ) : null}
+
           <div>
-            <Button onClick={() => dispatch(deleteAllCarrello(idCarrello, token))}>Elimina tutti</Button>
+            <Button
+              disabled={carrello.articoli < 1}
+              onClick={() => dispatch(deleteAllCarrello(idCarrello, token))}
+            >
+              Elimina tutti
+            </Button>
           </div>
-          <Button variant="primary" onClick={() => dispatch(postOrdine(token, idUser, idCarrello))}>
+          <Button
+            disabled={carrello.articoli < 1}
+            variant="primary"
+            onClick={() => dispatch(postOrdine(token, idUser, idCarrello))}
+          >
             Procedi all'ordine
           </Button>
         </Card.Body>

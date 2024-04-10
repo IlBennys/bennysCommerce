@@ -172,6 +172,46 @@ $viola: #652f6f;
     transform: rotate(360deg);
   }
 }
+body > div.fade.modal.show > div > div {
+  background-color: #38ca59;
+  padding: 8px 16px;
+  border-radius: 25px;
+  width: auto;
+  max-width: 280px;
+}
+body > div.fade.modal {
+  top: 90%;
+  left: 11%;
+}
+.head-mod {
+  display: block;
+  border: 0;
+  text-align: center;
+  padding: 6px;
+  font-weight: bold;
+}
+body > div.fade.modal:not(.show) > div > div {
+  display: none;
+}
+body > div.fade.modal.show {
+  animation: slow 2s ease-in-out forwards;
+  position: fixed;
+  top: 50%;
+  left: 47%;
+  width: auto;
+  max-width: 80%;
+}
+@keyframes slow {
+  0% {
+    top: 85%;
+  }
+  50% {
+    top: 75%;
+  }
+  100% {
+    top: 85%;
+  }
+}
 
 @media screen and (max-width: 992px) {
   .card-row {

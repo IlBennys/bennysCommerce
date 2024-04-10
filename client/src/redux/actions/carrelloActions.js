@@ -29,11 +29,14 @@ export function trovaIdCarrello(idUser, token) {
 export function getCarrelloById(idCarrello, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost/api/carrello/${idCarrello}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `http://localhost/api/carrello/${idCarrello}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: CARRELLO,
@@ -49,13 +52,16 @@ export function getCarrelloById(idCarrello, token) {
 export function postCarrello(idCarrello, idArticolo, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.post(`http://localhost/api/carrello/${idCarrello}/articoli/${idArticolo}`, null, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(
+        `http://localhost/api/carrello/${idCarrello}/articoli/${idArticolo}`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.status === 201) {
-        console.log(response);
         dispatch(getCarrelloById(idCarrello, token));
       }
     } catch (error) {
@@ -64,7 +70,7 @@ export function postCarrello(idCarrello, idArticolo, token) {
   };
 }
 
-export function countOccurrences(array, property, value) {
+export function quantita(array, property, value) {
   return () => {
     let count = 0;
     for (let i = 0; i < array.length; i++) {
@@ -91,11 +97,14 @@ export function filterArticles(articoli) {
 export function deleteCarrello(idCarrello, idArticolo, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(`http://localhost/api/carrello/${idCarrello}/articoli/${idArticolo}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(
+        `http://localhost/api/carrello/${idCarrello}/articoli/${idArticolo}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch(getCarrelloById(idCarrello, token));
       }
@@ -108,11 +117,14 @@ export function deleteCarrello(idCarrello, idArticolo, token) {
 export function deleteAllCarrello(idCarrello, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(`http://localhost/api/carrello/tutti/articoli/${idCarrello}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(
+        `http://localhost/api/carrello/tutti/articoli/${idCarrello}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch(getCarrelloById(idCarrello, token));
       }

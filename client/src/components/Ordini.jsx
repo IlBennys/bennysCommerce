@@ -1,18 +1,21 @@
 import { useEffect } from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrdini, trovaIdOrdine } from "../redux/actions/ordiniActions";
+import { getOrdini } from "../redux/actions/ordiniActions";
+import { quantita, filterArticles } from "../redux/actions/carrelloActions";
 
 const Ordini = () => {
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
-  const carrello = useSelector((state) => state.carrello.carrello);
   const token = useSelector((state) => state.user.token);
+  const carrello = useSelector((state) => state.carrello.carrello);
   const idUser = useSelector((state) => state.user.idUser);
   const ordini = useSelector((state) => state.ordine.ordini);
   const dispatch = useDispatch();
+  const articoliFiltrati = dispatch(filterArticles(carrello.articoli));
 
   useEffect(() => {
     dispatch(getOrdini(token, idUser, idCarrello));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -20,11 +23,23 @@ const Ordini = () => {
       <Card>
         <Card.Header>ORDINI</Card.Header>
         <Card.Body>
-          {ordini && ordini ? (
+          {ordini ? (
             ordini.map((e) => (
               <div key={e.id}>
-                {e.id}
-                {e.articoli.map((e) => e.nomeArticolo)}
+                {articoliFiltrati.map((e) => (
+                  <div>
+                    nome: {e.nomeArticolo}
+                    <br />
+                    Quantità:
+                    {dispatch(quantita(carrello.articoli, "id", e.id))}
+                    <br />
+                    prezzo:
+                    {(
+                      e.prezzo *
+                      dispatch(quantita(carrello.articoli, "id", e.id))
+                    ).toFixed(2)}
+                  </div>
+                ))}
               </div>
             ))
           ) : (

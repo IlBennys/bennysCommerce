@@ -8,9 +8,23 @@ const Profilo = () => {
   const idUser = useSelector((state) => state.user.idUser);
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-
+  const input = {
+    id: user.id,
+    firstname: "aaaaaaaaaaaa",
+    lastname: "rrrrrrrrrrrr",
+    username: user.username,
+    email: user.email,
+    password: user.password,
+    dataNascita: user.dataNascita,
+    indirizzo: "l",
+    numeroTelefono: "3dddddddddd",
+    roles: user.roles,
+    ordini: user.ordini,
+    carrello: user.carrello,
+  };
   useEffect(() => {
     dispatch(getUser(token, idUser));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -25,7 +39,9 @@ const Profilo = () => {
           ) : (
             <div>Nessun ordine effettuato</div>
           )}
-          <Button onClick={() => dispatch(putUser(idUser, token))}>Modifica Profilo</Button>
+          <Button onClick={() => dispatch(putUser(idUser, token, input))}>
+            Modifica Profilo
+          </Button>
         </Card.Body>
       </Card>
     </>
