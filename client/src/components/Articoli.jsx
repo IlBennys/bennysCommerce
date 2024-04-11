@@ -1,20 +1,8 @@
 import "../assets/sass/Articoli.scss";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getArticoli,
-  getArticoliByPage,
-  svuotaArticoli,
-} from "../redux/actions/articoliActions";
-import {
-  Badge,
-  Button,
-  Card,
-  Col,
-  Container,
-  Row,
-  Modal,
-} from "react-bootstrap";
+import { getArticoli, getArticoliByPage, svuotaArticoli } from "../redux/actions/articoliActions";
+import { Badge, Button, Card, Col, Container, Row, Modal } from "react-bootstrap";
 import cart from "../assets/img/shopping-cart.png";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { postCarrello } from "../redux/actions/carrelloActions";
@@ -95,11 +83,7 @@ const Articoli = () => {
                       return (
                         <>
                           <Card key={e.id} className="m-1 card-main">
-                            <Card.Img
-                              variant="top"
-                              className="img-card rounded-3 "
-                              src={e.img}
-                            />
+                            <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
                             <div className="invi rounded-3 text-white">
                               <p> {e.descrizioneArticolo}</p>
                             </div>
@@ -107,25 +91,20 @@ const Articoli = () => {
                             <h6 className="badge-h6">
                               <Badge>Promo</Badge>
                             </h6>
-                            <div
-                              title="Aggiungi al carrello"
-                              onClick={() =>
-                                dispatch(
-                                  postCarrello(idCarrello, e.id, token),
-                                  handleShow()
-                                )
-                              }
-                              className="carrello-btn rounded-2"
-                            >
-                              <img src={cart} alt="" />
-                            </div>
+                            {token !== "" ? (
+                              <div
+                                title="Aggiungi al carrello"
+                                onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
+                                className="carrello-btn rounded-2"
+                              >
+                                <img src={cart} alt="" />
+                              </div>
+                            ) : (
+                              <div></div>
+                            )}
                             <Card.Body className="body-card-main">
-                              <Card.Title className="titolo-card text-start">
-                                {e.nomeArticolo}
-                              </Card.Title>
-                              <Card.Text className="text-brand text-start">
-                                Brand: {e.brand}
-                              </Card.Text>
+                              <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
+                              <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
                               <Card.Text>{e.prezzo}€</Card.Text>
                             </Card.Body>
                           </Card>
@@ -137,11 +116,7 @@ const Articoli = () => {
                       return (
                         <>
                           <Card key={e.id} className="m-1 card-main">
-                            <Card.Img
-                              variant="top"
-                              className="img-card rounded-3 "
-                              src={e.img}
-                            />
+                            <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
                             <div className="invi rounded-3 text-white">
                               <p> {e.descrizioneArticolo}</p>
                             </div>
@@ -149,25 +124,20 @@ const Articoli = () => {
                             <h6 className="badge-h6">
                               <Badge>Promo</Badge>
                             </h6>
-                            <div
-                              title="Aggiungi al carrello"
-                              onClick={() =>
-                                dispatch(
-                                  postCarrello(idCarrello, e.id, token),
-                                  handleShow()
-                                )
-                              }
-                              className="carrello-btn rounded-2"
-                            >
-                              <img src={cart} alt="" />
-                            </div>
+                            {token !== "" ? (
+                              <div
+                                title="Aggiungi al carrello"
+                                onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
+                                className="carrello-btn rounded-2"
+                              >
+                                <img src={cart} alt="" />
+                              </div>
+                            ) : (
+                              <div></div>
+                            )}
                             <Card.Body className="body-card-main">
-                              <Card.Title className="titolo-card text-start">
-                                {e.nomeArticolo}
-                              </Card.Title>
-                              <Card.Text className="text-brand text-start">
-                                Brand: {e.brand}
-                              </Card.Text>
+                              <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
+                              <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
                               <Card.Text>{e.prezzo}€</Card.Text>
                             </Card.Body>
                           </Card>
@@ -179,11 +149,7 @@ const Articoli = () => {
                       return (
                         <>
                           <Card key={e.id} className="m-1 card-main">
-                            <Card.Img
-                              variant="top"
-                              className="img-card rounded-3 "
-                              src={e.img}
-                            />
+                            <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
                             <div className="invi rounded-3 text-white">
                               <p> {e.descrizioneArticolo}</p>
                             </div>
@@ -191,25 +157,20 @@ const Articoli = () => {
                             <h6 className="badge-h6">
                               <Badge>Promo</Badge>
                             </h6>
-                            <div
-                              title="Aggiungi al carrello"
-                              onClick={() =>
-                                dispatch(
-                                  postCarrello(idCarrello, e.id, token),
-                                  handleShow()
-                                )
-                              }
-                              className="carrello-btn rounded-2"
-                            >
-                              <img src={cart} alt="" />
-                            </div>
+                            {token !== "" ? (
+                              <div
+                                title="Aggiungi al carrello"
+                                onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
+                                className="carrello-btn rounded-2"
+                              >
+                                <img src={cart} alt="" />
+                              </div>
+                            ) : (
+                              <div></div>
+                            )}
                             <Card.Body className="body-card-main">
-                              <Card.Title className="titolo-card text-start">
-                                {e.nomeArticolo}
-                              </Card.Title>
-                              <Card.Text className="text-brand text-start">
-                                Brand: {e.brand}
-                              </Card.Text>
+                              <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
+                              <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
                               <Card.Text>{e.prezzo}€</Card.Text>
                             </Card.Body>
                           </Card>
@@ -222,11 +183,7 @@ const Articoli = () => {
                     return (
                       <>
                         <Card key={e.id} className="m-1 card-main">
-                          <Card.Img
-                            variant="top"
-                            className="img-card rounded-3 h-50"
-                            src={e.img}
-                          />
+                          <Card.Img variant="top" className="img-card rounded-3 h-50" src={e.img} />
                           <div className="invi rounded-3 text-white">
                             <p> {e.descrizioneArticolo}</p>
                           </div>
@@ -234,25 +191,20 @@ const Articoli = () => {
                           <h6 className="badge-h6">
                             <Badge>Promo</Badge>
                           </h6>
-                          <div
-                            title="Aggiungi al carrello"
-                            onClick={() =>
-                              dispatch(
-                                postCarrello(idCarrello, e.id, token),
-                                handleShow()
-                              )
-                            }
-                            className="carrello-btn rounded-2"
-                          >
-                            <img src={cart} alt="" />
-                          </div>
+                          {token !== "" ? (
+                            <div
+                              title="Aggiungi al carrello"
+                              onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
+                              className="carrello-btn rounded-2"
+                            >
+                              <img src={cart} alt="" />
+                            </div>
+                          ) : (
+                            <div></div>
+                          )}
                           <Card.Body className="body-card-main">
-                            <Card.Title className="titolo-card text-start">
-                              {e.nomeArticolo}
-                            </Card.Title>
-                            <Card.Text className="text-brand text-start">
-                              Brand: {e.brand}
-                            </Card.Text>
+                            <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
+                            <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
                             <Card.Text>{e.prezzo}€</Card.Text>
                           </Card.Body>
                         </Card>

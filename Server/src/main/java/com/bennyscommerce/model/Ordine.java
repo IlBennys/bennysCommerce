@@ -44,13 +44,13 @@ public class Ordine {
     private double prezzoConsegna;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH })
-    @JsonIgnoreProperties({ "ordine" })
+    @JsonIgnoreProperties({ "articoli" })
     private Carrello carrello;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH })
     private List<Articoli> articoli;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnoreProperties({ "ordini", "carrello" })
+    @JsonIgnoreProperties({ "ordini", "carrello", "roles" })
     private User user;
 }

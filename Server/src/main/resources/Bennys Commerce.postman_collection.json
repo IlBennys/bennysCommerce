@@ -176,7 +176,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMTQ4MTM4OCwiZXhwIjoxNzEyMDg2MTg4fQ.jCnohfUHDjlIwHBuXBmRgfxdxfterwQ_cMT7VWaZ1-H5U-_jNZAkw2DVaYH0M1NV",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjA5OTIyNiwiZXhwIjoxNzEyNzA0MDI2fQ.-cv9dQ8zMoFQezqoTDmusPIf2WHKbEOTRvpULYEq9rpx-74DMy6BaehwrwclJDLg",
 											"type": "string"
 										}
 									]
@@ -329,7 +329,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4Mzg0NDk2NywiZXhwIjoxNjg0NDQ5NzY3fQ.Qy9iesm6TDZooRTrTHngKJzwvqB34aCRWDotfZVV6NI4LGocesNTMiekIwlxsDj_",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjA5OTIyNiwiZXhwIjoxNzEyNzA0MDI2fQ.-cv9dQ8zMoFQezqoTDmusPIf2WHKbEOTRvpULYEq9rpx-74DMy6BaehwrwclJDLg",
 											"type": "string"
 										}
 									]
@@ -374,7 +374,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDg0MDIyMSwiZXhwIjoxNjg1NDQ1MDIxfQ.Cc2Fq8JeGRzwtlFb4UkXGS0v3-3JwUYipx1bYfkyuYIYat9n-IaB7ShXYCMrwdQf",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjEwMTA3OSwiZXhwIjoxNzEyNzA1ODc5fQ.D6egkGUnzdYJK3PFJXVhVj2S9gm8w22osPREGOFW_mqRk52onivLtZkXChoEXJUS",
 											"type": "string"
 										}
 									]
@@ -420,7 +420,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTM3MDYyMSwiZXhwIjoxNjg1OTc1NDIxfQ.ygidoMjpy9hH_OAk2vzasqI69yfbPuxY2OIhwy9VzuVksxP4nByLh5dbVmXiJSEU",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjA5OTIyNiwiZXhwIjoxNzEyNzA0MDI2fQ.-cv9dQ8zMoFQezqoTDmusPIf2WHKbEOTRvpULYEq9rpx-74DMy6BaehwrwclJDLg",
 											"type": "string"
 										}
 									]
@@ -449,7 +449,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDg1MDYzNCwiZXhwIjoxNjg1NDU1NDM0fQ.Xo5E3fErplaonhYinOmfRj6qMP0fRzuzpQykXpxgzpv3XvHfbWi-gkgUbsv3uYeV",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjA5OTIyNiwiZXhwIjoxNzEyNzA0MDI2fQ.-cv9dQ8zMoFQezqoTDmusPIf2WHKbEOTRvpULYEq9rpx-74DMy6BaehwrwclJDLg",
 											"type": "string"
 										}
 									]
@@ -485,22 +485,13 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTk3OTAyMSwiZXhwIjoxNjg2NTgzODIxfQ.BRMTA19G7sIPGAYAZ0VsUhiWkku80VNMyrim3miR6SqEvgUfpa4VgCoFMdghRW3o",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjc3MDU3NywiZXhwIjoxNzEzMzc1Mzc3fQ.Tz1bNzwaDdUryWAFD6AYVntUXnX5u8ztEHQTx6fLFF0X6DHoej6ZPZb1eqPMG168",
 											"type": "string"
 										}
 									]
 								},
 								"method": "POST",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"articoli\": [\r\n        {\r\n            \"id\": 2,\r\n            \"nome\": \"Heavy Duty Bronze Hat\",\r\n            \"prezzo\": \"$ 343,61\",\r\n            \"descrizione\": \"magenta\",\r\n            \"marca\": \"Beauty & Industrial\",\r\n            \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n            \"quantità\": 82\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"nome\": \"Durable Paper Hat\",\r\n            \"prezzo\": \"$ 485,76\",\r\n            \"descrizione\": \"cyan\",\r\n            \"marca\": \"Books & Industrial\",\r\n            \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n            \"quantità\": 59\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"nome\": \"Lightweight Bronze Knife\",\r\n            \"prezzo\": \"$ 412,76\",\r\n            \"descrizione\": \"white\",\r\n            \"marca\": \"Grocery\",\r\n            \"img\": \"https://static.vecteezy.com/ti/vettori-gratis/p1/4821112-colore-bianco-pollo-cartone-animato-illustrazione-design-design-per-bambini-libro-gratuito-vettoriale.jpg\",\r\n            \"quantità\": 38\r\n        }\r\n    ],\r\n    \"user\": {\r\n        \"id\": 1\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "http://localhost/api/carrello/:idCarrello/articoli/:idArticoli",
 									"protocol": "http",
@@ -529,14 +520,52 @@
 							"response": []
 						},
 						{
-							"name": "Elimina un articolo dal carrello dall'id",
+							"name": "Elimina tutti gli articoli dal carrello dall'id",
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTUzODgwOCwiZXhwIjoxNjg2MTQzNjA4fQ.Z-51D3z0DrSl03ECh-JL-ny5ibTJQxPakPtULiHn2QvOySbFIA1ZuZ7c3p8XmOZQ",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjU5Mzc1NiwiZXhwIjoxNzEzMTk4NTU2fQ.naVjInKexf91r2B6EUNDIH8sheKXkW8ImxZRy4-LCeaFQECjWdnTo7aoI4dnRC2Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/carrello/tutti/articoli/:idCarrello",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"carrello",
+										"tutti",
+										"articoli",
+										":idCarrello"
+									],
+									"variable": [
+										{
+											"key": "idCarrello",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Elimina un articolo dal carrello dall'id Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjA5OTIyNiwiZXhwIjoxNzEyNzA0MDI2fQ.-cv9dQ8zMoFQezqoTDmusPIf2WHKbEOTRvpULYEq9rpx-74DMy6BaehwrwclJDLg",
 											"type": "string"
 										}
 									]
@@ -617,7 +646,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NDc2ODExMSwiZXhwIjoxNjg1MzcyOTExfQ.cuHyfwadUs76OdFM8r8kYSSiBERY2btqaWBOiElhUkXG3IOKK3ayZ6NvsKSRhKbw",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjEwMTI3MSwiZXhwIjoxNzEyNzA2MDcxfQ.AEbMJrSWDd5iaBLmJA015ZC8zAj9i9FXc8GkE8oBpnFo3A9kekL0ZMHCWuZBAeLw",
 											"type": "string"
 										}
 									]
@@ -653,7 +682,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTk3OTAyMSwiZXhwIjoxNjg2NTgzODIxfQ.BRMTA19G7sIPGAYAZ0VsUhiWkku80VNMyrim3miR6SqEvgUfpa4VgCoFMdghRW3o",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjc3MTM0NCwiZXhwIjoxNzEzMzc2MTQ0fQ.4wol5Hrzu4XtgPjJczzZIGtCuLppNHN-80FLs26wCS-fS9efbSPeZ5JoHnUWyGL9",
 											"type": "string"
 										}
 									]
@@ -816,7 +845,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTk4MjM5NCwiZXhwIjoxNjg2NTg3MTk0fQ.9-u8bfW-Tiv3F1wUTMnshVn_IvkbA4l2MpQ7ojJOeTkONpymaAPBm0YAkNytpaHh",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjc2MTA5OCwiZXhwIjoxNzEzMzY1ODk4fQ.izNrGHSq0LQasqw6zqnNbiPJ4WT8nN7p51oXPt2d7hUoGSW3swp-GA4e8sgpzFxh",
 											"type": "string"
 										}
 									]
@@ -852,7 +881,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuQUBleGFtcGxlLmNvbSIsImlhdCI6MTY4NTcxMTg2MSwiZXhwIjoxNjg2MzE2NjYxfQ.Ill2z0l_oNSfSuGpUSlaFfgA-aMlA2W-Tx5SonlAW8m7whsTn-DQjwvQLUSOVERw",
+											"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjU4MDIzMCwiZXhwIjoxNzEzMTg1MDMwfQ.Q7lCsFKdFbO-H6sNspPr_dShZjZKZCuKdM1MJ05u1twwd5j6wB4RuCrfRwnB7jR5",
 											"type": "string"
 										}
 									]
@@ -861,7 +890,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id\": 1,\r\n    \"firstname\": \"ok\",\r\n    \"lastname\": \"Tester\",\r\n    \"username\": \"TEST-r.admin\",\r\n    \"email\": \"tester.A@example.com\",\r\n    \"password\": \"$2a$10$MIY9wEntFwVDQTjcI6b4heiTzbvknTlH.ov9kS4pYNlto9wG3vYcK\",\r\n    \"dataNascita\": \"19/06/2002\",\r\n    \"indirizzo\": \"Via Test\",\r\n    \"numeroTelefono\": \"+39 336 2544875\",\r\n    \"roles\": [\r\n        {\r\n            \"id\": 1,\r\n            \"roleName\": \"ROLE_ADMIN\"\r\n        }\r\n    ],\r\n    \"ordini\": [],\r\n    \"carrello\": {\r\n        \"id\": 1,\r\n        \"articoli\": []\r\n    }\r\n}",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"firstname\": \"ok\",\r\n    \"lastname\": \"Tester\",\r\n    \"username\": \"TEST-r.user\",\r\n    \"email\": \"tester.A@example.com\",\r\n    \"password\": \"$2a$10$MIY9wEntFwVDQTjcI6b4heiTzbvknTlH.ov9kS4pYNlto9wG3vYcK\",\r\n    \"dataNascita\": \"19/06/2002\",\r\n    \"indirizzo\": \"Via Test\",\r\n    \"numeroTelefono\": \"+39 336 2544875\",\r\n    \"roles\": [\r\n        {\r\n            \"id\": 1,\r\n            \"roleName\": \"ROLE_ADMIN\"\r\n        }\r\n    ],\r\n    \"ordini\": [],\r\n    \"carrello\": {\r\n        \"id\": 1,\r\n        \"articoli\": []\r\n    }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -926,6 +955,123 @@
 							"response": []
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "PAGAMENTO",
+			"item": [
+				{
+					"name": "Registrazione CUSTOMER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjc2MTU4OSwiZXhwIjoxNzEzMzY2Mzg5fQ.wxlIedYzA9CNyK11WaIwknvN3kYcoCha8gYtXDo-DSvnOMIdy44njJ1Xd0n80Xgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"firstname\": \"User\",\r\n    \"lastname\": \"Tester\",\r\n    \"username\": \"TEST-r.user\",\r\n    \"email\": \"tester.U@example.com\",\r\n    \"password\": \"$2a$10$nuvlywLz9kRUf1KqrRLnkOY4LdQcL1rqC8/rqABVQ5U3BQn0pQTmC\",\r\n    \"dataNascita\": \"19/06/2002\",\r\n    \"indirizzo\": \"Via Test\",\r\n    \"numeroTelefono\": \"+39 336 2544875\",\r\n    \"ordini\": [\r\n        {\r\n            \"id\": 1,\r\n            \"statoOrdine\": \"SPEDITO\",\r\n            \"riepilogoOrdine\": \"L'ordine è andato a buon fine! Sarà consegnato in data 2024-04-13\",\r\n            \"dataConsegna\": \"2024-04-13\",\r\n            \"dataOrdine\": \"2024-04-10\",\r\n            \"prezzoConsegna\": 2.99,\r\n            \"carrello\": {\r\n                \"id\": 1\r\n            },\r\n            \"articoli\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"nomeArticolo\": \"Mouse Wireless\",\r\n                    \"prezzo\": 7.87,\r\n                    \"descrizioneArticolo\": \"Logitech M185, 2,4 GHz con Mini Ricevitore USB, Durata Batteria di 12 Mesi, Tracciamento Ottico 1000 DPI, Ambidestro - Grigio\",\r\n                    \"img\": \"https://cdn.discordapp.com/attachments/1062713292226830409/1222589317713629286/M1-removebg-preview.png?ex=6616c407&is=66044f07&hm=5e9885dcc01907c0eb537b91e7c93c5c212e7193f9f78f0e90eb7cdafd6604f1&\",\r\n                    \"brand\": \"Logitech\"\r\n                },\r\n                {\r\n                    \"id\": 1,\r\n                    \"nomeArticolo\": \"Mouse Wireless\",\r\n                    \"prezzo\": 7.87,\r\n                    \"descrizioneArticolo\": \"Logitech M185, 2,4 GHz con Mini Ricevitore USB, Durata Batteria di 12 Mesi, Tracciamento Ottico 1000 DPI, Ambidestro - Grigio\",\r\n                    \"img\": \"https://cdn.discordapp.com/attachments/1062713292226830409/1222589317713629286/M1-removebg-preview.png?ex=6616c407&is=66044f07&hm=5e9885dcc01907c0eb537b91e7c93c5c212e7193f9f78f0e90eb7cdafd6604f1&\",\r\n                    \"brand\": \"Logitech\"\r\n                }\r\n            ],\r\n            \"user\": {\r\n                \"id\": 1,\r\n                \"firstname\": \"User\",\r\n                \"lastname\": \"Tester\",\r\n                \"username\": \"TEST-r.user\",\r\n                \"email\": \"tester.U@example.com\",\r\n                \"password\": \"$2a$10$nuvlywLz9kRUf1KqrRLnkOY4LdQcL1rqC8/rqABVQ5U3BQn0pQTmC\",\r\n                \"dataNascita\": \"19/06/2002\",\r\n                \"indirizzo\": \"Via Test\",\r\n                \"numeroTelefono\": \"+39 336 2544875\"\r\n            }\r\n        }\r\n    ],\r\n    \"roles\": [\r\n        {\r\n            \"id\": 2,\r\n            \"erole\": \"ROLE_USER\"\r\n        }\r\n    ],\r\n    \"carrello\": {\r\n        \"id\": 1,\r\n        \"articoli\": [\r\n            {\r\n                \"id\": 1,\r\n                \"nomeArticolo\": \"Mouse Wireless\",\r\n                \"prezzo\": 7.87,\r\n                \"descrizioneArticolo\": \"Logitech M185, 2,4 GHz con Mini Ricevitore USB, Durata Batteria di 12 Mesi, Tracciamento Ottico 1000 DPI, Ambidestro - Grigio\",\r\n                \"img\": \"https://cdn.discordapp.com/attachments/1062713292226830409/1222589317713629286/M1-removebg-preview.png?ex=6616c407&is=66044f07&hm=5e9885dcc01907c0eb537b91e7c93c5c212e7193f9f78f0e90eb7cdafd6604f1&\",\r\n                \"brand\": \"Logitech\"\r\n            },\r\n            {\r\n                \"id\": 1,\r\n                \"nomeArticolo\": \"Mouse Wireless\",\r\n                \"prezzo\": 7.87,\r\n                \"descrizioneArticolo\": \"Logitech M185, 2,4 GHz con Mini Ricevitore USB, Durata Batteria di 12 Mesi, Tracciamento Ottico 1000 DPI, Ambidestro - Grigio\",\r\n                \"img\": \"https://cdn.discordapp.com/attachments/1062713292226830409/1222589317713629286/M1-removebg-preview.png?ex=6616c407&is=66044f07&hm=5e9885dcc01907c0eb537b91e7c93c5c212e7193f9f78f0e90eb7cdafd6604f1&\",\r\n                \"brand\": \"Logitech\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/api/pagamento/registrazione",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"pagamento",
+								"registrazione"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crea pagamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjc2MTU4OSwiZXhwIjoxNzEzMzY2Mzg5fQ.wxlIedYzA9CNyK11WaIwknvN3kYcoCha8gYtXDo-DSvnOMIdy44njJ1Xd0n80Xgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/pagamento/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"pagamento",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "cus_PuCd42EelYu8p1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trova un customer dall'id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0ZXIuVUBleGFtcGxlLmNvbSIsImlhdCI6MTcxMjc2MTU4OSwiZXhwIjoxNzEzMzY2Mzg5fQ.wxlIedYzA9CNyK11WaIwknvN3kYcoCha8gYtXDo-DSvnOMIdy44njJ1Xd0n80Xgk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/pagamento/registrazione/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"pagamento",
+								"registrazione",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

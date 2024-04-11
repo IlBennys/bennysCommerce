@@ -52,7 +52,7 @@ public class SecurityConfig {
 			.permitAll().requestMatchers(HttpMethod.GET, "/api/articolo/**").permitAll()
 			.requestMatchers(HttpMethod.GET, "/api/carrello", "/api/ordine", "/api/user/")
 			.hasAnyRole("USER", "ADMIN")
-			.requestMatchers(HttpMethod.POST, "/api/carrello", "/api/ordine", "/api/pagamento")
+			.requestMatchers(HttpMethod.POST, "/api/carrello", "/api/ordine", "/api/pagamento/**")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.PUT, "/api/ordine", "/api/user")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.DELETE, "/api/carrello/**", "/api/user")
 			.hasAnyRole("USER", "ADMIN").requestMatchers(HttpMethod.PUT, "/api/articolo/**")

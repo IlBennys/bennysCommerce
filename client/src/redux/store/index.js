@@ -8,6 +8,7 @@ import carrelloReducer from "../reducers/carrelloReducers";
 import ordiniReducer from "../reducers/ordiniReducers";
 
 import { encryptTransform } from "redux-persist-transform-encrypt";
+import pagamentoReducer from "../reducers/pagamentoReducers";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   articolo: articoliReducer,
   carrello: carrelloReducer,
   ordine: ordiniReducer,
+  pagamento: pagamentoReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
