@@ -11,11 +11,15 @@ export const USERNAME = "USERNAME";
 export function registrazioneUser(input) {
   return async () => {
     try {
-      const response = await axios.post("http://localhost/api/auth/register", input, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost/api/auth/register",
+        input,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.status === 201) {
         console.log(response);
@@ -32,11 +36,15 @@ export function registrazioneUser(input) {
 export function loginUser(input) {
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost/api/auth/login", input, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost/api/auth/login",
+        input,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         console.log(response);
         dispatch({
@@ -114,7 +122,9 @@ export function trovaIdUser(token, username) {
         },
       });
       if (response.status === 200) {
-        const userFiltrato = response.data.filter((e) => e.username === username);
+        const userFiltrato = response.data.filter(
+          (e) => e.username === username
+        );
         dispatch({
           type: ADD_ID_USER,
           payload: userFiltrato[0].id,
@@ -152,12 +162,16 @@ export function getUser(token, idUser) {
 export function putUser(idUser, token, input) {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`http://localhost/api/user/${idUser}`, input, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.put(
+        `http://localhost/api/user/${idUser}`,
+        input,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: USER,

@@ -172,7 +172,7 @@ $viola: #652f6f;
     transform: rotate(360deg);
   }
 }
-body > div.fade.modal.show > div > div {
+div.fade.modal.show > div > div {
   background-color: #38ca59;
   padding: 8px 16px;
   border-radius: 25px;

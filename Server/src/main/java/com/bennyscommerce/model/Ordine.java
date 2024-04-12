@@ -1,6 +1,5 @@
 package com.bennyscommerce.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import com.bennyscommerce.auth.entity.User;
@@ -39,8 +38,8 @@ public class Ordine {
     private StatoOrdine statoOrdine;
 
     private String riepilogoOrdine;
-    private LocalDate dataConsegna;
-    private LocalDate dataOrdine;
+    private String dataConsegna;
+    private String dataOrdine;
     private double prezzoConsegna;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REMOVE, CascadeType.REFRESH })

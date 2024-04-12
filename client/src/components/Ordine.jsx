@@ -31,8 +31,8 @@ const Ordine = () => {
             <div>Nessun articolo nell'ordine</div>
           ) : addOrdine && addOrdine.articoli ? (
             articoliFiltrati.map((e) => (
-              <>
-                <div key={e.id}>{e.nomeArticolo}</div>
+              <div key={e.id}>
+                {e.nomeArticolo}
                 <div>
                   Quantità:
                   {dispatch(quantita(carrello.articoli, "id", e.id))}
@@ -42,7 +42,7 @@ const Ordine = () => {
                     e.prezzo * dispatch(quantita(carrello.articoli, "id", e.id))
                   ).toFixed(2)}
                 </div>
-              </>
+              </div>
             ))
           ) : null}
           <Button variant="primary" href="/pagamento">

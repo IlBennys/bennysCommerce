@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Seymour+One&display=swap");
+$viola: #652f6f;
+
+.c-tot {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  .c-main {
+    border: 0;
+    width: 40rem;
+    background-color: whitesmoke;
+
+    .c-img {
+      object-fit: contain;
+      padding: 1%;
+      height: 15rem;
+      width: 10rem;
+      background-color: rgba(44, 44, 44, 0.884);
+    }
+    .c-body {
+      .first-c-text {
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        font-style: italic;
+      }
+      .second-c-text {
+        border: 1px solid black;
+        background-color: rgba(211, 211, 211, 0.64);
+        & > span:first-child {
+          color: red;
+        }
+        & > span:nth-child(3) {
+          color: green;
+        }
+        & > span:first-child,
+        & > span:nth-child(3) {
+          cursor: pointer;
+        }
+      }
+      .thirth-c-text {
+        border: 1px solid black;
+        background-color: rgba(211, 211, 211, 0.64);
+      }
+    }
+  }
+  .btn-bottom {
+    background-color: $viola !important;
+    border: 1px solid whitesmoke;
+    width: 30%;
+  }
+  .div-noArt {
+    font-family: "Seymour One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+.load {
+  position: relative;
+  width: 108px;
+  display: flex;
+  justify-content: space-between;
+}
+.load::after,
+.load::before {
+  content: "";
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  background-image: radial-gradient(circle 14px, #0d161b 100%, transparent 0);
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  animation: eyeMove 10s infinite, blink 10s infinite;
+}
+@keyframes eyeMove {
+  0%,
+  10% {
+    background-position: 0px 0px;
+  }
+  13%,
+  40% {
+    background-position: -15px 0px;
+  }
+  43%,
+  70% {
+    background-position: 15px 0px;
+  }
+  73%,
+  90% {
+    background-position: 0px 15px;
+  }
+  93%,
+  100% {
+    background-position: 0px 0px;
+  }
+}
+@keyframes blink {
+  0%,
+  10%,
+  12%,
+  20%,
+  22%,
+  40%,
+  42%,
+  60%,
+  62%,
+  70%,
+  72%,
+  90%,
+  92%,
+  98%,
+  100% {
+    height: 48px;
+  }
+  11%,
+  21%,
+  41%,
+  61%,
+  71%,
+  91%,
+  99% {
+    height: 18px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .c-div {
+    flex-direction: column !important;
+  }
+  .c-img {
+    width: auto !important;
+    padding: 5% !important;
+  }
+  .c-tot {
+    display: flex !important;
+    justify-content: center !important;
+    border: none;
+  }
+  .c-main {
+    width: 20rem !important;
+  }
+  .div-noArt {
+    & > span:first-child {
+      display: none;
+    }
+  }
+}

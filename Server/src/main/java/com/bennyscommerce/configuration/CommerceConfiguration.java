@@ -1,6 +1,7 @@
 package com.bennyscommerce.configuration;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.springframework.context.annotation.Bean;
@@ -322,12 +323,15 @@ public class CommerceConfiguration {
 	int sum = fake.number().numberBetween(0, 4);
 	LocalDate currentDate = LocalDate.now();
 	LocalDate consegnaDate = currentDate.plusDays(3);
-	return Ordine.builder().riepilogoOrdine(statoRiepilogoOrdine(sum)).dataOrdine(currentDate)
-		.dataConsegna(consegnaDate).statoOrdine(getStatoOrdine(sum)).prezzoConsegna(2.99).build();
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALY);
+	return Ordine.builder().riepilogoOrdine(statoRiepilogoOrdine(sum)).dataOrdine(currentDate.format(formatter))
+		.dataConsegna(consegnaDate.format(formatter)).statoOrdine(getStatoOrdine(sum)).prezzoConsegna(2.99)
+		.build();
     }
 
     private StatoOrdine getStatoOrdine(int random) {
 	StatoOrdine type = null;
+
 	switch (random) {
 	case 0 -> type = StatoOrdine.ANNULLATO;
 	case 1 -> type = StatoOrdine.CONSEGNATO;
@@ -335,6 +339,7 @@ public class CommerceConfiguration {
 	case 3 -> type = StatoOrdine.SPEDITO;
 	}
 	return type;
+
     }
 
     private String statoRiepilogoOrdine(int i) {
