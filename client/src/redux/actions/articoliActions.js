@@ -27,7 +27,6 @@ export const getArticoliById = (articoloId) => {
         `http://localhost/api/articolo/${articoloId}`
       );
       if (response.status === 200) {
-        //console.log(response);
       }
     } catch (error) {
       console.log("errore fetch articoli", error);
@@ -59,7 +58,6 @@ export const getArticoliByName = (name) => {
       const response = await axios.get(
         `http://localhost/api/articolo/name/${name}`
       );
-      console.log("risposta", response);
       if (response.status === 200) {
         dispatch({
           type: NOMEARTICOLI,
@@ -78,7 +76,7 @@ export const getArticoliByPage = (pageNum, pageSize) => {
       const response = await axios.get(
         `http://localhost/api/articolo/page/${pageNum}/${pageSize}`
       );
-      console.log("risposta", response);
+
       if (response.status === 200) {
         dispatch({
           type: PAGINAARTICOLI,
@@ -109,7 +107,6 @@ export const updateArticolo = (articoloId, input, token) => {
           payload: [],
         });
         dispatch(getArticoli());
-        console.log("Articolo aggiornato con successo:", response.data);
       }
     } catch (error) {
       console.error("Errore durante l'aggiornamento dell'articolo:", error);
@@ -129,7 +126,6 @@ export const deleteArticolo = (articoloId, token) => {
         }
       );
       if (response.status === 200) {
-        console.log("Articolo eliminato con successo");
       }
     } catch (error) {
       console.error("Errore durante l'aggiornamento dell'articolo:", error);

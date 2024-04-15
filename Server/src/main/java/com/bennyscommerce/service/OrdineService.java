@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.bennyscommerce.auth.entity.User;
@@ -56,11 +57,21 @@ public class OrdineService {
     }
 
     public String deleteOrdine(Long id) {
-	if (ordineDao.existsById(id)) {
-	    ordineDao.deleteById(id);
+	try {
+	    Ordine ordine = ordineDao.findById(id)
+		    .orElseThrow(() -> new EntityNotFoundException("Ordine with ID " + id + " not found"));
+
+	    // Rimuovi tutti i riferimenti all'ordine
+	    ordine.setUser(null);
+	    ordine.setCarrello(null);
+	    ordine.setArticoli(null);
+
+	    ordineDao.delete(ordine);
 	    return "Ordine correctly deleted from Database";
-	} else {
-	    throw new EntityNotFoundException("Ordine with ID --> " + id + " doesn't exists on Database!");
+	} catch (DataIntegrityViolationException e) {
+
+	    throw new DataIntegrityViolationException(
+		    "Impossibile eliminare l'ordine. Viola vincoli di integrità dei dati.");
 	}
     }
 

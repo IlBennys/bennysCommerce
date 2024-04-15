@@ -326,47 +326,55 @@ public class CommerceConfiguration {
 	LocalDate consegnaDate = currentDate.plusDays(3);
 	String currentDateFormattata = currentDate.format(formatter);
 	String consegnaDateFormattata = consegnaDate.format(formatter);
-	return Ordine.builder()
-		.riepilogoOrdine(statoRiepilogoOrdine(currentDateFormattata, consegnaDateFormattata, sum))
+	return Ordine.builder().riepilogoOrdine(statoRiepilogoOrdine(currentDateFormattata, consegnaDateFormattata))
 		.dataOrdine(currentDateFormattata).dataConsegna(consegnaDateFormattata)
-		.statoOrdine(getStatoOrdine(currentDateFormattata, consegnaDateFormattata, sum)).prezzoConsegna(2.99)
+		.statoOrdine(getStatoOrdine(currentDateFormattata, consegnaDateFormattata)).prezzoConsegna(2.99)
 		.build();
     }
 
-    private StatoOrdine getStatoOrdine(String dataOrdine, String dataConsegna, int sum) {
+    private StatoOrdine getStatoOrdine(String dataOrdine, String dataConsegna) {
 	StatoOrdine type = null;
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy").withLocale(Locale.ITALY);
 	LocalDate dataOrdineLocal = LocalDate.parse(dataOrdine, formatter);
-	LocalDate dataConsegnaLocal = LocalDate.parse(dataConsegna, formatter);
 	LocalDate dataOdierna = LocalDate.now();
-	LocalDate dataGiornoDopo = dataOdierna.plusDays(1);
-	LocalDate dataDueGiorniDopo = dataOdierna.plusDays(2);
-	if (dataOrdineLocal.equals(dataOdierna)) {
-	    switch (sum) {
-	    case 0 -> type = StatoOrdine.ANNULLATO;
-	    case 1 -> type = StatoOrdine.SPEDITO;
-	    case 2 -> type = StatoOrdine.ANNULLATO;
-	    case 3 -> type = StatoOrdine.SPEDITO;
-	    }
-	} else if (dataOrdineLocal.equals(dataGiornoDopo)) {
-	    return type = StatoOrdine.SPEDITO;
-	} else if (dataOrdineLocal.equals(dataDueGiorniDopo)) {
-	    return type = StatoOrdine.IN_CONSEGNA;
-	} else if (dataOrdineLocal.equals(dataConsegnaLocal)) {
-	    return type = StatoOrdine.CONSEGNATO;
+
+	int giornoOrdine = dataOrdineLocal.getDayOfMonth();
+	int giornoOdierno = dataOdierna.getDayOfMonth();
+
+	if (giornoOrdine == giornoOdierno) {
+	    type = StatoOrdine.SPEDITO;
+	} else if (giornoOrdine == giornoOdierno + 1 || giornoOrdine == giornoOdierno + 2) {
+	    type = StatoOrdine.IN_CONSEGNA;
+	} else if (giornoOrdine == giornoOdierno + 3) {
+	    type = StatoOrdine.CONSEGNATO;
 	}
+
 	return type;
     }
 
-    private String statoRiepilogoOrdine(String dataOrdine, String dataConsegna, int sum) {
+    private String statoRiepilogoOrdine(String dataOrdine, String dataConsegna) {
 	String type = null;
-	switch (getStatoOrdine(dataOrdine, dataConsegna, sum)) {
-	case ANNULLATO -> type = "L'ordine è stato annullato!";
-	case SPEDITO -> type = "L'ordine è andato a buon fine! Sarà consegnato in data " + dataConsegna;
-	case IN_CONSEGNA -> type = "Il tuo ordine si trova presso: " + "LAT : " + fake.address().latitude() + "° , "
-		+ "LON: " + fake.address().longitude() + " °";
-	case CONSEGNATO -> type = "Il tuo ordine è stato consegnato correttamente!";
+	StatoOrdine statoOrdine = getStatoOrdine(dataOrdine, dataConsegna);
+
+	if (statoOrdine != null) {
+	    switch (statoOrdine) {
+	    case SPEDITO:
+		type = "L'ordine è andato a buon fine! Sarà consegnato in data " + dataConsegna;
+		break;
+	    case IN_CONSEGNA:
+		type = "Il tuo ordine si trova in consegna presso: LAT : " + fake.address().latitude() + "° , LON: "
+			+ fake.address().longitude() + " °";
+		break;
+	    case CONSEGNATO:
+		type = "Il tuo ordine è stato consegnato correttamente!";
+		break;
+	    default:
+		break;
+	    }
+	} else {
+	    type = "Impossibile recuperare lo stato dell'ordine.";
 	}
+
 	return type;
     }
 

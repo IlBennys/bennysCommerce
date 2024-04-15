@@ -2,10 +2,15 @@
 $viola: #652f6f;
 
 .nav-main {
-  background-color: #08070cbd;
+  background: #000000c4;
   position: sticky;
-  top: 0;
+  top: 2%;
+  left: 5%;
+  height: auto;
+  width: 90%;
+  border-radius: 10px;
   z-index: 4;
+
   .dropdown-menu.show {
     background-color: $viola;
   }
@@ -59,6 +64,11 @@ $viola: #652f6f;
 @media screen and (max-width: 992px) {
   .div-img {
     display: none;
+  }
+  .nav-main {
+    left: 0;
+    top: 0;
+    width: 100%;
   }
   .main-cont {
     display: flex;

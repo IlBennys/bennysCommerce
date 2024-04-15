@@ -1,36 +1,51 @@
-import { Button, Card } from "react-bootstrap";
-import { svuotaCarrello } from "../redux/actions/carrelloActions";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import React from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "./CheckoutForm";
+import {
+  creaPagamento,
+  registrazioneCustomer,
+} from "../redux/actions/pagamentoActions";
 
 const Pagamento = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
+  const idUser = useSelector((state) => state.user.idUser);
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
   const token = useSelector((state) => state.user.token);
-  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
 
-  const stripePromise = loadStripe(
-    "pk_test_51P3dbNJYEaEkhuu3Fa9O5isMN1H5umIJsH3uE3Tam9pJrqYy9y4kepZ08zX3meg9lHkno3O7o048Y3vJQBBEy6T40046kMGTp7"
-  );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      dispatch(registrazioneCustomer(user, token, idUser, idCarrello));
+
+      console.log("Pagamento completato con successo");
+    } catch (error) {
+      console.error("Errore durante la conferma del pagamento:", error);
+      setErrorMessage("Si è verificato un errore imprevisto.");
+    }
+
+    setIsLoading(false);
+  };
 
   return (
-    <>
-      {/* <Card>
-        <Card.Header>ORDINE</Card.Header>
-        <Card.Body>
-          <Button variant="primary" onClick={() => dispatch(svuotaCarrello(idCarrello, token))}>
-            Conferma ordine
-          </Button>
-        </Card.Body>
-      </Card> */}
-
-      <Elements stripe={stripePromise}>
-        <CheckoutForm />
-      </Elements>
-    </>
+    <form id="payment-form" onSubmit={handleSubmit}>
+      <div id="payment-element"></div>
+      <button id="submit" disabled={isLoading}>
+        <div
+          className={`spinner ${isLoading ? "" : "hidden"}`}
+          id="spinner"
+        ></div>
+        <span id="button-text">
+          {isLoading ? "Elaborazione..." : "Paga ora"}
+        </span>
+      </button>
+      <div id="payment-message" className={errorMessage ? "" : "hidden"}>
+        {errorMessage}
+      </div>
+    </form>
   );
 };
 

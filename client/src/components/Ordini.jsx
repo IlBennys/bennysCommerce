@@ -1,5 +1,5 @@
 import "../assets/sass/Ordini.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react"; // Importa useState
 import { Table, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrdini } from "../redux/actions/ordiniActions";
@@ -11,80 +11,94 @@ const Ordini = () => {
   const idUser = useSelector((state) => state.user.idUser);
   const ordini = useSelector((state) => state.ordine.ordini);
   const dispatch = useDispatch();
+  const [totaleOrdine, setTotaleOrdine] = useState(0);
 
   useEffect(() => {
     dispatch(getOrdini(token, idUser, idCarrello));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    setTotaleOrdine(0);
+  }, [ordini]);
+
   return (
     <>
       <Container>
         {ordini && ordini.length > 0 ? (
-          ordini.map((ordine) => (
-            <div key={ordine.id}>
-              <h3 className="ordine-title">
-                Ordine #{ordine.id} del {ordine.dataOrdine}
-              </h3>
-              <div className="p-1 rounded-3 bg-light mb-5">
-                <Table className="table-ordini" hover responsive>
-                  <thead>
-                    <tr className="riga-col text-center">
-                      <th>#</th>
-                      <th>Nome Articolo e Brand</th>
-                      <th>Quantita</th>
-                      <th>Prezzo</th>
-                      <th>Riepilogo Ordine</th>
-                      <th>Data Consegna</th>
-                      <th>Stato Ordine</th>
-                      <th>Costo Spedizione</th>
-                      <th>Totale</th>
-                    </tr>
-                  </thead>
-                  <tbody className="riga-body text-center">
-                    {ordine.articoli.map((articolo, i) => (
-                      <tr key={`${ordine.id}--${i}`}>
-                        <td>{i + 1}</td>
-                        <td>
-                          {articolo.nomeArticolo} - {articolo.brand}
-                        </td>
-                        <td>
-                          {dispatch(
-                            quantita(ordine.articoli, "id", articolo.id)
-                          )}
-                        </td>
-                        <td>
+          ordini.map((ordine) => {
+            let totaleOrdineCorrente = 0;
+            return (
+              <div key={ordine.id}>
+                <h3 className="ordine-title">
+                  Ordine #{ordine.id} del {ordine.dataOrdine}
+                </h3>
+                <div className="div-table p-1 rounded-3 mb-5">
+                  <Table className="table-ordini" hover responsive>
+                    <thead>
+                      <tr className="riga-col text-center">
+                        <th>#</th>
+                        <th>Nome Articolo e Brand</th>
+                        <th>Quantita</th>
+                        <th>Prezzo</th>
+                        <th>Riepilogo Ordine</th>
+                        <th>Data Consegna</th>
+                        <th>Stato Ordine</th>
+                        <th>Totale</th>
+                      </tr>
+                    </thead>
+                    <tbody className="riga-body text-center">
+                      {ordine.articoli.map((articolo, i) => {
+                        const quantitaArticolo = dispatch(
+                          quantita(ordine.articoli, "id", articolo.id)
+                        );
+                        const prezzoTotaleArticolo = (
+                          articolo.prezzo * quantitaArticolo
+                        ).toFixed(2);
+                        totaleOrdineCorrente +=
+                          parseFloat(prezzoTotaleArticolo);
+                        return (
+                          <tr key={`${ordine.id}--${i}`}>
+                            <td>{i + 1}</td>
+                            <td>
+                              {articolo.nomeArticolo} - {articolo.brand}
+                            </td>
+                            <td>{quantitaArticolo}</td>
+                            <td>{prezzoTotaleArticolo}€</td>
+                            <td>{ordine.riepilogoOrdine}</td>
+                            <td>{ordine.dataConsegna}</td>
+                            <td>{ordine.statoOrdine}</td>
+                            <td>
+                              {parseFloat(prezzoTotaleArticolo).toFixed(2)}€
+                            </td>
+                          </tr>
+                        );
+                      })}
+
+                      <tr className="tot-ordine text-center">
+                        <td colSpan="4"></td>
+                        <td className="fw-bold text-danger text-decoration-underline">
+                          Totale dell'ordine: {totaleOrdineCorrente.toFixed(2)}€{" "}
+                          Spedizione: 2.99€ ={" "}
                           {(
-                            articolo.prezzo *
-                            dispatch(
-                              quantita(ordine.articoli, "id", articolo.id)
-                            )
+                            totaleOrdineCorrente +
+                            parseFloat(ordine.prezzoConsegna)
                           ).toFixed(2)}
                           €
                         </td>
-                        <td>{ordine.riepilogoOrdine}</td>
-
-                        <td>{ordine.dataConsegna}</td>
-                        <td>{ordine.statoOrdine}</td>
-                        <td>{ordine.prezzoConsegna}</td>
-                        <td>
-                          {(
-                            articolo.prezzo *
-                              dispatch(
-                                quantita(ordine.articoli, "id", articolo.id)
-                              ) +
-                            ordine.prezzoConsegna
-                          ).toFixed(2)}
-                        </td>
                       </tr>
-                    ))}
-                  </tbody>
-                </Table>
+                    </tbody>
+                  </Table>
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         ) : (
-          <div>Nessun ordine effettuato</div>
+          <div className="div-noArt d-flex align-items-center justify-content-center mt-5">
+            <span className="load me-5"></span>
+            <span className="text-white fs-1">Nessun Ordine Registrato</span>
+            <span className="load ms-5"></span>
+          </div>
         )}
       </Container>
     </>

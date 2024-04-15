@@ -6,13 +6,27 @@
   font-style: normal;
   color: red;
 }
-.table-ordini {
-  thead {
-    .riga-col > th {
+.div-noArt {
+  font-family: "Seymour One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.div-table {
+  background-color: whitesmoke;
+  .table-ordini {
+    background-color: whitesmoke;
+    thead {
+      .riga-col > th {
+        background-color: whitesmoke;
+        text-wrap: nowrap;
+      }
+    }
+    .riga-body > tr > td {
       background-color: whitesmoke;
     }
   }
-  .riga-body > tr > td {
-    background-color: whitesmoke;
+  .tot-ordine {
+    text-wrap: nowrap;
+    font-size: x-large;
   }
 }

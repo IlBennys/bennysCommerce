@@ -15,8 +15,11 @@ import Carrello from "./components/Carrello";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Ordini from "./components/Ordini";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 function App() {
+  const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
   return (
     <BrowserRouter>
       <NavCustom />
@@ -29,7 +32,14 @@ function App() {
         <Route path="/profilo" element={<Profilo />} />
         <Route path="/ordine" element={<Ordine />} />
         <Route path="/ordini" element={<Ordini />} />
-        <Route path="/pagamento" element={<Pagamento />} />
+        <Route
+          path="/pagamento"
+          element={
+            <Elements stripe={stripePromise}>
+              <Pagamento />
+            </Elements>
+          }
+        />
         <Route path="/carrello" element={<Carrello />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/about" element={<About />} />

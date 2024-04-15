@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { trovaIdOrdine } from "../redux/actions/ordiniActions";
+import { deleteOrdine, trovaIdOrdine } from "../redux/actions/ordiniActions";
 import { quantita, filterArticles } from "../redux/actions/carrelloActions";
 
 const Ordine = () => {
@@ -10,13 +10,13 @@ const Ordine = () => {
   const token = useSelector((state) => state.user.token);
   const idUser = useSelector((state) => state.user.idUser);
   const addOrdine = useSelector((state) => state.ordine.addOrdine);
-  console.log(addOrdine);
+  const idOrdine = useSelector((state) => state.ordine.idOrdine);
   const dispatch = useDispatch();
   const articoliFiltrati = dispatch(filterArticles(carrello.articoli));
   const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {
-    dispatch(trovaIdOrdine(token, idUser, idCarrello, carrello)).then(() =>
+    dispatch(trovaIdOrdine(token, idUser, idCarrello)).then(() =>
       setIsEmpty(true)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,7 +48,10 @@ const Ordine = () => {
           <Button variant="primary" href="/pagamento">
             Vai al pagamento
           </Button>
-          <Button variant="primary" href="/carrello">
+          <Button
+            variant="primary"
+            onClick={() => dispatch(deleteOrdine(idOrdine, token))}
+          >
             Torna al Carrello
           </Button>
         </Card.Body>

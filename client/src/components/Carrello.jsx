@@ -36,7 +36,7 @@ const Carrello = () => {
             <div className="div-noArt d-flex align-items-center justify-content-center">
               <span className="load me-5"></span>
               <span className="text-white fs-1">
-                Nessun articolo nel carrello
+                Nessun Aticolo Nel Carrello
               </span>
               <span className="load ms-5"></span>
             </div>
@@ -51,7 +51,7 @@ const Carrello = () => {
                     <Card.Img variant="top" className="c-img " src={e.img} />
                     <Card.Body className="c-body ">
                       <Card.Text className="first-c-text text-center fs-3 fw-bold">
-                        Articolo: {e.nomeArticolo}
+                        Articolo: {e.nomeArticolo} - {e.brand}
                       </Card.Text>
 
                       <Card.Text className="second-c-text d-flex align-items-center justify-content-center rounded-3 h-25">

@@ -48,7 +48,7 @@ public class Ordine {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH })
     private List<Articoli> articoli;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({ "ordini", "carrello", "roles" })
     private User user;

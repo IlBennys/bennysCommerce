@@ -2,6 +2,7 @@ import axios from "axios";
 import { ADD_ID_CARRELLO, CARRELLO, trovaIdCarrello } from "./carrelloActions";
 import { ADD_ID_ORDINE, ADD_ORDINE, ORDINI } from "./ordiniActions";
 import { ARTICOLI } from "./articoliActions";
+import { ADD_PAGAMENTO } from "./pagamentoActions";
 
 export const USER = "USER";
 export const ADD_TOKEN = "ADD_TOKEN";
@@ -108,7 +109,14 @@ export function logoutUser() {
       type: ARTICOLI,
       payload: [],
     });
-    window.location.href = "/";
+    dispatch({
+      type: ADD_PAGAMENTO,
+      payload: {},
+    });
+    const home = () => {
+      window.location.href = "/";
+    };
+    window.setTimeout(home, 500);
   };
 }
 

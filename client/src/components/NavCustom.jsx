@@ -34,7 +34,7 @@ const NavCustom = () => {
           <div className="column2 d-flex justify-content-center align-items-center">
             <Nav>
               <Nav.Link className="ms-3 text-nav" href="/">
-                Home{" "}
+                Home
                 <span className="ms-1">
                   <GoHomeFill />
                 </span>
@@ -42,7 +42,7 @@ const NavCustom = () => {
             </Nav>
             <Nav>
               <Nav.Link className="ms-3 text-nav" href="/about">
-                Su noi{" "}
+                Su noi
                 <span className="ms-1">
                   <FaRegQuestionCircle />
                 </span>
@@ -54,7 +54,7 @@ const NavCustom = () => {
                 href="/articoli"
                 onClick={() => dispatch(svuotaArticoli())}
               >
-                Shop{" "}
+                Shop
                 <span className="ms-1">
                   <RiShoppingBasket2Fill />
                 </span>

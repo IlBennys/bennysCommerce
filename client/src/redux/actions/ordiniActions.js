@@ -3,7 +3,7 @@ export const ORDINI = "ORDINI";
 export const ADD_ID_ORDINE = "ADD_ID_ORDINE";
 export const ADD_ORDINE = "ADD_ORDINE";
 
-export function trovaIdOrdine(token, idUser, idCarrello, carrello) {
+export function trovaIdOrdine(token, idUser, idCarrello) {
   return async (dispatch) => {
     try {
       const response = await axios.get("http://localhost/api/ordine", {
@@ -14,11 +14,10 @@ export function trovaIdOrdine(token, idUser, idCarrello, carrello) {
       });
       if (response.status === 200) {
         const ordineFiltrato = response.data.filter(
-          (e) =>
+          (e, i) =>
             e.user.id === idUser &&
             e.carrello.id === idCarrello &&
-            e.carrello.articoli.length === carrello.articoli.length &&
-            e.id === response.data.length - 1 + 1
+            e.id === response.data[response.data.length - 1].id
         );
         dispatch({
           type: ADD_ID_ORDINE,
@@ -94,7 +93,6 @@ export function postOrdine(token, idUser, idCarrello) {
         }
       );
       if (response.status === 201) {
-        console.log("funziona", response);
         window.location.href = "/ordine";
       }
     } catch (error) {
@@ -102,3 +100,32 @@ export function postOrdine(token, idUser, idCarrello) {
     }
   };
 }
+
+export const deleteOrdine = (idOrdine, token) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost/api/ordine/${idOrdine}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        dispatch({
+          type: ADD_ID_ORDINE,
+          payload: "",
+        });
+        dispatch({
+          type: ADD_ORDINE,
+          payload: {},
+        });
+
+        window.location.href = "/carrello";
+      }
+    } catch (error) {
+      console.error("Errore durante l'eliminazionde dell'ordine:", error);
+    }
+  };
+};
