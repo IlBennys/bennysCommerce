@@ -6,16 +6,12 @@ export const ADD_PAGAMENTO = "ADD_PAGAMENTO";
 export function registrazioneCustomer(input, token, idUser, idCarrello) {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        "http://localhost/api/pagamento/registrazione",
-        input,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post("http://localhost/api/pagamento/registrazione", input, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (response.status === 200) {
         const customerId = response.data.split(": ")[1].trim();
 
@@ -30,20 +26,14 @@ export function registrazioneCustomer(input, token, idUser, idCarrello) {
 export function creaPagamento(token, idCustomer, idCarrello) {
   return async (dispatch) => {
     try {
-      const response = await axios.post(
-        `http://localhost/api/pagamento/${idCustomer}`,
-        null,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
+      const response = await axios.post(`http://localhost/api/pagamento/${idCustomer}`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (response.status === 200) {
         dispatch(initializeStripe());
-
         dispatch(svuotaCarrello(idCarrello, token));
       }
     } catch (error) {
@@ -51,6 +41,7 @@ export function creaPagamento(token, idCustomer, idCarrello) {
     }
   };
 }
+
 export function initializeStripe() {
   return async () => {
     try {

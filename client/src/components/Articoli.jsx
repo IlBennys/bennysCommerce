@@ -78,106 +78,38 @@ const Articoli = () => {
                     <p className="loader"></p>
                   </div>
                 ) : pageArticoli.content ? (
-                  pageArticoli.content[0].id === 1 ? (
-                    pageArticoli.content.map((e) => {
-                      return (
-                        <>
-                          <Card key={e.id} className="m-1 card-main">
-                            <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
-                            <div className="invi rounded-3 text-white">
-                              <p> {e.descrizioneArticolo}</p>
-                            </div>
+                  pageArticoli.content.map((e) => {
+                    return (
+                      <>
+                        <Card key={e.id} className="m-1 card-main">
+                          <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
+                          <div className="invi rounded-3 text-white">
+                            <p> {e.descrizioneArticolo}</p>
+                          </div>
 
-                            <h6 className="badge-h6">
-                              <Badge>Promo</Badge>
-                            </h6>
-                            {token !== "" ? (
-                              <div
-                                title="Aggiungi al carrello"
-                                onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
-                                className="carrello-btn rounded-2"
-                              >
-                                <img src={cart} alt="" />
-                              </div>
-                            ) : (
-                              <div></div>
-                            )}
-                            <Card.Body className="body-card-main">
-                              <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
-                              <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
-                              <Card.Text>{e.prezzo}€</Card.Text>
-                            </Card.Body>
-                          </Card>
-                        </>
-                      );
-                    })
-                  ) : pageArticoli.content[0].id === 10 ? (
-                    pageArticoli.content.map((e) => {
-                      return (
-                        <>
-                          <Card key={e.id} className="m-1 card-main">
-                            <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
-                            <div className="invi rounded-3 text-white">
-                              <p> {e.descrizioneArticolo}</p>
+                          <h6 className="badge-h6">
+                            <Badge>Promo</Badge>
+                          </h6>
+                          {token !== "" ? (
+                            <div
+                              title="Aggiungi al carrello"
+                              onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
+                              className="carrello-btn rounded-2"
+                            >
+                              <img src={cart} alt="" />
                             </div>
-
-                            <h6 className="badge-h6">
-                              <Badge>Promo</Badge>
-                            </h6>
-                            {token !== "" ? (
-                              <div
-                                title="Aggiungi al carrello"
-                                onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
-                                className="carrello-btn rounded-2"
-                              >
-                                <img src={cart} alt="" />
-                              </div>
-                            ) : (
-                              <div></div>
-                            )}
-                            <Card.Body className="body-card-main">
-                              <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
-                              <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
-                              <Card.Text>{e.prezzo}€</Card.Text>
-                            </Card.Body>
-                          </Card>
-                        </>
-                      );
-                    })
-                  ) : (
-                    pageArticoli.content.map((e) => {
-                      return (
-                        <>
-                          <Card key={e.id} className="m-1 card-main">
-                            <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
-                            <div className="invi rounded-3 text-white">
-                              <p> {e.descrizioneArticolo}</p>
-                            </div>
-
-                            <h6 className="badge-h6">
-                              <Badge>Promo</Badge>
-                            </h6>
-                            {token !== "" ? (
-                              <div
-                                title="Aggiungi al carrello"
-                                onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
-                                className="carrello-btn rounded-2"
-                              >
-                                <img src={cart} alt="" />
-                              </div>
-                            ) : (
-                              <div></div>
-                            )}
-                            <Card.Body className="body-card-main">
-                              <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
-                              <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
-                              <Card.Text>{e.prezzo}€</Card.Text>
-                            </Card.Body>
-                          </Card>
-                        </>
-                      );
-                    })
-                  )
+                          ) : (
+                            <div></div>
+                          )}
+                          <Card.Body className="body-card-main">
+                            <Card.Title className="titolo-card text-start">{e.nomeArticolo}</Card.Title>
+                            <Card.Text className="text-brand text-start">Brand: {e.brand}</Card.Text>
+                            <Card.Text>{e.prezzo}€</Card.Text>
+                          </Card.Body>
+                        </Card>
+                      </>
+                    );
+                  })
                 ) : (
                   articolo.map((e) => {
                     return (
