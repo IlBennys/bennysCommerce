@@ -35,7 +35,6 @@ public class OrdineService {
 	ordineDao.save(o);
 	User u = userService.FindUserById(idUser);
 	Carrello c = carrelloService.FindCarrelloById(idCarrello);
-
 	o.setUser(u);
 	o.setCarrello(c);
 	o.setArticoli(new ArrayList<>(c.getArticoli()));
@@ -60,7 +59,6 @@ public class OrdineService {
 	try {
 	    Ordine ordine = ordineDao.findById(id)
 		    .orElseThrow(() -> new EntityNotFoundException("Ordine with ID " + id + " not found"));
-
 	    // Rimuovi tutti i riferimenti all'ordine
 	    ordine.setUser(null);
 	    ordine.setCarrello(null);

@@ -45,9 +45,7 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom01"
               >
-                <Form.Label className=" text-white fw-semibold fst-italic">
-                  Nome
-                </Form.Label>
+                <Form.Label className=" text-white fw-semibold fst-italic">Nome</Form.Label>
                 <Form.Control
                   required
                   type="text"
@@ -62,9 +60,7 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom02"
               >
-                <Form.Label className=" text-white fw-semibold fst-italic">
-                  Cognome
-                </Form.Label>
+                <Form.Label className=" text-white fw-semibold fst-italic">Cognome</Form.Label>
                 <Form.Control
                   required
                   type="text"
@@ -79,9 +75,7 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustomUsername"
               >
-                <Form.Label className=" text-white fw-semibold fst-italic">
-                  Username
-                </Form.Label>
+                <Form.Label className=" text-white fw-semibold fst-italic">Username</Form.Label>
                 <InputGroup hasValidation>
                   <Form.Control
                     type="text"
@@ -90,9 +84,7 @@ const Register = () => {
                     required
                     onChange={(e) => handleChange("username", e.target.value)}
                   />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a username.
-                  </Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">Please choose a username.</Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
 
@@ -102,9 +94,7 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom03"
               >
-                <Form.Label className=" text-white fw-semibold fst-italic">
-                  data di nascita
-                </Form.Label>
+                <Form.Label className=" text-white fw-semibold fst-italic">Data di nascita</Form.Label>
                 <Form.Control
                   className="text-black "
                   required
@@ -120,9 +110,7 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom04"
               >
-                <Form.Label className="label text-white fw-semibold fst-italic">
-                  indirizzo
-                </Form.Label>
+                <Form.Label className="label text-white fw-semibold fst-italic">Indirizzo</Form.Label>
                 <Form.Control
                   required
                   type="text"
@@ -138,16 +126,12 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom05"
               >
-                <Form.Label className="label text-white fw-semibold fst-italic">
-                  numero di telefono
-                </Form.Label>
+                <Form.Label className="label text-white fw-semibold fst-italic">Numero di telefono</Form.Label>
                 <Form.Control
                   required
                   type="phone"
                   placeholder="inserire numero di telefono"
-                  onChange={(e) =>
-                    handleChange("numeroTelefono", e.target.value)
-                  }
+                  onChange={(e) => handleChange("numeroTelefono", e.target.value)}
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
@@ -157,9 +141,7 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustomEmail"
               >
-                <Form.Label className="label text-white fw-semibold fst-italic">
-                  E-mail
-                </Form.Label>
+                <Form.Label className="label text-white fw-semibold fst-italic">E-mail</Form.Label>
                 <InputGroup hasValidation>
                   <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                   <Form.Control
@@ -169,9 +151,7 @@ const Register = () => {
                     required
                     onChange={(e) => handleChange("email", e.target.value)}
                   />
-                  <Form.Control.Feedback type="invalid">
-                    inserisci la tua email.
-                  </Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">Inserisci la tua email.</Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
               <Form.Group
@@ -180,9 +160,7 @@ const Register = () => {
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustomPassword"
               >
-                <Form.Label className="label text-white fw-semibold fst-italic">
-                  Password
-                </Form.Label>
+                <Form.Label className="label text-white fw-semibold fst-italic">Password</Form.Label>
                 <InputGroup hasValidation>
                   <InputGroup.Text id="inputGroupPrepend3">
                     <RiLockPasswordFill />
@@ -194,9 +172,7 @@ const Register = () => {
                     required
                     onChange={(e) => handleChange("password", e.target.value)}
                   />
-                  <Form.Control.Feedback type="invalid">
-                    inserisci la tua password.
-                  </Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">Inserisci la tua password.</Form.Control.Feedback>
                 </InputGroup>
               </Form.Group>
             </Row>
@@ -209,7 +185,7 @@ const Register = () => {
                   dispatch(registrazioneUser(input));
                 }}
               >
-                completa registrazione
+                Completa registrazione
               </Button>
             </Row>
           </Form>

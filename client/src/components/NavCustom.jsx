@@ -49,11 +49,7 @@ const NavCustom = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link
-                className="ms-3 text-nav"
-                href="/articoli"
-                onClick={() => dispatch(svuotaArticoli())}
-              >
+              <Nav.Link className="ms-3 text-nav" href="/articoli" onClick={() => dispatch(svuotaArticoli())}>
                 Shop
                 <span className="ms-1">
                   <RiShoppingBasket2Fill />
@@ -63,23 +59,12 @@ const NavCustom = () => {
             {token !== "" ? (
               <>
                 <Nav>
-                  <Nav.Link
-                    className="ms-3 text-carrello text-nav"
-                    href="/carrello"
-                  >
+                  <Nav.Link className="ms-3 text-carrello text-nav" href="/carrello">
                     Carrello
-                    {carrello.articoli !== undefined ? (
-                      <Badge>{carrello.articoli.length}</Badge>
-                    ) : (
-                      0
-                    )}
+                    {carrello.articoli !== undefined ? <Badge>{carrello.articoli.length}</Badge> : 0}
                   </Nav.Link>
                 </Nav>
-                <NavDropdown
-                  className="ms-4 text-nav mainDrop"
-                  title={`Ciao ${username}`}
-                  id="basic-nav-dropdown"
-                >
+                <NavDropdown className="ms-4 text-nav mainDrop" title={`Ciao ${username}`} id="basic-nav-dropdown">
                   <NavDropdown.Item className="text-white mb-2" href="/profilo">
                     <div className="d-flex align-items-center justify-content-between">
                       <span> Il mio profilo</span>
@@ -97,10 +82,7 @@ const NavCustom = () => {
                     </div>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item
-                    onClick={() => dispatch(logoutUser())}
-                    className="text-white mb-2"
-                  >
+                  <NavDropdown.Item onClick={() => dispatch(logoutUser())} className="text-white mb-2">
                     <div className="d-flex align-items-center justify-content-between">
                       <span> Logout</span>
                       <span className="ms-1">

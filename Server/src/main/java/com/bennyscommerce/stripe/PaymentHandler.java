@@ -43,7 +43,7 @@ public class PaymentHandler {
 	PaymentIntent paymentIntent = null;
 	try {
 	    PaymentIntentCreateParams paymentIntentParams = PaymentIntentCreateParams.builder().setAmount(1099L)
-		    .setCurrency("eur").setCustomer(customerId).setCurrency("eur")
+		    .setCustomer(customerId).setCurrency("eur")
 		    .setAutomaticPaymentMethods(
 			    PaymentIntentCreateParams.AutomaticPaymentMethods.builder().setEnabled(true).build())
 		    .build();
