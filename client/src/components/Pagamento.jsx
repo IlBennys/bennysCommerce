@@ -51,7 +51,10 @@ const Pagamento = () => {
       }
     } else if (isExpirationDateInput) {
       if (sanitizedInput.length <= 4) {
-        const formattedInput = sanitizedInput.replace(/(\d{2})(?=\d{2})/, "$1/");
+        const formattedInput = sanitizedInput.replace(
+          /(\d{2})(?=\d{2})/,
+          "$1/"
+        );
         setExpirationDate(formattedInput);
         setExpirationDateTouched(true);
         setExpirationDateIsValid(sanitizedInput.length === 4);
@@ -85,7 +88,12 @@ const Pagamento = () => {
       <div className="d-flex align-items-center justify-content-center m-5 p-2">
         <Form id="payment-form" onSubmit={handleSubmit}>
           <h3 className="text-dark fw-bolder">Paga con Carta</h3>
-          <Form.Group className="mt-2" as={Col} md="10" controlId="validationFormikUsername">
+          <Form.Group
+            className="mt-2"
+            as={Col}
+            md="10"
+            controlId="validationFormikUsername"
+          >
             <Form.Label className="text-dark fw-bold fs-5 ">Email</Form.Label>
             <InputGroup hasValidation>
               <Form.Control
@@ -97,8 +105,15 @@ const Pagamento = () => {
               />
             </InputGroup>
           </Form.Group>
-          <Form.Group as={Col} md="10" controlId="validationFormikUsername" className="d-flex flex-column mt-2">
-            <Form.Label className="text-dark fw-bold fs-5 ">Dati della carta</Form.Label>
+          <Form.Group
+            as={Col}
+            md="10"
+            controlId="validationFormikUsername"
+            className="d-flex flex-column mt-2"
+          >
+            <Form.Label className="text-dark fw-bold fs-5 ">
+              Dati della carta
+            </Form.Label>
             <div className="divCartaUno">
               <InputGroup hasValidation>
                 <Form.Control
@@ -141,8 +156,15 @@ const Pagamento = () => {
               </InputGroup>
             </div>
           </Form.Group>
-          <Form.Group className="mt-2" as={Col} md="10" controlId="validationFormikUsername">
-            <Form.Label className="text-dark fw-bold fs-5 ">Nome titolare</Form.Label>
+          <Form.Group
+            className="mt-2"
+            as={Col}
+            md="10"
+            controlId="validationFormikUsername"
+          >
+            <Form.Label className="text-dark fw-bold fs-5 ">
+              Nome titolare
+            </Form.Label>
             <InputGroup hasValidation>
               <Form.Control
                 type="text"
@@ -153,8 +175,15 @@ const Pagamento = () => {
               />
             </InputGroup>
           </Form.Group>
-          <Form.Group className="mt-2" as={Col} md="10" controlId="validationFormikUsername">
-            <Form.Label className="text-dark fw-bold fs-5 ">Paese o regione</Form.Label>
+          <Form.Group
+            className="mt-2"
+            as={Col}
+            md="10"
+            controlId="validationFormikUsername"
+          >
+            <Form.Label className="text-dark fw-bold fs-5 ">
+              Paese o regione
+            </Form.Label>
             <Form.Select aria-label="Default select example" className="input">
               <option>Italia</option>
               <option value="1">USA</option>
@@ -170,12 +199,16 @@ const Pagamento = () => {
               onClick={(e) => {
                 handleSubmit(e);
                 handleShow();
-                //dispatch(svuotaCarrello());
               }}
               className="w-100"
             >
-              <div className={`spinner ${isLoading ? "" : "hidden"}`} id="spinner"></div>
-              <span id="button-text">{isLoading ? "Elaborazione..." : "Paga ora"}</span>
+              <div
+                className={`spinner ${isLoading ? "" : "hidden"}`}
+                id="spinner"
+              ></div>
+              <span id="button-text">
+                {isLoading ? "Elaborazione..." : "Paga ora"}
+              </span>
             </Button>
             <div id="payment-message" className={errorMessage ? "" : "hidden"}>
               {errorMessage}
@@ -183,10 +216,10 @@ const Pagamento = () => {
           </div>
         </Form>
       </div>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header className="head-mod ">
-          Pagamento andato a buon fine!
-          <span className="ms-1 fs-3">
+      <Modal show={show} onHide={handleClose} className="modal-container">
+        <Modal.Header className="head-mod">
+          articolo aggiunto al carrello
+          <span className="ms-1">
             <IoMdCheckmarkCircleOutline />
           </span>
         </Modal.Header>
