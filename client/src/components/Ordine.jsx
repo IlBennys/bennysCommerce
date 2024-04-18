@@ -1,61 +1,78 @@
-import { useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
+import "../assets/sass/Ordine.scss";
+import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteOrdine, trovaIdOrdine } from "../redux/actions/ordiniActions";
-import { quantita, filterArticles } from "../redux/actions/carrelloActions";
+import { deleteOrdine } from "../redux/actions/ordiniActions";
+import { quantita } from "../redux/actions/carrelloActions";
+import { useState } from "react";
 
-const Ordine = () => {
-  const idCarrello = useSelector((state) => state.carrello.idCarrello);
-  const carrello = useSelector((state) => state.carrello.carrello);
+const Ordine = ({ show, onHide }) => {
   const token = useSelector((state) => state.user.token);
-  const idUser = useSelector((state) => state.user.idUser);
   const addOrdine = useSelector((state) => state.ordine.addOrdine);
   const idOrdine = useSelector((state) => state.ordine.idOrdine);
   const dispatch = useDispatch();
-  const articoliFiltrati = dispatch(filterArticles(carrello.articoli));
-  const [isEmpty, setIsEmpty] = useState(false);
+  let totaleOrdineCorrente = 0;
+  const [switchChecked, setSwitchChecked] = useState(false);
 
-  useEffect(() => {
-    dispatch(trovaIdOrdine(token, idUser, idCarrello)).then(() =>
-      setIsEmpty(true)
+  addOrdine?.articoli?.forEach((articolo) => {
+    const quantitaArticolo = dispatch(
+      quantita(addOrdine.articoli, "id", articolo.id)
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+    const prezzoTotaleArticolo = (articolo.prezzo * quantitaArticolo).toFixed(
+      2
+    );
+    totaleOrdineCorrente += parseFloat(prezzoTotaleArticolo);
+  });
   return (
     <>
-      <Card>
-        <Card.Header>ORDINE</Card.Header>
-        <Card.Body>
-          {!isEmpty ? (
-            <div>Nessun articolo nell'ordine</div>
-          ) : addOrdine && addOrdine.articoli ? (
-            articoliFiltrati.map((e) => (
-              <div key={e.id}>
-                {e.nomeArticolo}
-                <div>
-                  Quantità:
-                  {dispatch(quantita(carrello.articoli, "id", e.id))}
-                  <br />
-                  prezzo:
-                  {(
-                    e.prezzo * dispatch(quantita(carrello.articoli, "id", e.id))
-                  ).toFixed(2)}
-                </div>
+      <Modal show={show} backdrop="static" keyboard={false} centered>
+        <Modal.Header className="header-mod">
+          <Modal.Title className="fs-2 fw-bolder">RIEPILOGO ORDINE</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div>
+            <div className="d-flex flex-column align-items-baseline mb-3">
+              <div className="fw-bold text-decoration-underline fs-6 text-center mb-4">
+                Totale dell'ordine: {totaleOrdineCorrente.toFixed(2)}€ +
+                Spedizione: 2.99€ =
+                {(
+                  totaleOrdineCorrente + parseFloat(addOrdine.prezzoConsegna)
+                ).toFixed(2)}
+                €
               </div>
-            ))
-          ) : null}
-          <Button variant="primary" href="/pagamento">
-            Vai al pagamento
-          </Button>
-          <Button
-            variant="primary"
-            onClick={() => dispatch(deleteOrdine(idOrdine, token))}
-          >
-            Torna al Carrello
-          </Button>
-        </Card.Body>
-      </Card>
+
+              <div className="form-order">
+                <Form.Check
+                  type="switch"
+                  id="custom-switch"
+                  label="Accettare per andare al Pagamento"
+                  checked={switchChecked}
+                  onChange={(e) => setSwitchChecked(e.target.checked)}
+                />
+              </div>
+            </div>
+            <Modal.Footer className="d-flex align-items-center justify-content-around">
+              <Button
+                variant="outline-light"
+                className="btn-bottom h-25"
+                href="/pagamento"
+                disabled={!switchChecked}
+              >
+                Vai al pagamento
+              </Button>
+              <Button
+                variant="outline-light"
+                className="btn-bottom h-25"
+                onClick={() => {
+                  onHide();
+                  dispatch(deleteOrdine(idOrdine, token));
+                }}
+              >
+                Torna al Carrello
+              </Button>
+            </Modal.Footer>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

@@ -15,7 +15,9 @@ export function trovaIdOrdine(token, idUser, idCarrello) {
       if (response.status === 200) {
         const ordineFiltrato = response.data.filter(
           (e, i) =>
-            e.user.id === idUser && e.carrello.id === idCarrello && e.id === response.data[response.data.length - 1].id
+            e.user.id === idUser &&
+            e.carrello.id === idCarrello &&
+            e.id === response.data[response.data.length - 1].id
         );
         dispatch({
           type: ADD_ID_ORDINE,
@@ -32,12 +34,15 @@ export function trovaIdOrdine(token, idUser, idCarrello) {
 export function getOrdine(idOrdine, token) {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`http://localhost/api/ordine/${idOrdine}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.get(
+        `http://localhost/api/ordine/${idOrdine}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: ADD_ORDINE,
@@ -75,16 +80,20 @@ export function getOrdini(token, idUser, idCarrello) {
 }
 
 export function postOrdine(token, idUser, idCarrello) {
-  return async () => {
+  return async (dispatch) => {
     try {
-      const response = await axios.post(`http://localhost/api/ordine/user/${idUser}/carrello/${idCarrello}`, null, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        `http://localhost/api/ordine/user/${idUser}/carrello/${idCarrello}`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 201) {
-        window.location.href = "/ordine";
+        dispatch(trovaIdOrdine(token, idUser, idCarrello));
       }
     } catch (error) {
       console.log("Errore nel postOrdine", error);
@@ -95,11 +104,14 @@ export function postOrdine(token, idUser, idCarrello) {
 export const deleteOrdine = (idOrdine, token) => {
   return async (dispatch) => {
     try {
-      const response = await axios.delete(`http://localhost/api/ordine/${idOrdine}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(
+        `http://localhost/api/ordine/${idOrdine}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.status === 200) {
         dispatch({
           type: ADD_ID_ORDINE,

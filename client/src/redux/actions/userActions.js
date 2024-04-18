@@ -124,7 +124,7 @@ export function trovaIdUser(token, username) {
   return async (dispatch) => {
     try {
       if (!token) {
-        return null;
+        return;
       }
       const response = await axios.get("http://localhost/api/user", {
         validateStatus: function (status) {
@@ -173,10 +173,10 @@ export function getUser(token, idUser) {
   };
 }
 
-export function putUser(idUser, token, input) {
+export function patchUser(idUser, token, input) {
   return async (dispatch) => {
     try {
-      const response = await axios.put(
+      const response = await axios.patch(
         `http://localhost/api/user/${idUser}`,
         input,
         {

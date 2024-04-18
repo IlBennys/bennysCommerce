@@ -1,9 +1,9 @@
 import "../assets/sass/Carrello.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { LiaCartArrowDownSolid } from "react-icons/lia";
+import Ordine from "./Ordine";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import {
   quantita,
@@ -14,6 +14,7 @@ import {
   postCarrello,
 } from "../redux/actions/carrelloActions";
 import { postOrdine } from "../redux/actions/ordiniActions";
+import { Modal } from "react-bootstrap";
 
 const Carrello = () => {
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
@@ -22,6 +23,10 @@ const Carrello = () => {
   const idUser = useSelector((state) => state.user.idUser);
   const dispatch = useDispatch();
   const articoliFiltrati = dispatch(filterArticles(carrello.articoli));
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     dispatch(getCarrelloById(idCarrello, token));
@@ -98,7 +103,10 @@ const Carrello = () => {
                 className="btn-bottom h-25"
                 disabled={carrello.articoli < 1}
                 variant="primary"
-                onClick={() => dispatch(postOrdine(token, idUser, idCarrello))}
+                onClick={() => {
+                  dispatch(postOrdine(token, idUser, idCarrello));
+                  handleShow();
+                }}
               >
                 Procedi all'ordine
               </Button>
@@ -113,6 +121,8 @@ const Carrello = () => {
           ) : null}
         </Card.Body>
       </Card>
+
+      <Ordine show={show} onHide={handleClose} />
     </>
   );
 };

@@ -16,9 +16,9 @@ $viola: #652f6f;
 
     .c-img {
       object-fit: contain;
-      padding: 1%;
+      padding: 1% !important;
       height: 15rem;
-      width: 10rem;
+      width: 10rem !important;
       background-color: rgba(44, 44, 44, 0.884);
     }
     .c-body {

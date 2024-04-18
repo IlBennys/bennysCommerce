@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bennyscommerce.auth.entity.User;
-import com.bennyscommerce.auth.repository.UserRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.stripe.exception.StripeException;
@@ -24,9 +23,6 @@ import com.stripe.exception.StripeException;
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @PostMapping("/{customerId}")
     public ResponseEntity<Map<String, String>> handlePaymentRequest(@PathVariable("customerId") String customerId) {
@@ -49,22 +45,5 @@ public class PaymentController {
 		    HttpStatus.INTERNAL_SERVER_ERROR);
 	}
     }
-
-    /*
-     * @GetMapping("/registrazione/{userId}") public ResponseEntity<String>
-     * getUserDetails(@PathVariable("userId") Long userId) {
-     * 
-     * User user = userRepository.findById(userId).orElse(null); if (user == null) {
-     * return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND); } try {
-     * String customerId = paymentService.createStripeCustomer(user.getEmail(),
-     * user.getFirstname()); if (customerId != null) { return new ResponseEntity<>(
-     * "User ID: " + userId + "\nEmail: " + user.getEmail() +
-     * "\nStripe Customer ID: " + customerId, HttpStatus.OK); } else { return new
-     * ResponseEntity<>("Stripe customer ID not found for the user",
-     * HttpStatus.NOT_FOUND); } } catch (StripeException e) { e.printStackTrace();
-     * return new
-     * ResponseEntity<>("Error retrieving user details. Please try again later.",
-     * HttpStatus.INTERNAL_SERVER_ERROR); } }
-     */
 
 }

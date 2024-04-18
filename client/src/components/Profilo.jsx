@@ -1,9 +1,8 @@
 import "../assets/sass/Profilo.scss";
 import { useEffect, useState } from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Button, Card, Container, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { USER, getUser, putUser } from "../redux/actions/userActions";
-import { RiLockPasswordFill } from "react-icons/ri";
+import { getUser, patchUser } from "../redux/actions/userActions";
 
 const Profilo = () => {
   const token = useSelector((state) => state.user.token);
@@ -13,14 +12,14 @@ const Profilo = () => {
 
   const utenteUser = {
     id: user.id,
-    firstname: "",
-    lastname: "",
+    firstname: user.firstname,
+    lastname: user.lastname,
     username: user.username,
     email: user.email,
     password: user.password,
-    dataNascita: "",
-    indirizzo: "",
-    numeroTelefono: "",
+    dataNascita: user.dataNascita,
+    indirizzo: user.indirizzo,
+    numeroTelefono: user.numeroTelefono,
     roles: user.roles,
     ordini: user.ordini,
     carrello: user.carrello,
@@ -52,27 +51,90 @@ const Profilo = () => {
 
   return (
     <>
-      <div>
-        <div className=" rounded-3 d-flex flex-column  mt-4 mb-3 bg-light w-25">
-          <p>firstname: {user.firstname}</p>
-          <p>lastname: {user.lastname}</p>
-          <p aria-disabled>username: *******</p>
-          <p>email: {user.email}</p>
-          <p>password: ******</p>
-          <p>dataNascita: {user.dataNascita}</p>
-          <p>numeroTelefono: {user.numeroTelefono}</p>
-          <p>indirizzo: {user.indirizzo}</p>
+      <Container className="divProfilo-tot d-flex flex-column align-items-center">
+        <div className="divProfilo-uno w-100 ">
+          <div className="img-copertina rounded-3 "></div>
         </div>
-        <Button onClick={handleShow}>Modifica Profilo</Button>
-      </div>
 
-      <Modal show={show} onHide={handleClose} className="modale-Profilo">
+        <Card className="card-profilo w-100 m-4">
+          <Card.Title className="d-flex align-items-center justify-content-between mt-3">
+            <span className="ms-3 fw-bolder">IL MIO PROFILO</span>
+            <Button className="me-3 btn-bottom-prof " onClick={handleShow}>
+              Modifica Profilo
+            </Button>
+          </Card.Title>
+
+          <div className="divProfilo-due rounded-3 p-3 mb-3 bg-light w-100">
+            <div class="parent">
+              <div class="div1">
+                <Form.Group>
+                  <Form.Label className="fw-bold">Nome</Form.Label>
+                  <Form.Control disabled type="text" value={user.firstname} />
+                </Form.Group>
+              </div>
+              <div class="div2">
+                <Form.Group>
+                  <Form.Label className="fw-bold">Cognome</Form.Label>
+                  <Form.Control disabled type="text" value={user.lastname} />
+                </Form.Group>
+              </div>
+              <div class="div3">
+                <Form.Group>
+                  <Form.Label className="fw-bold">Username</Form.Label>
+                  <Form.Control disabled type="text" value={user.username} />
+                </Form.Group>
+              </div>
+              <div class="div4">
+                <Form.Group>
+                  <Form.Label className="fw-bold">Email</Form.Label>
+                  <Form.Control disabled type="email" value={user.email} />
+                </Form.Group>
+              </div>
+              <div class="div5">
+                <Form.Group>
+                  <Form.Label className="fw-bold">Password</Form.Label>
+                  <Form.Control disabled type="password" value={`*******`} />
+                </Form.Group>
+              </div>
+              <div class="div6">
+                <Form.Group>
+                  <Form.Label className="fw-bold">Data di Nascita</Form.Label>
+                  <Form.Control disabled type="date" value={user.dataNascita} />
+                </Form.Group>
+              </div>
+              <div class="div7">
+                <Form.Group>
+                  <Form.Label className="fw-bold">
+                    Numero di Telefono
+                  </Form.Label>
+                  <Form.Control
+                    disabled
+                    type="text"
+                    value={user.numeroTelefono}
+                  />
+                </Form.Group>
+              </div>
+              <div class="div8">
+                <Form.Group>
+                  <Form.Label className="fw-bold">Indirizzo</Form.Label>
+                  <Form.Control disabled type="text" value={user.indirizzo} />
+                </Form.Group>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </Container>
+
+      <Modal
+        centered
+        show={show}
+        onHide={handleClose}
+        className="modale-Profilo"
+      >
         <div className=" rounded-3 d-flex flex-column  mt-4 mb-3 w-100">
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="d-flex flex-column align-items-center mb-3">
               <Form.Group
-                as={Col}
-                md="4"
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom01"
               >
@@ -88,8 +150,6 @@ const Profilo = () => {
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group
-                as={Col}
-                md="4"
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom02"
               >
@@ -105,8 +165,6 @@ const Profilo = () => {
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group
-                as={Col}
-                md="4"
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom03"
               >
@@ -122,8 +180,6 @@ const Profilo = () => {
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group
-                as={Col}
-                md="4"
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom04"
               >
@@ -139,8 +195,6 @@ const Profilo = () => {
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
               <Form.Group
-                as={Col}
-                md="4"
                 className="d-flex flex-column align-items-center"
                 controlId="validationCustom05"
               >
@@ -157,25 +211,6 @@ const Profilo = () => {
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
-              {/* <Form.Group
-                as={Col}
-                md="4"
-                className="d-flex flex-column align-items-center"
-                controlId="validationCustomEmail"
-              >
-                <Form.Label className="label text-white fw-semibold fst-italic">E-mail</Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                  <Form.Control
-                    type="email"
-                    placeholder="email"
-                    aria-describedby="inputGroupPrepend"
-                    required
-                    onChange={(e) => handleChange("email", e.target.value)}
-                  />
-                  <Form.Control.Feedback type="invalid">Inserisci la tua email.</Form.Control.Feedback>
-                </InputGroup>
-              </Form.Group> */}
             </Row>
             <Row className="my-4 d-flex flex-column align-items-center">
               <Button
@@ -183,7 +218,7 @@ const Profilo = () => {
                 variant="outline-light"
                 style={{ width: "auto" }}
                 onClick={() => {
-                  dispatch(putUser(idUser, token, input));
+                  dispatch(patchUser(idUser, token, input));
                 }}
               >
                 Salva Modifiche

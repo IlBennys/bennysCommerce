@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { registrazioneCustomer } from "../redux/actions/pagamentoActions";
 import { Button, Col, Form, InputGroup, Modal } from "react-bootstrap";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { svuotaCarrello } from "../redux/actions/carrelloActions";
 
 const Pagamento = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +13,6 @@ const Pagamento = () => {
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
   const token = useSelector((state) => state.user.token);
   const user = useSelector((state) => state.user.user);
-
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [cvv, setCvv] = useState("");
@@ -24,15 +22,33 @@ const Pagamento = () => {
   const [cardNumberTouched, setCardNumberTouched] = useState(false);
   const [expirationDateTouched, setExpirationDateTouched] = useState(false);
   const [cvvTouched, setCvvTouched] = useState(false);
-  const isFormValid =
-    cardNumberTouched &&
-    cardNumberIsValid &&
-    expirationDateTouched &&
-    expirationDateIsValid &&
-    cvvTouched &&
-    cvvIsValid;
-  const [show, setShow] = useState(false);
 
+  const [inputFields, setInputFields] = useState({
+    email: "",
+    titolare: "",
+  });
+
+  const validateValues = (inputValues) => {
+    if (
+      !inputValues.email.includes("@") ||
+      !(inputValues.email.endsWith(".com") || inputValues.email.endsWith(".it"))
+    ) {
+      return false;
+    }
+    if (inputValues.titolare.trim() === "") {
+      return false;
+    }
+    return true;
+  };
+  const isFormValid =
+    cardNumber &&
+    expirationDate &&
+    cvv &&
+    cardNumber.length === 19 &&
+    expirationDate.length === 5 &&
+    cvv.length === 3;
+
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -42,8 +58,9 @@ const Pagamento = () => {
     const isCardNumberInput = e.target.name === "cardNumber";
     const isExpirationDateInput = e.target.name === "expirationDate";
     const isCvvInput = e.target.name === "cvv";
+    const formattedInput = sanitizedInput.replace(/(\d{4})(?=\d)/g, "$1 ");
+
     if (isCardNumberInput) {
-      const formattedInput = sanitizedInput.replace(/(\d{4})(?=\d)/g, "$1 ");
       if (sanitizedInput.length <= 16) {
         setCardNumber(formattedInput);
         setCardNumberTouched(true);
@@ -51,23 +68,37 @@ const Pagamento = () => {
       }
     } else if (isExpirationDateInput) {
       if (sanitizedInput.length <= 4) {
-        const formattedInput = sanitizedInput.replace(
-          /(\d{2})(?=\d{2})/,
-          "$1/"
-        );
+        let formattedInput = sanitizedInput;
+        if (sanitizedInput.length === 1 && parseInt(sanitizedInput) > 1) {
+          formattedInput = `0${sanitizedInput}`;
+        } else if (sanitizedInput.length >= 4) {
+          formattedInput = sanitizedInput.replace(/(\d{2})(\d{0,2})/, "$1/$2");
+          const [month, year] = formattedInput.split("/");
+          const currentMonth = new Date().getMonth() + 1;
+          const currentYear = new Date().getFullYear() % 100;
+
+          if (
+            parseInt(year, 10) < currentYear ||
+            (parseInt(year, 10) === currentYear &&
+              parseInt(month, 10) < currentMonth)
+          ) {
+            alert("Errore: La carta di credito è scaduta.");
+          }
+        }
         setExpirationDate(formattedInput);
         setExpirationDateTouched(true);
-        setExpirationDateIsValid(sanitizedInput.length === 4);
+        setExpirationDateIsValid(sanitizedInput.length === 5);
       }
     } else if (isCvvInput) {
       if (/^\d+$/.test(input)) {
         if (sanitizedInput.length <= 3) {
-          setCvv(sanitizedInput);
+          setCvv(formattedInput);
           setCvvTouched(true);
           setCvvIsValid(sanitizedInput.length === 3);
         }
       }
     }
+    setInputFields({ ...inputFields, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -78,9 +109,10 @@ const Pagamento = () => {
       console.log("Pagamento completato con successo");
     } catch (error) {
       console.error("Errore durante la conferma del pagamento:", error);
-      setErrorMessage("Si Ã¨ verificato un errore imprevisto.");
+      setErrorMessage("Si è verificato un errore imprevisto.");
     }
     setIsLoading(false);
+    validateValues(inputFields);
   };
 
   return (
@@ -97,11 +129,14 @@ const Pagamento = () => {
             <Form.Label className="text-dark fw-bold fs-5 ">Email</Form.Label>
             <InputGroup hasValidation>
               <Form.Control
-                type="text"
+                type="email"
                 placeholder="Email"
                 aria-describedby="inputGroupPrepend"
-                name="Email"
+                name="email"
                 className="input"
+                value={inputFields.email}
+                onChange={handleChange}
+                required
               />
             </InputGroup>
           </Form.Group>
@@ -172,6 +207,9 @@ const Pagamento = () => {
                 aria-describedby="inputGroupPrepend"
                 name="titolare"
                 className="input"
+                value={inputFields.titolare}
+                onChange={handleChange}
+                required
               />
             </InputGroup>
           </Form.Group>
@@ -191,11 +229,12 @@ const Pagamento = () => {
               <option value="3">Spagna</option>
             </Form.Select>
           </Form.Group>
-
           <div className="col-md-10 mt-5">
             <Button
               type="submit"
-              disabled={isLoading || !isFormValid}
+              disabled={
+                isLoading || !isFormValid || !validateValues(inputFields)
+              }
               onClick={(e) => {
                 handleSubmit(e);
                 handleShow();
@@ -218,7 +257,7 @@ const Pagamento = () => {
       </div>
       <Modal show={show} onHide={handleClose} className="modal-container">
         <Modal.Header className="head-mod">
-          articolo aggiunto al carrello
+          Pagamento effettuato con successo!
           <span className="ms-1">
             <IoMdCheckmarkCircleOutline />
           </span>
