@@ -10,22 +10,7 @@ const Profilo = () => {
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
-  const utenteUser = {
-    id: user.id,
-    firstname: user.firstname,
-    lastname: user.lastname,
-    username: user.username,
-    email: user.email,
-    password: user.password,
-    dataNascita: user.dataNascita,
-    indirizzo: user.indirizzo,
-    numeroTelefono: user.numeroTelefono,
-    roles: user.roles,
-    ordini: user.ordini,
-    carrello: user.carrello,
-  };
-
-  const [input, setInput] = useState(utenteUser);
+  const [input, setInput] = useState(user);
   const [validated, setValidated] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -53,6 +38,13 @@ const Profilo = () => {
     <>
       <Container className="divProfilo-tot d-flex flex-column align-items-center">
         <div className="divProfilo-uno w-100 ">
+          <div className="text-div">
+            <h1>CIAO {user.username}!</h1>
+            <h4>
+              Questo è il tuo profilo. <br /> Puoi modificare le tue
+              informazioni.
+            </h4>
+          </div>
           <div className="img-copertina rounded-3 "></div>
         </div>
 
@@ -65,44 +57,68 @@ const Profilo = () => {
           </Card.Title>
 
           <div className="divProfilo-due rounded-3 p-3 mb-3 bg-light w-100">
-            <div class="parent">
-              <div class="div1">
+            <div className="parent">
+              <div className="div1">
                 <Form.Group>
                   <Form.Label className="fw-bold">Nome</Form.Label>
-                  <Form.Control disabled type="text" value={user.firstname} />
+                  <Form.Control
+                    disabled
+                    type="text"
+                    value={user.firstname || ""}
+                  />
                 </Form.Group>
               </div>
-              <div class="div2">
+              <div className="div2">
                 <Form.Group>
                   <Form.Label className="fw-bold">Cognome</Form.Label>
-                  <Form.Control disabled type="text" value={user.lastname} />
+                  <Form.Control
+                    disabled
+                    type="text"
+                    value={user.lastname || ""}
+                  />
                 </Form.Group>
               </div>
-              <div class="div3">
+              <div className="div3">
                 <Form.Group>
                   <Form.Label className="fw-bold">Username</Form.Label>
-                  <Form.Control disabled type="text" value={user.username} />
+                  <Form.Control
+                    disabled
+                    type="text"
+                    value={user.username || ""}
+                  />
                 </Form.Group>
               </div>
-              <div class="div4">
+              <div className="div4">
                 <Form.Group>
                   <Form.Label className="fw-bold">Email</Form.Label>
-                  <Form.Control disabled type="email" value={user.email} />
+                  <Form.Control
+                    disabled
+                    type="email"
+                    value={user.email || ""}
+                  />
                 </Form.Group>
               </div>
-              <div class="div5">
+              <div className="div5">
                 <Form.Group>
                   <Form.Label className="fw-bold">Password</Form.Label>
-                  <Form.Control disabled type="password" value={`*******`} />
+                  <Form.Control
+                    disabled
+                    type="password"
+                    value={"******" || ""}
+                  />
                 </Form.Group>
               </div>
-              <div class="div6">
+              <div className="div6">
                 <Form.Group>
                   <Form.Label className="fw-bold">Data di Nascita</Form.Label>
-                  <Form.Control disabled type="date" value={user.dataNascita} />
+                  <Form.Control
+                    disabled
+                    type="date"
+                    value={user.dataNascita || ""}
+                  />
                 </Form.Group>
               </div>
-              <div class="div7">
+              <div className="div7">
                 <Form.Group>
                   <Form.Label className="fw-bold">
                     Numero di Telefono
@@ -110,14 +126,18 @@ const Profilo = () => {
                   <Form.Control
                     disabled
                     type="text"
-                    value={user.numeroTelefono}
+                    value={user.numeroTelefono || ""}
                   />
                 </Form.Group>
               </div>
-              <div class="div8">
+              <div className="div8">
                 <Form.Group>
                   <Form.Label className="fw-bold">Indirizzo</Form.Label>
-                  <Form.Control disabled type="text" value={user.indirizzo} />
+                  <Form.Control
+                    disabled
+                    type="text"
+                    value={user.indirizzo || ""}
+                  />
                 </Form.Group>
               </div>
             </div>
@@ -219,6 +239,7 @@ const Profilo = () => {
                 style={{ width: "auto" }}
                 onClick={() => {
                   dispatch(patchUser(idUser, token, input));
+                  handleClose();
                 }}
               >
                 Salva Modifiche

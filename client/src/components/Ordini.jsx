@@ -30,10 +30,10 @@ const Ordini = () => {
             let totaleOrdineCorrente = 0;
             return (
               <div key={ordine.id}>
-                <h3 className="ordine-title">
-                  Ordine #{ordine.id} del {ordine.dataOrdine}
-                </h3>
                 <div className="div-table p-1 rounded-3 mb-5">
+                  <h4 className="ordine-title">
+                    Ordine #{ordine.id} del {ordine.dataOrdine}
+                  </h4>
                   <Table className="table-ordini" hover responsive>
                     <thead>
                       <tr className="riga-col text-center">
@@ -76,8 +76,11 @@ const Ordini = () => {
                       })}
 
                       <tr className="tot-ordine text-center">
-                        <td colSpan="4"></td>
-                        <td className="fw-bold text-danger text-decoration-underline">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td className="fw-bold totaleOrdineCorrente text-decoration-underline">
                           Totale dell'ordine: {totaleOrdineCorrente.toFixed(2)}€{" "}
                           Spedizione: 2.99€ ={" "}
                           {(
@@ -86,6 +89,9 @@ const Ordini = () => {
                           ).toFixed(2)}
                           €
                         </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                     </tbody>
                   </Table>

@@ -28,6 +28,24 @@ $viola: #652f6f;
 }
 
 .divProfilo-tot {
+  .divProfilo-uno {
+    position: relative;
+    .text-div {
+      position: absolute;
+      top: 80px;
+      left: 49px;
+
+      h1,
+      h4 {
+        text-transform: uppercase;
+        color: white;
+        font-weight: bolder;
+      }
+      h4 {
+        font-style: italic;
+      }
+    }
+  }
   .img-copertina {
     max-width: 100%;
     height: 400px;

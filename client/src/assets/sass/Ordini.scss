@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Seymour+One&display=swap");
+$viola: #652f6f;
 
 .ordine-title {
   font-family: "Seymour One", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: red;
+  color: $viola;
+}
+.totaleOrdineCorrente {
+  color: $viola !important;
 }
 .div-noArt {
   font-family: "Seymour One", sans-serif;
@@ -12,21 +16,33 @@
   font-style: normal;
 }
 .div-table {
-  background-color: whitesmoke;
+  background-color: #f5f5f582;
+  scrollbar-color: #652f6f #232e33;
+  scrollbar-width: var(--sb-size);
+
   .table-ordini {
-    background-color: whitesmoke;
+    background-color: transparent;
+    color: whitesmoke;
+    font-weight: 600;
+    border: none;
     thead {
       .riga-col > th {
-        background-color: whitesmoke;
+        background-color: transparent;
+        color: whitesmoke;
+        font-weight: 900;
         text-wrap: nowrap;
       }
     }
     .riga-body > tr > td {
-      background-color: whitesmoke;
+      background-color: transparent;
+      color: whitesmoke;
+      font-weight: 600;
+      border: none;
     }
   }
   .tot-ordine {
     text-wrap: nowrap;
     font-size: x-large;
+    border-top: 1px solid white;
   }
 }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getArticoli,
   getArticoliByPage,
+  getArticoliByPrezzo,
   svuotaArticoli,
 } from "../redux/actions/articoliActions";
 import {
@@ -14,33 +15,106 @@ import {
   Container,
   Row,
   Modal,
+  Form,
 } from "react-bootstrap";
 import cart from "../assets/img/shopping-cart.png";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { postCarrello } from "../redux/actions/carrelloActions";
+import Slider from "react-slider";
 
 const Articoli = () => {
   const articolo = useSelector((state) => state.articolo.articoli);
   const pageArticoli = useSelector((state) => state.articolo.paginaArticoli);
+  const rangePrezzoArticoli = useSelector(
+    (state) => state.articolo.rangePrezzoArticoli
+  );
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
   const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
+
   const [isOnline, setIsOnline] = useState(false);
   const [show, setShow] = useState(false);
+  const [filtroRicerca, setFiltroRicerca] = useState(undefined);
+  const [filtroPrezzoRicerca, setFiltroPrezzoRicerca] = useState(undefined);
+  const [filtroRicercaPrezzo, setFiltroRicercaPrezzo] = useState(undefined);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const svuotaInput = () => {
+    document.getElementById("mioInput").value = "";
+  };
+
+  const prezzi = articolo.map((articolo) => articolo.prezzo);
+  const min = 0;
+  const max = Math.max(...prezzi).toFixed();
+  const [values, setValues] = useState([min, max]);
+
+  const cerca = (ev) => {
+    if (ev !== "") {
+      setFiltroRicerca(
+        articolo.filter(
+          (art) =>
+            art.nomeArticolo.toLowerCase().startsWith(ev.toLowerCase()) ||
+            art.brand.toLowerCase().startsWith(ev.toLowerCase()) ||
+            art.descrizioneArticolo.toLowerCase().includes(ev.toLowerCase())
+        )
+      );
+      setFiltroPrezzoRicerca(
+        rangePrezzoArticoli.filter(
+          (art) =>
+            art.nomeArticolo.toLowerCase().startsWith(ev.toLowerCase()) ||
+            art.brand.toLowerCase().startsWith(ev.toLowerCase()) ||
+            art.descrizioneArticolo.toLowerCase().includes(ev.toLowerCase())
+        )
+      );
+      if (filtroRicerca !== undefined) {
+        const arrayPrezzo = rangePrezzoArticoli.map((e) => e.prezzo);
+        console.log(rangePrezzoArticoli, "arrayPrezzo");
+        setFiltroRicercaPrezzo(
+          filtroRicerca.filter((art) => arrayPrezzo.includes(art.prezzo))
+        );
+        console.log(
+          "oooooooooooo",
+          filtroRicerca.filter((art) => arrayPrezzo.includes(art.prezzo))
+        );
+      }
+    } else {
+      setFiltroRicerca(undefined);
+      setFiltroPrezzoRicerca(undefined);
+      setFiltroRicercaPrezzo(undefined);
+    }
+  };
+  console.log(filtroRicercaPrezzo);
 
   useEffect(() => {
     dispatch(getArticoli()).then(() => setIsOnline(true));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(getArticoliByPrezzo(min, max));
   }, []);
+
   return (
     <>
       {articolo ? (
         <Container>
           <Row>
             <Col md={3}>
-              <div className="div-col3 ">
+              <div className="div-col3">
+                <div className="box">
+                  <h3>
+                    Prezzo <span>Range</span>
+                  </h3>
+                  <div className="values">
+                    {values[0]} € - {values[1]} €
+                  </div>
+                  <Slider
+                    className="slider mt-5"
+                    value={values}
+                    min={min}
+                    max={max}
+                    onChange={(e) => {
+                      setValues(e || min, e || max);
+                      dispatch(getArticoliByPrezzo(values[0], values[1]));
+                    }}
+                  />
+                </div>
                 <h2 className="text-white">Accessori PC</h2>
                 <div className="div-btn mb-2">
                   <Button
@@ -102,7 +176,6 @@ const Articoli = () => {
                           <div className="invi rounded-3 text-white">
                             <p> {e.descrizioneArticolo}</p>
                           </div>
-
                           <h6 className="badge-h6">
                             <Badge>Promo</Badge>
                           </h6>
@@ -136,51 +209,207 @@ const Articoli = () => {
                     );
                   })
                 ) : (
-                  articolo.map((e) => {
-                    return (
-                      <>
-                        <Card key={e.id} className="m-1 card-main">
-                          <Card.Img
-                            variant="top"
-                            className="img-card rounded-3 h-50"
-                            src={e.img}
-                          />
-                          <div className="invi rounded-3 text-white">
-                            <p> {e.descrizioneArticolo}</p>
-                          </div>
+                  <>
+                    <div className="control ms-4 mb-4 ">
+                      <Form.Control
+                        onChange={(e) => cerca(e.target.value)}
+                        type="text"
+                        id="mioInput"
+                        onKeyUpCapture={(e) => {
+                          if (e.key === "Enter") {
+                            svuotaInput();
+                          }
+                        }}
+                        placeholder="Cerca il tuo Prodotto           🔎"
+                        className="barraRicerca "
+                      />
+                    </div>
+                    {filtroRicerca !== undefined &&
+                    values[0] === min &&
+                    values[1] === max
+                      ? filtroRicerca.map((e) => {
+                          return (
+                            <>
+                              <Card key={e.id} className="m-1 card-main">
+                                <Card.Img
+                                  variant="top"
+                                  className="img-card rounded-3 h-50"
+                                  src={e.img}
+                                />
+                                <div className="invi rounded-3 text-white">
+                                  <p> {e.descrizioneArticolo}</p>
+                                </div>
+                                <h6 className="badge-h6">
+                                  <Badge>Promo</Badge>
+                                </h6>
+                                {token !== "" ? (
+                                  <div
+                                    title="Aggiungi al carrello"
+                                    onClick={() =>
+                                      dispatch(
+                                        postCarrello(idCarrello, e.id, token),
+                                        handleShow()
+                                      )
+                                    }
+                                    className="carrello-btn rounded-2"
+                                  >
+                                    <img src={cart} alt="" />
+                                  </div>
+                                ) : (
+                                  <div></div>
+                                )}
+                                <Card.Body className="body-card-main">
+                                  <Card.Title className="titolo-card text-start">
+                                    {e.nomeArticolo}
+                                  </Card.Title>
+                                  <Card.Text className="text-brand text-start">
+                                    Brand: {e.brand}
+                                  </Card.Text>
+                                  <Card.Text>{e.prezzo}€</Card.Text>
+                                </Card.Body>
+                              </Card>
+                            </>
+                          );
+                        })
+                      : filtroPrezzoRicerca === undefined &&
+                        (values[0] === min || values[0] !== min) &&
+                        (values[1] === max || values[1] !== max)
+                      ? rangePrezzoArticoli.map((e) => {
+                          return (
+                            <>
+                              <Card key={e.id} className="m-1 card-main">
+                                <Card.Img
+                                  variant="top"
+                                  className="img-card rounded-3 h-50"
+                                  src={e.img}
+                                />
+                                <div className="invi rounded-3 text-white">
+                                  <p> {e.descrizioneArticolo}</p>
+                                </div>
+                                <h6 className="badge-h6">
+                                  <Badge>Promo</Badge>
+                                </h6>
+                                {token !== "" ? (
+                                  <div
+                                    title="Aggiungi al carrello"
+                                    onClick={() =>
+                                      dispatch(
+                                        postCarrello(idCarrello, e.id, token),
+                                        handleShow()
+                                      )
+                                    }
+                                    className="carrello-btn rounded-2"
+                                  >
+                                    <img src={cart} alt="" />
+                                  </div>
+                                ) : (
+                                  <div></div>
+                                )}
+                                <Card.Body className="body-card-main">
+                                  <Card.Title className="titolo-card text-start">
+                                    {e.nomeArticolo}
+                                  </Card.Title>
+                                  <Card.Text className="text-brand text-start">
+                                    Brand: {e.brand}
+                                  </Card.Text>
+                                  <Card.Text>{e.prezzo}€</Card.Text>
+                                </Card.Body>
+                              </Card>
+                            </>
+                          );
+                        })
+                      : filtroPrezzoRicerca !== undefined
+                      ? filtroPrezzoRicerca.map((e) => {
+                          return (
+                            <>
+                              <Card key={e.id} className="m-1 card-main">
+                                <Card.Img
+                                  variant="top"
+                                  className="img-card rounded-3 h-50"
+                                  src={e.img}
+                                />
+                                <div className="invi rounded-3 text-white">
+                                  <p> {e.descrizioneArticolo}</p>
+                                </div>
 
-                          <h6 className="badge-h6">
-                            <Badge>Promo</Badge>
-                          </h6>
-                          {token !== "" ? (
-                            <div
-                              title="Aggiungi al carrello"
-                              onClick={() =>
-                                dispatch(
-                                  postCarrello(idCarrello, e.id, token),
-                                  handleShow()
-                                )
-                              }
-                              className="carrello-btn rounded-2"
-                            >
-                              <img src={cart} alt="" />
-                            </div>
-                          ) : (
-                            <div></div>
-                          )}
-                          <Card.Body className="body-card-main">
-                            <Card.Title className="titolo-card text-start">
-                              {e.nomeArticolo}
-                            </Card.Title>
-                            <Card.Text className="text-brand text-start">
-                              Brand: {e.brand}
-                            </Card.Text>
-                            <Card.Text>{e.prezzo}€</Card.Text>
-                          </Card.Body>
-                        </Card>
-                      </>
-                    );
-                  })
+                                <h6 className="badge-h6">
+                                  <Badge>Promo</Badge>
+                                </h6>
+                                {token !== "" ? (
+                                  <div
+                                    title="Aggiungi al carrello"
+                                    onClick={() =>
+                                      dispatch(
+                                        postCarrello(idCarrello, e.id, token),
+                                        handleShow()
+                                      )
+                                    }
+                                    className="carrello-btn rounded-2"
+                                  >
+                                    <img src={cart} alt="" />
+                                  </div>
+                                ) : (
+                                  <div></div>
+                                )}
+                                <Card.Body className="body-card-main">
+                                  <Card.Title className="titolo-card text-start">
+                                    {e.nomeArticolo}
+                                  </Card.Title>
+                                  <Card.Text className="text-brand text-start">
+                                    Brand: {e.brand}
+                                  </Card.Text>
+                                  <Card.Text>{e.prezzo}€</Card.Text>
+                                </Card.Body>
+                              </Card>
+                            </>
+                          );
+                        })
+                      : filtroRicercaPrezzo.map((e) => {
+                          return (
+                            <>
+                              <Card key={e.id} className="m-1 card-main">
+                                <Card.Img
+                                  variant="top"
+                                  className="img-card rounded-3 h-50"
+                                  src={e.img}
+                                />
+                                <div className="invi rounded-3 text-white">
+                                  <p> {e.descrizioneArticolo}</p>
+                                </div>
+
+                                <h6 className="badge-h6">
+                                  <Badge>Promo</Badge>
+                                </h6>
+                                {token !== "" ? (
+                                  <div
+                                    title="Aggiungi al carrello"
+                                    onClick={() =>
+                                      dispatch(
+                                        postCarrello(idCarrello, e.id, token),
+                                        handleShow()
+                                      )
+                                    }
+                                    className="carrello-btn rounded-2"
+                                  >
+                                    <img src={cart} alt="" />
+                                  </div>
+                                ) : (
+                                  <div></div>
+                                )}
+                                <Card.Body className="body-card-main">
+                                  <Card.Title className="titolo-card text-start">
+                                    {e.nomeArticolo}
+                                  </Card.Title>
+                                  <Card.Text className="text-brand text-start">
+                                    Brand: {e.brand}
+                                  </Card.Text>
+                                  <Card.Text>{e.prezzo}€</Card.Text>
+                                </Card.Body>
+                              </Card>
+                            </>
+                          );
+                        })}
+                  </>
                 )}
               </Row>
             </Col>

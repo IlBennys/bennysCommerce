@@ -43,6 +43,10 @@ export const getArticoliByPrezzo = (s1, s2) => {
       if (response.status === 200) {
         dispatch({
           type: RANGEPREZZOARTICOLI,
+          payload: [],
+        });
+        dispatch({
+          type: RANGEPREZZOARTICOLI,
           payload: response.data,
         });
       }

@@ -119,14 +119,14 @@ const Pagamento = () => {
     <>
       <div className="d-flex align-items-center justify-content-center m-5 p-2">
         <Form id="payment-form" onSubmit={handleSubmit}>
-          <h3 className="text-dark fw-bolder">Paga con Carta</h3>
+          <h3 className="text-light fw-bolder">Paga con Carta</h3>
           <Form.Group
             className="mt-2"
             as={Col}
             md="10"
             controlId="validationFormikUsername"
           >
-            <Form.Label className="text-dark fw-bold fs-5 ">Email</Form.Label>
+            <Form.Label className="text-light fw-bold fs-5 ">Email</Form.Label>
             <InputGroup hasValidation>
               <Form.Control
                 type="email"
@@ -146,7 +146,7 @@ const Pagamento = () => {
             controlId="validationFormikUsername"
             className="d-flex flex-column mt-2"
           >
-            <Form.Label className="text-dark fw-bold fs-5 ">
+            <Form.Label className="text-light fw-bold fs-5 ">
               Dati della carta
             </Form.Label>
             <div className="divCartaUno">
@@ -197,7 +197,7 @@ const Pagamento = () => {
             md="10"
             controlId="validationFormikUsername"
           >
-            <Form.Label className="text-dark fw-bold fs-5 ">
+            <Form.Label className="text-light fw-bold fs-5 ">
               Nome titolare
             </Form.Label>
             <InputGroup hasValidation>
@@ -219,7 +219,7 @@ const Pagamento = () => {
             md="10"
             controlId="validationFormikUsername"
           >
-            <Form.Label className="text-dark fw-bold fs-5 ">
+            <Form.Label className="text-light fw-bold fs-5 ">
               Paese o regione
             </Form.Label>
             <Form.Select aria-label="Default select example" className="input">
@@ -239,7 +239,7 @@ const Pagamento = () => {
                 handleSubmit(e);
                 handleShow();
               }}
-              className="w-100"
+              className="w-100 btn-bottom-card"
             >
               <div
                 className={`spinner ${isLoading ? "" : "hidden"}`}
