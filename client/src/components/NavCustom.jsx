@@ -17,7 +17,7 @@ import { FaRegQuestionCircle, FaUserCircle } from "react-icons/fa";
 import { BsBagHeartFill } from "react-icons/bs";
 import { TbLogout, TbLogin2 } from "react-icons/tb";
 import { FaUserPen } from "react-icons/fa6";
-const NavCustom = ({ white_Mode }) => {
+const NavCustom = ({ white_Mode, light }) => {
   const token = useSelector((state) => state.user.token);
   const username = useSelector((state) => state.user.username);
   const carrello = useSelector((state) => state.carrello.carrello);
@@ -46,7 +46,7 @@ const NavCustom = ({ white_Mode }) => {
                 variant="light"
                 className="fs-bold"
               >
-                Light mode
+                {light ? "Dark mode" : "Light mode"}
               </Button>
             </Nav>
             <Nav>

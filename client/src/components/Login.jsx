@@ -1,10 +1,11 @@
+import "../assets/sass/Login.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
 import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import { RiLockPasswordFill } from "react-icons/ri";
 
-const Login = () => {
+const Login = ({ light }) => {
   const user = {
     username: "",
     password: "",
@@ -29,65 +30,48 @@ const Login = () => {
 
   return (
     <>
-      <Container id="contenitore">
-        <div className="MIX rounded-3 d-flex flex-column  mt-4 mb-3">
-          <div className="d-flex flex-column align-items-center mt-4 "></div>
-
-          <Form
-            className="mt-3"
-            noValidate
-            validated={validated}
-            onSubmit={handleSubmit}
-          >
-            <Row className="d-flex flex-column align-items-center mb-3">
-              <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                <Form.Label className="text-white label fw-semibold fst-italic">
+      <Container className="contenitore mt-5">
+        <div className="parent">
+          <div className="div1 rounded-3"> </div>
+          <div className="div2 rounded-3">
+            <Form
+              className="mt-3 p-3"
+              noValidate
+              validated={validated}
+              onSubmit={handleSubmit}
+            >
+              <Form.Group className="mb-3" controlId="formGroupEmail">
+                <Form.Label
+                  className={`text-center ${light ? "nero" : "bianco"}`}
+                >
                   Username
                 </Form.Label>
-                <InputGroup hasValidation>
-                  <Form.Control
-                    className="coloreRegister"
-                    type="text"
-                    placeholder="Username"
-                    aria-describedby="inputGroupPrepend2"
-                    required
-                    onChange={(e) => handleChange("username", e.target.value)}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a username.
-                  </Form.Control.Feedback>
-                </InputGroup>
+                <Form.Control
+                  autoComplete="on"
+                  onChange={(e) => handleChange("username", e.target.value)}
+                  type="text"
+                  placeholder="Enter username"
+                />
               </Form.Group>
-
-              <Form.Group as={Col} md="4" controlId="validationCustomPassword">
-                <Form.Label className="text-white label fw-semibold fst-italic">
+              <Form.Group className="mb-3" controlId="formGroupPassword">
+                <Form.Label className={light ? "nero" : "bianco"}>
                   Password
                 </Form.Label>
-                <InputGroup hasValidation>
-                  <InputGroup.Text id="inputGroupPrepend3">
-                    <RiLockPasswordFill />
-                  </InputGroup.Text>
-                  <Form.Control
-                    className="coloreRegister"
-                    type="password"
-                    placeholder="Password"
-                    aria-describedby="inputGroupPrepend3"
-                    required
-                    onChange={(e) => handleChange("password", e.target.value)}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    Please choose a password.
-                  </Form.Control.Feedback>
-                </InputGroup>
+                <Form.Control
+                  autoComplete="on"
+                  onChange={(e) => handleChange("password", e.target.value)}
+                  type="password"
+                  placeholder="Password"
+                />
+                <p className="text-white fst-italic fw-semibold d-flex flex-column align-items-center mt-3 ">
+                  Non sei ancora regitsrato?
+                  <a href="/Register" id="collegamento" className="d-flex">
+                    clicca qui per farlo!
+                  </a>
+                </p>
               </Form.Group>
-              <p className="text-white fst-italic fw-semibold d-flex flex-column align-items-center mt-3 ">
-                Non sei ancora regitsrato?
-                <a href="/Register" id="collegamento" className="d-flex">
-                  clicca qui per farlo!
-                </a>
-              </p>
-            </Row>
-            <Row className="my-4 d-flex flex-column align-items-center">
+            </Form>
+            <div className="text-center">
               <Button
                 id="coloreRegister"
                 variant="outline-light"
@@ -99,8 +83,8 @@ const Login = () => {
               >
                 LOGIN
               </Button>
-            </Row>
-          </Form>
+            </div>
+          </div>
         </div>
       </Container>
     </>

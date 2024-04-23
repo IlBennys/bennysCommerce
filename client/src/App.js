@@ -33,13 +33,13 @@ function App() {
   //const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
   return (
     <BrowserRouter>
-      <NavCustom white_Mode={white_Mode} />
+      <NavCustom white_Mode={white_Mode} light={light} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/articoli" element={<Articoli light={light} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login light={light} />} />
+        <Route path="/register" element={<Register light={light} />} />
         <Route path="/profilo" element={<Profilo />} />
         <Route path="/ordine" element={<Ordine />} />
         <Route path="/ordini" element={<Ordini />} />

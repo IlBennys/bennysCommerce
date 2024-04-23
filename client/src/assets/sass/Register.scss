@@ -1,0 +1,56 @@
+.contenitor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .parente {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .div-1 {
+      background-image: url("../img/copertina-profilo.jpg");
+      background-position: center;
+      background-size: cover;
+      height: 855px;
+      width: 100vh;
+    }
+
+    .div-2 {
+      height: auto;
+      width: 100vh;
+      align-content: center;
+      background-color: rgb(172 106 198 / 43%);
+      padding: 3%;
+    }
+  }
+}
+
+.nero {
+  color: black;
+}
+
+.bianco {
+  color: whitesmoke;
+}
+
+@media screen and (max-width: 1024px) {
+  .contenitor {
+    margin: 10%;
+    .parente {
+      margin: 5%;
+      flex-direction: column;
+      .div-1 {
+        height: 40vh;
+        width: 50vh;
+      }
+
+      .div-2 {
+        height: auto;
+        width: 50vh;
+      }
+    }
+  }
+}
