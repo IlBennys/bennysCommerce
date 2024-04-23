@@ -303,7 +303,7 @@ public class CommerceConfiguration {
 	return Articoli.builder().prezzo(fake.number().randomDouble(2, 100, 200)).nomeArticolo("Keyboard").img(
 		"https://cdn.discordapp.com/attachments/1062713292226830409/1222593606364168192/T6-removebg-preview.png?ex=6616c806&is=66045306&hm=9e19ee936d4dcb217faa2183287d1e1b0c35d91e111117079d4d6eebea104f50&")
 		.descrizioneArticolo(
-			"STREAK65 LP Blanca | Tastiera Meccanica da Gioco a Basso Profilo, Copritasti PBT Doubleshot Speed Switch Fnatic, Layout 65% (60 65 percento) Tastiera Esports RGB compatta (ISO, QWERTY) ")
+			"STREAK65 LP | Tastiera Meccanica da Gioco a Basso Profilo, Copritasti PBT Doubleshot Speed Switch Fnatic, Layout 65% (60 65 percento) Tastiera Esports RGB compatta (ISO, QWERTY) - Bianca")
 		.brand("FNATIC").build();
     }
 

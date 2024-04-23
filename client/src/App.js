@@ -10,23 +10,34 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Profilo from "./components/Profilo";
 import Ordine from "./components/Ordine";
-import Pagamento from "./components/Pagamento";
 import Carrello from "./components/Carrello";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Ordini from "./components/Ordini";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+// import Pagamento from "./components/Pagamento";
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
+import { useState } from "react";
 
 function App() {
-  const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
+  const [light, setLight] = useState(false);
+  const white_Mode = () => {
+    setLight(!light);
+
+    if (light) {
+      document.body.classList.remove("light-mode");
+    } else {
+      document.body.classList.add("light-mode");
+    }
+  };
+  //const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
   return (
     <BrowserRouter>
-      <NavCustom />
+      <NavCustom white_Mode={white_Mode} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/*" element={<PageNotFound />} />
-        <Route path="/articoli" element={<Articoli />} />
+        <Route path="/articoli" element={<Articoli light={light} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profilo" element={<Profilo />} />
@@ -34,11 +45,11 @@ function App() {
         <Route path="/ordini" element={<Ordini />} />
         <Route
           path="/pagamento"
-          element={
-            <Elements stripe={stripePromise}>
-              <Pagamento />
-            </Elements>
-          }
+          // element={
+          //   <Elements stripe={stripePromise}>
+          //     <Pagamento />
+          //   </Elements>
+          // }
         />
         <Route path="/carrello" element={<Carrello />} />
         <Route path="/footer" element={<Footer />} />

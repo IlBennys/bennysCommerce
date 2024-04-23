@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 $viola: #652f6f;
-
+.light-mode body {
+  background-image: url("../img/bg_white.png");
+}
 .nav-main {
   background: #000000c4;
   position: sticky;

@@ -56,24 +56,6 @@ export const getArticoliByPrezzo = (s1, s2) => {
   };
 };
 
-export const getArticoliByName = (name) => {
-  return async (dispatch) => {
-    try {
-      const response = await axios.get(
-        `http://localhost/api/articolo/name/${name}`
-      );
-      if (response.status === 200) {
-        dispatch({
-          type: NOMEARTICOLI,
-          payload: response.data,
-        });
-      }
-    } catch (error) {
-      console.log("errore nel getArticoliByName", error);
-    }
-  };
-};
-
 export const getArticoliByPage = (pageNum, pageSize) => {
   return async (dispatch) => {
     try {
