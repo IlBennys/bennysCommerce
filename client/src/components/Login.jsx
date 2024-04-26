@@ -63,7 +63,11 @@ const Login = ({ light }) => {
                   type="password"
                   placeholder="Password"
                 />
-                <p className="text-white fst-italic fw-semibold d-flex flex-column align-items-center mt-3 ">
+                <p
+                  className={`${
+                    light ? "nero" : "bianco"
+                  } fst-italic fw-semibold d-flex flex-column align-items-center mt-3`}
+                >
                   Non sei ancora regitsrato?
                   <a href="/Register" id="collegamento" className="d-flex">
                     clicca qui per farlo!

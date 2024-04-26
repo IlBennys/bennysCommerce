@@ -16,7 +16,7 @@ import {
 import { postOrdine } from "../redux/actions/ordiniActions";
 import { Modal } from "react-bootstrap";
 
-const Carrello = () => {
+const Carrello = ({ light }) => {
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
   const carrello = useSelector((state) => state.carrello.carrello);
   const token = useSelector((state) => state.user.token);
@@ -40,7 +40,7 @@ const Carrello = () => {
           {carrello.articoli < 1 ? (
             <div className="div-noArt d-flex align-items-center justify-content-center">
               <span className="load me-5"></span>
-              <span className="text-white fs-1">
+              <span className={`fs-1 ${light ? "nero" : "bianco"}`}>
                 Nessun Aticolo Nel Carrello
               </span>
               <span className="load ms-5"></span>

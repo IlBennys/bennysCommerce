@@ -29,7 +29,7 @@ export function registrazioneUser(input) {
         alert("Email o Password errati");
       }
     } catch (error) {
-      alert("testComment", error);
+      alert("REGISTRAZIONE FALLITA! \nCOMPILA IN MODO CORRETTO OGNI CAMPO!");
     }
   };
 }
@@ -62,7 +62,7 @@ export function loginUser(input) {
         alert("Email o Password errati");
       }
     } catch (error) {
-      console.log("Errore registrazione user!", error);
+      alert("Email o Password errati");
     }
   };
 }

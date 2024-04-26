@@ -39,7 +39,7 @@ const Articoli = ({ light }) => {
   const [filtroRicerca, setFiltroRicerca] = useState(undefined);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [showA, setShowA] = useState(true);
+  const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
 
   const prezzi = articolo.map((articolo) => articolo.prezzo);

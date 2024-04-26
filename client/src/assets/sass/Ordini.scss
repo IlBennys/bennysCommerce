@@ -20,22 +20,25 @@ $viola: #652f6f;
   scrollbar-color: #652f6f #232e33;
   scrollbar-width: var(--sb-size);
 
+  .bianco {
+    color: whitesmoke;
+  }
+  .nero {
+    color: black;
+  }
   .table-ordini {
     background-color: transparent;
-    color: whitesmoke;
     font-weight: 600;
     border: none;
     thead {
       .riga-col > th {
         background-color: transparent;
-        color: whitesmoke;
         font-weight: 900;
         text-wrap: nowrap;
       }
     }
     .riga-body > tr > td {
       background-color: transparent;
-      color: whitesmoke;
       font-weight: 600;
       border: none;
     }

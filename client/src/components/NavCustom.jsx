@@ -25,6 +25,10 @@ const NavCustom = ({ white_Mode, light }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const btn = document.getElementById("btn-white");
+    btn.classList.toggle("btn-dark-mode", light);
+  }, [light]);
+  useEffect(() => {
     dispatch(trovaIdUser(token, username));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

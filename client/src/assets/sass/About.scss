@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+
+.div-pic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  padding: 3%;
+  p {
+    font-family: "Play", sans-serif;
+    font-weight: 500;
+    font-style: oblique;
+    font-size: 20px;
+  }
+  img {
+    border: 2px solid white;
+    box-shadow: 0px 0px 20px 2px white;
+  }
+  .img-uno,
+  .para-due {
+    animation: slideToRight 1.7s ease-out;
+  }
+  .para-uno,
+  .img-due {
+    animation: slideToLeft 1.7s ease-out;
+  }
+}
+@keyframes slideToRight {
+  0% {
+    transform: translate(-100%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes slideToLeft {
+  0% {
+    transform: translate(100%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.mainCard {
+  border: 1px solid white;
+  box-shadow: 0px 0px 40px 2px red;
+  .titoloCard {
+    font-family: "Play", sans-serif;
+    font-weight: bolder;
+  }
+  .imgCard {
+    width: 300px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  .titoloBtn {
+    font-family: "Play", sans-serif;
+    margin-bottom: 5px;
+  }
+}
+
+.titolo-barra {
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  animation: flicker 1s ease-in-out infinite alternate;
+}
+@keyframes flicker {
+  0% {
+    opacity: 0.5;
+    text-shadow: 2px 2px 10px blueviolet;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 2px 2px 20px blueviolet;
+  }
+}
+.div-btn-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  .btn-uno {
+    width: 100px;
+    align-content: center;
+    height: 50px;
+    border: 1px solid white;
+  }
+  .btn-due {
+    width: 100px;
+    align-content: center;
+    height: 50px;
+    color: #0077b0;
+    background-color: transparent;
+  }
+  .btn-tre {
+    width: 100px;
+    align-content: center;
+    height: 50px;
+    background-color: transparent;
+    border: 1px solid red;
+    font-family: "Play", sans-serif;
+    font-weight: bold;
+  }
+  .btn-tre:active {
+    background-color: red;
+    border-color: white;
+  }
+}
+.barra-cod {
+  height: 80px;
+  background-color: whitesmoke;
+  border: 5px double black;
+  p {
+    margin: 0;
+    filter: drop-shadow(-15px 8px 3px grey);
+  }
+  & > p:nth-child(6) {
+    font-size: 35px;
+    svg {
+      height: 32pc;
+    }
+
+    color: #dd0031;
+  }
+  & > p:nth-child(9) {
+    font-size: 35px;
+    svg {
+      height: 32pc;
+    }
+    color: #77bc1f;
+  }
+}
+
+.div-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.bianco {
+  color: whitesmoke;
+}
+.nero {
+  color: black;
+}
+
+@media screen and (max-width: 1000px) {
+  .div-pic {
+    display: block;
+    img {
+      width: 300px !important;
+    }
+  }
+  .div-card {
+    flex-direction: column !important;
+  }
+}
+
+.animate-1 {
+  animation: scroll1 1.7s ease-out alternate;
+}
+
+@keyframes scroll1 {
+  0% {
+    transform: translate(-150%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+.animate-2 {
+  animation: scroll2 1.7s ease-out alternate;
+}
+@keyframes scroll2 {
+  0% {
+    transform: translate(150%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}

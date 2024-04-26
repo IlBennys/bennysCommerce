@@ -14,23 +14,27 @@ import Carrello from "./components/Carrello";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Ordini from "./components/Ordini";
-// import Pagamento from "./components/Pagamento";
-// import { Elements } from "@stripe/react-stripe-js";
-// import { loadStripe } from "@stripe/stripe-js";
-import { useState } from "react";
+import Pagamento from "./components/Pagamento";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [light, setLight] = useState(false);
+  const [light, setLight] = useState(() => {
+    const theme = localStorage.getItem("theme-light");
+    return theme ? JSON.parse(theme) : false;
+  });
+
   const white_Mode = () => {
     setLight(!light);
-
-    if (light) {
-      document.body.classList.remove("light-mode");
-    } else {
-      document.body.classList.add("light-mode");
-    }
+    localStorage.setItem("theme-light", JSON.stringify(!light));
   };
-  //const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
+
+  useEffect(() => {
+    document.body.classList.toggle("light-mode", light);
+  }, [light]);
+
+  const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
   return (
     <BrowserRouter>
       <NavCustom white_Mode={white_Mode} light={light} />
@@ -42,18 +46,17 @@ function App() {
         <Route path="/register" element={<Register light={light} />} />
         <Route path="/profilo" element={<Profilo />} />
         <Route path="/ordine" element={<Ordine />} />
-        <Route path="/ordini" element={<Ordini />} />
+        <Route path="/ordini" element={<Ordini light={light} />} />
         <Route
           path="/pagamento"
-          // element={
-          //   <Elements stripe={stripePromise}>
-          //     <Pagamento />
-          //   </Elements>
-          // }
+          element={
+            <Elements stripe={stripePromise}>
+              <Pagamento />
+            </Elements>
+          }
         />
-        <Route path="/carrello" element={<Carrello />} />
-        <Route path="/footer" element={<Footer />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/carrello" element={<Carrello light={light} />} />
+        <Route path="/about" element={<About light={light} />} />
       </Routes>
     </BrowserRouter>
   );

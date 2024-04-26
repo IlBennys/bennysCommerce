@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrdini } from "../redux/actions/ordiniActions";
 import { quantita } from "../redux/actions/carrelloActions";
 
-const Ordini = () => {
+const Ordini = ({ light }) => {
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
   const token = useSelector((state) => state.user.token);
   const idUser = useSelector((state) => state.user.idUser);
@@ -34,17 +34,29 @@ const Ordini = () => {
                   <h4 className="ordine-title">
                     Ordine #{ordine.id} del {ordine.dataOrdine}
                   </h4>
-                  <Table className="table-ordini" hover responsive>
+                  <Table
+                    className={`table-ordini ${light ? "nero" : "bianco"}`}
+                    hover
+                    responsive
+                  >
                     <thead>
                       <tr className="riga-col text-center">
-                        <th>#</th>
-                        <th>Nome Articolo e Brand</th>
-                        <th>Quantita</th>
-                        <th>Prezzo</th>
-                        <th>Riepilogo Ordine</th>
-                        <th>Data Consegna</th>
-                        <th>Stato Ordine</th>
-                        <th>Totale</th>
+                        <th className={light ? "nero" : "bianco"}>#</th>
+                        <th className={light ? "nero" : "bianco"}>
+                          Nome Articolo e Brand
+                        </th>
+                        <th className={light ? "nero" : "bianco"}>Quantita</th>
+                        <th className={light ? "nero" : "bianco"}>Prezzo</th>
+                        <th className={light ? "nero" : "bianco"}>
+                          Riepilogo Ordine
+                        </th>
+                        <th className={light ? "nero" : "bianco"}>
+                          Data Consegna
+                        </th>
+                        <th className={light ? "nero" : "bianco"}>
+                          Stato Ordine
+                        </th>
+                        <th className={light ? "nero" : "bianco"}>Totale</th>
                       </tr>
                     </thead>
                     <tbody className="riga-body text-center">
@@ -102,7 +114,9 @@ const Ordini = () => {
         ) : (
           <div className="div-noArt d-flex align-items-center justify-content-center mt-5">
             <span className="load me-5"></span>
-            <span className="text-white fs-1">Nessun Ordine Registrato</span>
+            <span className={`fs-1 ${light ? "nero" : "bianco"}`}>
+              Nessun Ordine Registrato
+            </span>
             <span className="load ms-5"></span>
           </div>
         )}

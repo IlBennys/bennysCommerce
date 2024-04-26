@@ -11,15 +11,16 @@
     justify-content: center;
 
     .div-1 {
-      background-image: url("../img/copertina-profilo.jpg");
+      background-image: url("../img/login.png");
       background-position: center;
       background-size: cover;
-      height: 855px;
+      height: 70vh;
       width: 100vh;
+      box-shadow: 0 0 25px 2px white;
     }
 
     .div-2 {
-      height: auto;
+      height: 70vh;
       width: 100vh;
       align-content: center;
       background-color: rgb(172 106 198 / 43%);
@@ -35,8 +36,18 @@
 .bianco {
   color: whitesmoke;
 }
+.btn-progress {
+  background-color: transparent !important;
+  border: none;
+}
+.slime {
+  width: 150px;
+  height: 12px;
+  margin: 0 5px;
+  border-radius: 10px;
+}
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .contenitor {
     margin: 10%;
     .parente {
