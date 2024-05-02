@@ -38,11 +38,6 @@ public class ArticoliController {
 	return new ResponseEntity<>(articoliService.findAllByPrezzo(s1, s2), HttpStatus.OK);
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<?> findArticoliByNome(@PathVariable String name) {
-	return new ResponseEntity<>(articoliService.findAllByName(name), HttpStatus.OK);
-    }
-
     @GetMapping("/page")
     public ResponseEntity<?> findArticoliByPage() {
 	return new ResponseEntity<>(articoliService.findArticoliByPage(), HttpStatus.OK);

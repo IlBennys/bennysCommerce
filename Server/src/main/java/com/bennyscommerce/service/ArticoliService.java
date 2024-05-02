@@ -276,10 +276,6 @@ public class ArticoliService {
 	return articoliDao.getAllArticoliByPrezzo(s1, s2);
     }
 
-    public Optional<List<Articoli>> findAllByName(String name) {
-	return articoliDao.getAllArticoliByNome(name);
-    }
-
     public List<Page<Articoli>> findArticoliByPage() {
 	return articoliDao.getArticoliByPage();
     }

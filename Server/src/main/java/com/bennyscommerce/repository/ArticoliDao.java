@@ -22,10 +22,6 @@ public interface ArticoliDao extends JpaRepository<Articoli, Long>, PagingAndSor
     @Query("SELECT a FROM Articoli a WHERE a.prezzo BETWEEN ?1 AND ?2")
     Optional<List<Articoli>> getAllArticoliByPrezzo(Double s1, Double s2);
 
-    // filtro per ordinare gli articoli in base al loro nome
-    @Query("SELECT a FROM Articoli a WHERE a.nomeArticolo LIKE :name")
-    Optional<List<Articoli>> getAllArticoliByNome(String name);
-
     default List<Page<Articoli>> getArticoliByPage() {
 	List<Page<Articoli>> pages = new ArrayList<>();
 

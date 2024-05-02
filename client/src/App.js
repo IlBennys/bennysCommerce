@@ -11,7 +11,6 @@ import Register from "./components/Register";
 import Profilo from "./components/Profilo";
 import Ordine from "./components/Ordine";
 import Carrello from "./components/Carrello";
-import Footer from "./components/Footer";
 import About from "./components/About";
 import Ordini from "./components/Ordini";
 import Pagamento from "./components/Pagamento";

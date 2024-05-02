@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+$linkedinColor: #0077b0;
 
 .div-pic {
   display: flex;
@@ -90,12 +91,24 @@
     height: 50px;
     border: 1px solid white;
   }
+  .btn-uno:hover {
+    border: 3px solid black;
+    background-color: white;
+  }
+  .btn-uno:hover > svg {
+    fill: black;
+  }
   .btn-due {
     width: 100px;
     align-content: center;
     height: 50px;
-    color: #0077b0;
+    color: $linkedinColor;
     background-color: transparent;
+    border: 1px solid $linkedinColor;
+  }
+  .btn-due:hover {
+    background-color: white;
+    border: 3px solid $linkedinColor;
   }
   .btn-tre {
     width: 100px;
@@ -110,16 +123,22 @@
     background-color: red;
     border-color: white;
   }
+  .btn-tre:hover {
+    background-color: red;
+    border-color: white;
+  }
 }
+
 .barra-cod {
   height: 80px;
   background-color: whitesmoke;
   border: 5px double black;
-  p {
+
+  a {
     margin: 0;
     filter: drop-shadow(-15px 8px 3px grey);
   }
-  & > p:nth-child(6) {
+  & > a:nth-child(6) {
     font-size: 35px;
     svg {
       height: 32pc;
@@ -127,12 +146,15 @@
 
     color: #dd0031;
   }
-  & > p:nth-child(9) {
+  & > a:nth-child(9) {
     font-size: 35px;
     svg {
       height: 32pc;
     }
     color: #77bc1f;
+  }
+  a:hover {
+    transform: scale(1.5);
   }
 }
 
@@ -147,18 +169,6 @@
 }
 .nero {
   color: black;
-}
-
-@media screen and (max-width: 1000px) {
-  .div-pic {
-    display: block;
-    img {
-      width: 300px !important;
-    }
-  }
-  .div-card {
-    flex-direction: column !important;
-  }
 }
 
 .animate-1 {
@@ -183,5 +193,17 @@
 
   100% {
     transform: translate(0);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .div-pic {
+    display: block;
+    img {
+      width: 300px !important;
+    }
+  }
+  .div-card {
+    flex-direction: column !important;
   }
 }

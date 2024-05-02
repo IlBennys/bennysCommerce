@@ -1,2 +1,17 @@
-.main {
+.div1 {
+  display: flex;
+  justify-content: center;
+  .main {
+    height: 560px;
+    width: 90%;
+    display: flex;
+    border-radius: 20px;
+    .items {
+      border-radius: 20px;
+      iframe {
+        border-radius: 20px;
+        width: 100%;
+      }
+    }
+  }
 }

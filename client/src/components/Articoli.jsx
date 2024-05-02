@@ -16,7 +16,6 @@ import {
   Row,
   Modal,
   Form,
-  Dropdown,
   Toast,
 } from "react-bootstrap";
 import cart from "../assets/img/shopping-cart.png";
@@ -41,6 +40,7 @@ const Articoli = ({ light }) => {
   const handleShow = () => setShow(true);
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
+  const [clicked, setClicked] = useState(true);
 
   const prezzi = articolo.map((articolo) => articolo.prezzo);
   const min = 0;
@@ -80,9 +80,11 @@ const Articoli = ({ light }) => {
             <Col md={3}>
               <div className={`div-col3 ${light ? "nero" : "bianco"}`}>
                 <h2 className={light ? " nero" : " bianco"}>Accessori PC</h2>
+
                 <div className={`div-btn mb-2 ${light ? " nero" : " bianco"}`}>
                   <Button
                     onClick={() => {
+                      setClicked(false);
                       dispatch(svuotaArticoli());
                       dispatch(getArticoliByPage(0, 9));
                     }}
@@ -92,6 +94,7 @@ const Articoli = ({ light }) => {
                   </Button>
                   <Button
                     onClick={() => {
+                      setClicked(false);
                       dispatch(svuotaArticoli());
                       dispatch(getArticoliByPage(2, 9));
                     }}
@@ -101,6 +104,7 @@ const Articoli = ({ light }) => {
                   </Button>
                   <Button
                     onClick={() => {
+                      setClicked(false);
                       dispatch(svuotaArticoli());
                       dispatch(getArticoliByPage(1, 9));
                     }}
@@ -109,42 +113,52 @@ const Articoli = ({ light }) => {
                     Monitor
                   </Button>
 
-                  <Button
-                    onClick={toggleShowA}
-                    className={light ? " nero" : " bianco"}
-                  >
-                    Scegli Prezzo
-                  </Button>
-                  <Toast
-                    className="ms-2 mt-2"
-                    show={showA}
-                    onClose={toggleShowA}
-                  >
-                    <Toast.Body>
-                      <div className="box">
-                        <h3>
-                          Prezzo <span>Range</span>
-                        </h3>
+                  {clicked && (
+                    <>
+                      <Button
+                        onClick={toggleShowA}
+                        className={light ? " nero" : " bianco"}
+                      >
+                        Scegli Prezzo
+                      </Button>
 
-                        <div className="values">
-                          {values[0]} € - {values[1]} €
-                        </div>
-                        <Slider
-                          className="slider mt-5"
-                          value={values}
-                          min={min}
-                          max={max}
-                          onChange={(e) => {
-                            setValues(e || min, e || max);
-                            dispatch(getArticoliByPrezzo(values[0], values[1]));
-                          }}
-                        />
-                      </div>
-                    </Toast.Body>
-                  </Toast>
+                      <Toast
+                        className="ms-2 mt-2"
+                        show={showA}
+                        onClose={() => {
+                          toggleShowA();
+                          setClicked(true);
+                        }}
+                      >
+                        <Toast.Body>
+                          <div className="box">
+                            <h3>
+                              Prezzo <span>Range</span>
+                            </h3>
 
+                            <div className="values">
+                              {values[0]} € - {values[1]} €
+                            </div>
+                            <Slider
+                              className="slider mt-5"
+                              value={values}
+                              min={min}
+                              max={max}
+                              onChange={(e) => {
+                                setValues(e || min, e || max);
+                                dispatch(
+                                  getArticoliByPrezzo(values[0], values[1])
+                                );
+                              }}
+                            />
+                          </div>
+                        </Toast.Body>
+                      </Toast>
+                    </>
+                  )}
                   <Button
                     onClick={() => {
+                      setClicked(true);
                       dispatch(svuotaArticoli());
                       dispatch(getArticoli());
                     }}
@@ -189,7 +203,7 @@ const Articoli = ({ light }) => {
                               }
                               className="carrello-btn rounded-2"
                             >
-                              <img src={cart} alt="" />
+                              <img src={cart} alt="cart-pic" />
                             </div>
                           ) : (
                             <div></div>

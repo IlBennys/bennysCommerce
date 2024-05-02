@@ -1,7 +1,9 @@
 import "../assets/sass/About.scss";
-import Footer from "../components/Footer";
 import { Button, Card, Container } from "react-bootstrap";
-import logo from "../assets/img/login.png";
+import bennyPic from "../assets/img/fotoBenny.png";
+import lucaPic from "../assets/img/fotoluca.png";
+import img1 from "../assets/img/img-para1.jpg";
+import img2 from "../assets/img/img-para2.jpg";
 import js from "../assets/img/js.png";
 import html from "../assets/img/html-5.png";
 import css from "../assets/img/css-3.png";
@@ -56,37 +58,48 @@ const About = ({ light }) => {
             <img
               className="rounded-4 img-uno"
               width={"400px"}
-              src={logo}
+              src={img2}
               alt="pic"
             />
-            <p className={`ms-3 para-uno ${light ? "nero" : "bianco"}`}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-              iste, laborum eligendi sunt tenetur tempora id eum, veniam labore
-              maxime deleniti, consequuntur soluta asperiores rerum
-              necessitatibus? Ipsum in sit minus. Lorem, ipsum dolor sit amet
-              consectetur adipisicing elit. Officia fugit nesciunt corrupti
-              soluta, a, beatae culpa velit iste unde eligendi exercitationem
-              quo quod officiis. Aut commodi laboriosam explicabo perspiciatis
-              aspernatur?
+            <p className={`p-3 ms-3 para-uno ${light ? "nero" : "bianco"}`}>
+              L'e-commerce è stato sviluppato da due Full Stack Developer,
+              Benedetto e Luca. Entrambi abbiamo esperienza di due anni in
+              questo campo e siamo noti per la nostra velocità nel automatizzare
+              i codici. Abbiamo lavorato insieme per creare un'esperienza utente
+              fluida e intuitiva, implementando soluzioni innovative e
+              ottimizzando continuamente le performance del sito.
+              <br />
+              Per il frontend del nostro e-commerce, abbiamo utilizzato una
+              serie di tecnologie e librerie avanzate. Abbiamo impiegato
+              JavaScript come linguaggio principale, insieme a React e Redux per
+              gestire lo stato dell'applicazione in modo efficiente. Abbiamo
+              integrato Axios per le chiamate API, Stripe per il sistema di
+              pagamento sicuro e SASS per il layout responsive e flessibile.
             </p>
           </div>
 
           <div className="div-pic ">
-            <p className={`me-3 para-due ${light ? "nero" : "bianco"}`}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-              iste, laborum eligendi sunt tenetur tempora id eum, veniam labore
-              maxime deleniti, consequuntur soluta asperiores rerum
-              necessitatibus? Ipsum in sit minus. Lorem ipsum dolor, sit amet
-              consectetur adipisicing elit. Neque voluptates ratione unde nulla
-              assumenda recusandae, at molestiae distinctio voluptatibus odio
-              ipsam quibusdam deleniti voluptatum nam vel tenetur cupiditate!
-              Blanditiis, accusantium.
+            <p className={`p-3 me-3 para-due ${light ? "nero" : "bianco"}`}>
+              Inoltre, abbiamo sfruttato librerie esterne come React Router DOM
+              per il routing dinamico, React Slider per la gestione del prezzo
+              tramite API e Bootstrap per un design coerente ed elegante. Per
+              garantire la sicurezza dei dati sensibili, abbiamo implementato
+              Persist Encrypt per la crittografia dei dati. Sul lato backend,
+              abbiamo adottato una solida architettura basata su Java e Spring
+              Boot. Utilizziamo Spring Security per garantire un'autenticazione
+              e un'autorizzazione robuste, e PostgreSQL con PGAdmin come
+              database per gestire in modo efficiente i dati. Abbiamo integrato
+              diverse librerie esterne, tra cui Lombok per la riduzione della
+              verbosità del codice, JDBC per l'accesso ai dati, JPA per la
+              persistenza dei dati e JWT Token per l'autenticazione basata su
+              token. Inoltre, abbiamo integrato Stripe nel backend per gestire
+              la struttura del pagamento in modo sicuro e affidabile.
             </p>
 
             <img
               className="rounded-4 img-due"
               width={"400px"}
-              src={logo}
+              src={img1}
               alt="pic"
             />
           </div>
@@ -95,38 +108,38 @@ const About = ({ light }) => {
           LINGUAGGI STUDIATI
         </p>
         <div className="barra-cod rounded-3 d-flex flex-row align-items-center justify-content-evenly">
-          <p>
+          <a href="https://www.html.it/guide/guida-javascript-di-base/">
             <img src={js} alt="js-logo" />
-          </p>
-          <p>
+          </a>
+          <a href="https://www.html.it/">
             <img src={html} alt="html-logo" />
-          </p>
-          <p>
+          </a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
             <img src={css} alt="css-logo" />
-          </p>
-          <p>
+          </a>
+          <a href="https://sass-lang.com/">
             <img src={sass} alt="sass-logo" />
-          </p>
-          <p>
+          </a>
+          <a href="https://react-redux.js.org/introduction/getting-started">
             <img src={react} alt="react-logo" />
-          </p>
-          <p>
+          </a>
+          <a href="https://angular.io/guide/setup-local">
             <FaAngular />
-          </p>
-          <p>
+          </a>
+          <a href="https://react-bootstrap.github.io/">
             <img src={boostrap} alt="boostrap-logo" />
-          </p>
-          <p>
+          </a>
+          <a href="https://www.oracle.com/it/java/">
             <img src={java} alt="java-logo" />
-          </p>
-          <p>
+          </a>
+          <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/">
             <SiSpring />
-          </p>
+          </a>
         </div>
         <div className="div-card my-5">
           <Card
             className={`mainCard rounded-4 p-1 bg-dark ${
-              scrollY >= 550 ? "animate-1" : ""
+              scrollY >= 500 ? "animate-1" : ""
             }`}
           >
             <Card.Title className="titoloCard m-3 text-white">
@@ -137,7 +150,7 @@ const About = ({ light }) => {
                 <Card.Img
                   className="imgCard rounded-3"
                   variant="top"
-                  src={logo}
+                  src={bennyPic}
                 />
               </div>
               <div className="div-btn-group ">
@@ -148,7 +161,7 @@ const About = ({ light }) => {
                     href="https://github.com/IlBennys"
                     variant="dark"
                   >
-                    <FaGithub className="fs-3" />
+                    <FaGithub className="Fagit fs-3" />
                   </Button>
                 </div>
                 <div className="d-flex flex-column align-items-center">
@@ -171,7 +184,7 @@ const About = ({ light }) => {
           </Card>
           <Card
             className={`mainCard rounded-4 p-1 bg-dark ${
-              scrollY >= 550 ? "animate-2" : ""
+              scrollY >= 500 ? "animate-2" : ""
             }`}
           >
             <Card.Title className="titoloCard m-3 text-white">
@@ -180,9 +193,9 @@ const About = ({ light }) => {
             <Card.Body className="d-flex justify-content-around">
               <div className="me-3">
                 <Card.Img
-                  className="imgCard rounded-3"
+                  className="imgCard rounded-3 bg-light"
                   variant="top"
-                  src={logo}
+                  src={lucaPic}
                 />
               </div>
               <div className="div-btn-group ">
@@ -215,7 +228,6 @@ const About = ({ light }) => {
             </Card.Body>
           </Card>
         </div>
-        <Footer />
       </Container>
     </>
   );
