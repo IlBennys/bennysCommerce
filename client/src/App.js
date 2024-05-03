@@ -17,6 +17,7 @@ import Pagamento from "./components/Pagamento";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
+import Prova from "./components/PageHome1";
 
 function App() {
   const [light, setLight] = useState(() => {
@@ -38,7 +39,7 @@ function App() {
     <BrowserRouter>
       <NavCustom white_Mode={white_Mode} light={light} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home light={light} />} />
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/articoli" element={<Articoli light={light} />} />
         <Route path="/login" element={<Login light={light} />} />

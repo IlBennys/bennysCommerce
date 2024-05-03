@@ -1,11 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
 .div1 {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   .main {
-    height: 560px;
+    max-height: 560px;
     width: 90%;
     display: flex;
     border-radius: 20px;
+    animation: wide 1s ease-in;
     .items {
       border-radius: 20px;
       iframe {
@@ -14,4 +18,65 @@
       }
     }
   }
+}
+
+h1 {
+  font-family: "Anton", sans-serif;
+  animation: tracking-in-contract 1s linear both;
+}
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: 0.5rem;
+    opacity: 1;
+  }
+}
+@keyframes wide {
+  0% {
+    filter: blur(50px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  margin: 300px 0;
+}
+
+.bianco {
+  color: white;
+  -moz-border-top-colors: black;
+}
+.nero {
+  color: black;
+  border-color: white;
+}
+
+.statistica {
+  font-weight: bold;
+  font-size: large;
+  > div {
+    height: 100px;
+  }
+  .divisore {
+    border-left: 3px solid;
+  }
+  .number {
+    font-weight: bolder;
+    font-size: 50px;
+  }
+}
+
+.div {
+  height: 500px;
 }
