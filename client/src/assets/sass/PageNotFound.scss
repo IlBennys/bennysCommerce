@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+.titleError {
+  height: 100%;
+  margin: 0;
+  padding: 10%;
+  .sottoTitleError {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    #accaUno {
+      font-family: "Lora", serif;
+      font-size: 130px;
+      font-weight: 300;
+      text-wrap: nowrap;
+    }
+    .sottoH1 {
+      font-family: "Lora", serif;
+      font-size: xx-large;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 10px;
+      height: 40px;
+      width: 75%;
+      top: 62%;
+      left: 10%;
+    }
+  }
+}
+
+.bianco {
+  color: white;
+}
+.nero {
+  color: black;
+}
+
+@media screen and (max-width: 700px) {
+  #accaUno {
+    font-size: 80px !important;
+  }
+  .sottoH1 {
+    font-size: large !important;
+  }
+}

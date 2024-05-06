@@ -4,12 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
   .main {
     max-height: 560px;
     width: 90%;
     display: flex;
     border-radius: 20px;
-    animation: wide 1s ease-in;
+    animation: wide 1.5s ease-in;
     .items {
       border-radius: 20px;
       iframe {
@@ -20,7 +21,7 @@
   }
 }
 
-h1 {
+.titotoloGrande {
   font-family: "Anton", sans-serif;
   animation: tracking-in-contract 1s linear both;
 }
@@ -65,7 +66,7 @@ h1 {
 .statistica {
   font-weight: bold;
   font-size: large;
-  > div {
+  div {
     height: 100px;
   }
   .divisore {
@@ -76,7 +77,175 @@ h1 {
     font-size: 50px;
   }
 }
+.div-fix {
+  height: 30px;
+  width: 185px;
+  left: 5px;
+  top: 5px;
+  border-radius: 20px;
+  background: #e22b2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 4px 6px 6px 4px darkred;
+}
+.div-fix:hover {
+  animation: jello-horizontal 0.9s linear both;
+}
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
 
-.div {
+.blocco-divisione {
   height: 500px;
+  background-color: rgb(63, 43, 109);
+  color: white;
+  margin: 2%;
+  border-radius: 10px;
+  border: 2px solid white;
+  p {
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  img {
+    object-fit: contain;
+  }
+  img:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+  }
+}
+.img-custom {
+  background: rgb(27 127 204 / 96%);
+  border-radius: 50%;
+  padding: 1%;
+}
+
+//BUTTON
+.bn632-hover {
+  width: 160px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.bn632-hover:hover {
+  background-position: 100% 0;
+  transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.bn632-hover:focus {
+  outline: none;
+}
+
+.bn632-hover.bn20 {
+  background-image: linear-gradient(
+    to right,
+    #667eea,
+    #764ba2,
+    #6b8dd6,
+    #8e37d7
+  );
+  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
+
+// icon-animate
+.animate-icon {
+  display: block;
+  position: relative;
+  height: 32px;
+  width: 50vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.animate-icon:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 24px;
+  height: 24px;
+  animation: ballbns 2s ease-in infinite;
+}
+
+@keyframes ballbns {
+  0% {
+    left: 0;
+    transform: translateX(-100%) rotate(0deg);
+    border-radius: 0;
+    background: rgb(27 127 204 / 96%);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0%) rotate(360deg);
+    border-radius: 50%;
+    background: rgb(27 127 204 / 96%);
+  }
+}
+
+//freccia
+.arrow {
+  width: 15px;
+  height: 20px;
+  background: #e22b2b;
+  margin-left: 15px;
+  margin-top: 15px;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: bump 0.4s linear infinite alternate;
+}
+.arrow::after {
+  content: "";
+  box-sizing: border-box;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, 0);
+  position: absolute;
+  border: 15px solid transparent;
+  border-bottom-color: #e22b2b;
+}
+
+@keyframes bump {
+  0% {
+    transform: translate(-50%, 5px);
+  }
+  100% {
+    transform: translate(-50%, -5px);
+  }
 }
