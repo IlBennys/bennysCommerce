@@ -24,7 +24,7 @@ const Ordini = ({ light }) => {
 
   return (
     <>
-      <Container>
+      <Container className="mt-5">
         {ordini && ordini.length > 0 ? (
           ordini.map((ordine) => {
             let totaleOrdineCorrente = 0;
@@ -34,41 +34,24 @@ const Ordini = ({ light }) => {
                   <h4 className="ordine-title">
                     Ordine #{ordine.id} del {ordine.dataOrdine}
                   </h4>
-                  <Table
-                    className={`table-ordini ${light ? "nero" : "bianco"}`}
-                    hover
-                    responsive
-                  >
+                  <Table className={`table-ordini ${light ? "nero" : "bianco"}`} hover responsive>
                     <thead>
                       <tr className="riga-col text-center">
                         <th className={light ? "nero" : "bianco"}>#</th>
-                        <th className={light ? "nero" : "bianco"}>
-                          Nome Articolo e Brand
-                        </th>
+                        <th className={light ? "nero" : "bianco"}>Nome Articolo e Brand</th>
                         <th className={light ? "nero" : "bianco"}>Quantita</th>
                         <th className={light ? "nero" : "bianco"}>Prezzo</th>
-                        <th className={light ? "nero" : "bianco"}>
-                          Riepilogo Ordine
-                        </th>
-                        <th className={light ? "nero" : "bianco"}>
-                          Data Consegna
-                        </th>
-                        <th className={light ? "nero" : "bianco"}>
-                          Stato Ordine
-                        </th>
+                        <th className={light ? "nero" : "bianco"}>Riepilogo Ordine</th>
+                        <th className={light ? "nero" : "bianco"}>Data Consegna</th>
+                        <th className={light ? "nero" : "bianco"}>Stato Ordine</th>
                         <th className={light ? "nero" : "bianco"}>Totale</th>
                       </tr>
                     </thead>
                     <tbody className="riga-body text-center">
                       {ordine.articoli.map((articolo, i) => {
-                        const quantitaArticolo = dispatch(
-                          quantita(ordine.articoli, "id", articolo.id)
-                        );
-                        const prezzoTotaleArticolo = (
-                          articolo.prezzo * quantitaArticolo
-                        ).toFixed(2);
-                        totaleOrdineCorrente +=
-                          parseFloat(prezzoTotaleArticolo);
+                        const quantitaArticolo = dispatch(quantita(ordine.articoli, "id", articolo.id));
+                        const prezzoTotaleArticolo = (articolo.prezzo * quantitaArticolo).toFixed(2);
+                        totaleOrdineCorrente += parseFloat(prezzoTotaleArticolo);
                         return (
                           <tr key={`${ordine.id}--${i}`}>
                             <td>{i + 1}</td>
@@ -80,9 +63,7 @@ const Ordini = ({ light }) => {
                             <td>{ordine.riepilogoOrdine}</td>
                             <td>{ordine.dataConsegna}</td>
                             <td>{ordine.statoOrdine}</td>
-                            <td>
-                              {parseFloat(prezzoTotaleArticolo).toFixed(2)}€
-                            </td>
+                            <td>{parseFloat(prezzoTotaleArticolo).toFixed(2)}€</td>
                           </tr>
                         );
                       })}
@@ -93,13 +74,8 @@ const Ordini = ({ light }) => {
                         <td></td>
                         <td></td>
                         <td className="fw-bold totaleOrdineCorrente text-decoration-underline">
-                          Totale dell'ordine: {totaleOrdineCorrente.toFixed(2)}€{" "}
-                          Spedizione: 2.99€ ={" "}
-                          {(
-                            totaleOrdineCorrente +
-                            parseFloat(ordine.prezzoConsegna)
-                          ).toFixed(2)}
-                          €
+                          Totale dell'ordine: {totaleOrdineCorrente.toFixed(2)}€ Spedizione: 2.99€ ={" "}
+                          {(totaleOrdineCorrente + parseFloat(ordine.prezzoConsegna)).toFixed(2)}€
                         </td>
                         <td></td>
                         <td></td>
@@ -114,9 +90,7 @@ const Ordini = ({ light }) => {
         ) : (
           <div className="div-noArt d-flex align-items-center justify-content-center mt-5">
             <span className="load me-5"></span>
-            <span className={`fs-1 ${light ? "nero" : "bianco"}`}>
-              Nessun Ordine Registrato
-            </span>
+            <span className={`fs-1 ${light ? "nero" : "bianco"}`}>Nessun Ordine Registrato</span>
             <span className="load ms-5"></span>
           </div>
         )}

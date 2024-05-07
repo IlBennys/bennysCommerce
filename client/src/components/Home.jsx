@@ -29,7 +29,7 @@ const Home = ({ light }) => {
   const articolo = useSelector((state) => state.articolo.articoli);
 
   const [index, setIndex] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
+  const [scrollY, setScrollY] = useState(false);
   const [numeriFinali, setNumeriFinali] = useState([100, 30, 200]);
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -57,24 +57,17 @@ const Home = ({ light }) => {
       }
     }, 10);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-      if (scrollY > 2850 && scrollY < 2860) {
-        const spans = document.querySelectorAll(".number");
-        spans.forEach((span, index) => {
-          const numeroIndicato = parseInt(span.textContent);
-          generaNumeroCasuale(numeroIndicato, index);
-        });
-      }
-      console.log(scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrollY]);
+  const handleScroll = (p) => {
+    setScrollY(p);
+    if (scrollY) {
+      const spans = document.querySelectorAll(".number");
+      spans.forEach((span, index) => {
+        const numeroIndicato = parseInt(span.textContent);
+        generaNumeroCasuale(numeroIndicato, index);
+      });
+    }
+    console.log(scrollY);
+  };
 
   return (
     <>
@@ -83,7 +76,7 @@ const Home = ({ light }) => {
           <ScrollPage>
             <Animator animation={batch(Fade())}>
               <h1 className="my-5 fw-bolder text-center titoloGrande">PREVIEW ARTICOLI</h1>
-              <div className="div1">
+              <div className="div-carosello">
                 <Carousel className="main" activeIndex={index} onSelect={handleSelect} interval={30000}>
                   <Carousel.Item className="items">
                     <iframe
@@ -166,7 +159,11 @@ const Home = ({ light }) => {
           </ScrollPage>
           <ScrollPage>
             <Animator animation={batch(Fade(), ZoomIn(), MoveOut(0, -200))}>
-              <div className="d-flex flex-column align-items-center mt-5">
+              <div
+                className="d-flex flex-column align-items-center mt-5"
+                onMouseEnter={() => handleScroll(true)}
+                onMouseLeave={() => handleScroll(false)}
+              >
                 <h1 className="mb-5 titoloGrande">MOUSE STATISTICHE</h1>
                 <img
                   src="https://resource.logitech.com/content/dam/gaming/en/products/pro-wireless-gaming-mouse/pro-wireless-carbon-gallery-1.png"
@@ -291,7 +288,11 @@ const Home = ({ light }) => {
           </ScrollPage>
           <ScrollPage>
             <Animator animation={batch(Fade(), ZoomIn(), MoveOut(0, -200))}>
-              <div className="d-flex flex-column align-items-center mt-5">
+              <div
+                className="d-flex flex-column align-items-center mt-5"
+                onMouseEnter={() => handleScroll(true)}
+                onMouseLeave={() => handleScroll(false)}
+              >
                 <h1 className="mb-5 titoloGrande">MONITOR</h1>
                 <img src={articolo[13].img} width={"400px"} alt="Monitor G7" />
                 <div className="statistica d-flex justify-content-evenly mt-5 w-100">
@@ -412,7 +413,11 @@ const Home = ({ light }) => {
           </ScrollPage>
           <ScrollPage>
             <Animator animation={batch(Fade(), ZoomIn(), MoveOut(0, -200))}>
-              <div className="d-flex flex-column align-items-center mt-5">
+              <div
+                className="d-flex flex-column align-items-center mt-5"
+                onMouseEnter={() => handleScroll(true)}
+                onMouseLeave={() => handleScroll(false)}
+              >
                 <h1 className="mb-5 titoloGrande">TASTIERA</h1>
                 <img src={articolo[23].img} width={"400px"} alt="Tastiera Fnatic" />
                 <div className="statistica d-flex justify-content-evenly mt-5 w-100">
