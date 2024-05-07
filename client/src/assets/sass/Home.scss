@@ -21,7 +21,7 @@
   }
 }
 
-.titotoloGrande {
+.titoloGrande {
   font-family: "Anton", sans-serif;
   animation: tracking-in-contract 1s linear both;
 }
@@ -123,6 +123,7 @@
   margin: 2%;
   border-radius: 10px;
   border: 2px solid white;
+  width: 90%;
   p {
     font-size: 20px;
     font-style: italic;
@@ -174,13 +175,7 @@
 }
 
 .bn632-hover.bn20 {
-  background-image: linear-gradient(
-    to right,
-    #667eea,
-    #764ba2,
-    #6b8dd6,
-    #8e37d7
-  );
+  background-image: linear-gradient(to right, #667eea, #764ba2, #6b8dd6, #8e37d7);
   box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
 }
 
