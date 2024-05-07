@@ -122,15 +122,16 @@ const Home = ({ light }) => {
             <Animator animation={batch(Fade())}>
               <div className="blocco-divisione d-flex justify-content-around position-relative">
                 <div className=" position-absolute div-fix">
-                  Consigliati dai Clienti{" "}
+                  Consigliati
                   <span className="ms-1">
                     <AiFillFire />
                   </span>
                 </div>
+
                 <div className="d-flex flex-column justify-content-around align-items-center">
-                  <h2 style={{ marginLeft: "40px" }}>MOUSE</h2>
+                  <h2>MOUSE</h2>
                   <img
-                    src={articolo[8].img}
+                    src={articolo[2].img}
                     alt="Icona mouse"
                     width={"300px"}
                     height={"240px"}
@@ -182,7 +183,7 @@ const Home = ({ light }) => {
                 <img
                   src="https://resource.logitech.com/content/dam/gaming/en/products/pro-wireless-gaming-mouse/pro-wireless-carbon-gallery-1.png"
                   alt="Monitor G7"
-                  width={"600px"}
+                  width={"400px"}
                 />
                 <div className="statistica d-flex justify-content-evenly mt-5 w-100">
                   <div className="d-flex flex-column align-items-center justify-content-center me-5">
@@ -208,28 +209,75 @@ const Home = ({ light }) => {
           <ScrollPage>
             <Animator
               style={{
-                border: light ? "2px dotted black" : "2px dotted white",
                 margin: "2%",
                 padding: "2%",
               }}
               animation={batch(Fade(), MoveOut(0, -200))}
             >
-              <h1 className="text-center my-5 titotoloGrande">PREVIEW MOUSE</h1>
-              {currentStep === 1 && (
-                <div className="d-flex justify-content-around align-items-center">
-                  <img
-                    className="img-custom"
-                    src="https://resource.logitech.com/content/dam/gaming/en/products/pro-wireless-gaming-mouse/pro-wireless-carbon-gallery-1.png"
-                    alt="Mouse G-PRO"
-                    style={{ objectFit: "contain" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <div className="d-flex flex-column align-items-center justify-content-center">
-                      <p className="text-center fw-bold fs-3 ">
-                        SCOPRI ALTRI PRODOTTI
-                      </p>
+              <div
+                className="d-flex flex-column align-items-around justify-content-center"
+                style={{
+                  border: light ? "2px dotted black" : "2px dotted white",
+                  padding: "2%",
+                }}
+              >
+                <h1 className="text-center my-5 titotoloGrande">
+                  PREVIEW MOUSE
+                </h1>
+                {currentStep === 1 && (
+                  <div className="d-flex justify-content-around align-items-center">
+                    <img
+                      className="img-custom"
+                      src="https://resource.logitech.com/content/dam/gaming/en/products/pro-wireless-gaming-mouse/pro-wireless-carbon-gallery-1.png"
+                      alt="Mouse G-PRO"
+                      style={{ objectFit: "contain" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <p className="text-center fw-bold fs-3 ">
+                          SCOPRI ALTRI PRODOTTI
+                        </p>
+                        <a>
+                          <button
+                            onClick={handleNextStep}
+                            className="bn632-hover bn20"
+                          >
+                            AVANTI
+                            <span className="ms-3">
+                              <GrLinkNext />
+                            </span>
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {currentStep === 2 && (
+                  <div className="d-flex justify-content-around align-items-center mt-5">
+                    <img
+                      className="img-custom"
+                      src={articolo[0].img}
+                      alt="mouse"
+                      style={{ objectFit: "contain" }}
+                      width={"250px"}
+                      height={"250px"}
+                    />
+                    <div>
+                      <span class="animate-icon"></span>
+                      <a>
+                        <button
+                          onClick={handlePreviousStep}
+                          className="bn632-hover bn20"
+                        >
+                          <span className="me-3">
+                            <IoArrowBackOutline />
+                          </span>
+                          INDIETRO
+                        </button>
+                      </a>
+
                       <a>
                         <button
                           onClick={handleNextStep}
@@ -243,83 +291,45 @@ const Home = ({ light }) => {
                       </a>
                     </div>
                   </div>
-                </div>
-              )}
-              {currentStep === 2 && (
-                <div className="d-flex justify-content-around align-items-center mt-5">
-                  <img
-                    className="img-custom"
-                    src={articolo[0].img}
-                    alt="mouse"
-                    style={{ objectFit: "contain" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <span class="animate-icon"></span>
-                    <a>
-                      <button
-                        onClick={handlePreviousStep}
-                        className="bn632-hover bn20"
-                      >
-                        <span className="me-3">
-                          <IoArrowBackOutline />
-                        </span>
-                        INDIETRO
-                      </button>
-                    </a>
-
-                    <a>
-                      <button
-                        onClick={handleNextStep}
-                        className="bn632-hover bn20"
-                      >
-                        AVANTI
-                        <span className="ms-3">
-                          <GrLinkNext />
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              )}
-              {currentStep === 3 && (
-                <div className="d-flex justify-content-around align-items-center mt-5">
-                  <img
-                    className="img-custom"
-                    src={articolo[1].img}
-                    alt="mouse"
-                    style={{ objectFit: "contain" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <div className="d-flex flex-column align-items-center justify-content-center">
-                      <p className="text-center fw-bold fs-3 ">
-                        TORNA AGLI ALTRI PRODOTTI
-                      </p>
-                      <a>
-                        <button
-                          onClick={handlePreviousStep}
-                          className="bn632-hover bn20"
-                        >
-                          <span className="me-3">
-                            <IoArrowBackOutline />
-                          </span>
-                          INDIETRO
-                        </button>
-                      </a>
+                )}
+                {currentStep === 3 && (
+                  <div className="d-flex justify-content-around align-items-center mt-5">
+                    <img
+                      className="img-custom"
+                      src={articolo[1].img}
+                      alt="mouse"
+                      style={{ objectFit: "contain" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <p className="text-center fw-bold fs-3 ">
+                          TORNA AGLI ALTRI PRODOTTI
+                        </p>
+                        <a>
+                          <button
+                            onClick={handlePreviousStep}
+                            className="bn632-hover bn20"
+                          >
+                            <span className="me-3">
+                              <IoArrowBackOutline />
+                            </span>
+                            INDIETRO
+                          </button>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </Animator>
           </ScrollPage>
           <ScrollPage>
             <Animator animation={batch(Fade(), MoveOut(0, -200))}>
               <div className="d-flex flex-column align-items-center mt-5">
                 <h1 className="mb-5">MONITOR</h1>
-                <img src={articolo[13].img} alt="Monitor G7" />
+                <img src={articolo[13].img} width={"400px"} alt="Monitor G7" />
                 <div className="statistica d-flex justify-content-evenly mt-5 w-100">
                   <div className="d-flex flex-column align-items-center justify-content-center me-5">
                     <span className="number">{numeriFinali[0]}</span>
@@ -344,30 +354,75 @@ const Home = ({ light }) => {
           <ScrollPage>
             <Animator
               style={{
-                border: light ? "2px dotted black" : "2px dotted white",
                 margin: "2%",
                 padding: "2%",
               }}
               animation={batch(Fade(), MoveOut(0, -200))}
             >
-              <h1 className="text-center my-5 titotoloGrande">
-                PREVIEW MONITOR
-              </h1>
-              {currentStep === 1 && (
-                <div className="d-flex justify-content-around align-items-center">
-                  <img
-                    className="img-custom"
-                    src={articolo[17].img}
-                    alt="Mouse G-PRO"
-                    style={{ objectFit: "contain", padding: "1%" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <div className="d-flex flex-column align-items-center justify-content-center">
-                      <p className="text-center fw-bold fs-3 ">
-                        SCOPRI ALTRI PRODOTTI
-                      </p>
+              <div
+                className="d-flex flex-column align-items-around justify-content-center"
+                style={{
+                  border: light ? "2px dotted black" : "2px dotted white",
+                  padding: "2%",
+                }}
+              >
+                <h1 className="text-center my-5 titotoloGrande">
+                  PREVIEW MONITOR
+                </h1>
+                {currentStep === 1 && (
+                  <div className="d-flex justify-content-around align-items-center">
+                    <img
+                      className="img-custom"
+                      src={articolo[17].img}
+                      alt="Mouse G-PRO"
+                      style={{ objectFit: "contain", padding: "1%" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <p className="text-center fw-bold fs-3 ">
+                          SCOPRI ALTRI PRODOTTI
+                        </p>
+                        <a>
+                          <button
+                            onClick={handleNextStep}
+                            className="bn632-hover bn20"
+                          >
+                            AVANTI
+                            <span className="ms-3">
+                              <GrLinkNext />
+                            </span>
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {currentStep === 2 && (
+                  <div className="d-flex justify-content-around align-items-center mt-5">
+                    <img
+                      className="img-custom"
+                      src={articolo[16].img}
+                      alt="mouse"
+                      style={{ objectFit: "contain" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <span class="animate-icon"></span>
+                      <a>
+                        <button
+                          onClick={handlePreviousStep}
+                          className="bn632-hover bn20"
+                        >
+                          <span className="me-3">
+                            <IoArrowBackOutline />
+                          </span>
+                          INDIETRO
+                        </button>
+                      </a>
+
                       <a>
                         <button
                           onClick={handleNextStep}
@@ -381,83 +436,49 @@ const Home = ({ light }) => {
                       </a>
                     </div>
                   </div>
-                </div>
-              )}
-              {currentStep === 2 && (
-                <div className="d-flex justify-content-around align-items-center mt-5">
-                  <img
-                    className="img-custom"
-                    src={articolo[16].img}
-                    alt="mouse"
-                    style={{ objectFit: "contain" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <span class="animate-icon"></span>
-                    <a>
-                      <button
-                        onClick={handlePreviousStep}
-                        className="bn632-hover bn20"
-                      >
-                        <span className="me-3">
-                          <IoArrowBackOutline />
-                        </span>
-                        INDIETRO
-                      </button>
-                    </a>
-
-                    <a>
-                      <button
-                        onClick={handleNextStep}
-                        className="bn632-hover bn20"
-                      >
-                        AVANTI
-                        <span className="ms-3">
-                          <GrLinkNext />
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              )}
-              {currentStep === 3 && (
-                <div className="d-flex justify-content-around align-items-center mt-5">
-                  <img
-                    className="img-custom"
-                    src={articolo[14].img}
-                    alt="mouse"
-                    style={{ objectFit: "contain" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <div className="d-flex flex-column align-items-center justify-content-center">
-                      <p className="text-center fw-bold fs-3 ">
-                        TORNA AGLI ALTRI PRODOTTI
-                      </p>
-                      <a>
-                        <button
-                          onClick={handlePreviousStep}
-                          className="bn632-hover bn20"
-                        >
-                          <span className="me-3">
-                            <IoArrowBackOutline />
-                          </span>
-                          INDIETRO
-                        </button>
-                      </a>
+                )}
+                {currentStep === 3 && (
+                  <div className="d-flex justify-content-around align-items-center mt-5">
+                    <img
+                      className="img-custom"
+                      src={articolo[14].img}
+                      alt="mouse"
+                      style={{ objectFit: "contain" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <p className="text-center fw-bold fs-3 ">
+                          TORNA AGLI ALTRI PRODOTTI
+                        </p>
+                        <a>
+                          <button
+                            onClick={handlePreviousStep}
+                            className="bn632-hover bn20"
+                          >
+                            <span className="me-3">
+                              <IoArrowBackOutline />
+                            </span>
+                            INDIETRO
+                          </button>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </Animator>
           </ScrollPage>
           <ScrollPage>
             <Animator animation={batch(Fade(), MoveOut(0, -200))}>
               <div className="d-flex flex-column align-items-center mt-5">
                 <h1 className="mb-5">TASTIERA</h1>
-                <img src={articolo[23].img} alt="Tastiera Fnatic" />
+                <img
+                  src={articolo[23].img}
+                  width={"400px"}
+                  alt="Tastiera Fnatic"
+                />
                 <div className="statistica d-flex justify-content-evenly mt-5 w-100">
                   <div className="d-flex flex-column align-items-center justify-content-center me-5">
                     <span className="number">{numeriFinali[0]}</span>
@@ -482,30 +503,75 @@ const Home = ({ light }) => {
           <ScrollPage>
             <Animator
               style={{
-                border: light ? "2px dotted black" : "2px dotted white",
                 margin: "2%",
                 padding: "2%",
               }}
               animation={batch(Fade(), MoveOut(0, -200))}
             >
-              <h1 className="text-center my-5 titotoloGrande">
-                PREVIEW TASTIERE
-              </h1>
-              {currentStep === 1 && (
-                <div className="d-flex justify-content-around align-items-center">
-                  <img
-                    className="img-custom"
-                    src={articolo[24].img}
-                    alt="Mouse G-PRO"
-                    style={{ objectFit: "contain", padding: "1%" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <div className="d-flex flex-column align-items-center justify-content-center">
-                      <p className="text-center fw-bold fs-3 ">
-                        SCOPRI ALTRI PRODOTTI
-                      </p>
+              <div
+                className="d-flex flex-column align-items-around justify-content-center"
+                style={{
+                  border: light ? "2px dotted black" : "2px dotted white",
+                  padding: "2%",
+                }}
+              >
+                <h1 className="text-center my-5 titotoloGrande">
+                  PREVIEW TASTIERE
+                </h1>
+                {currentStep === 1 && (
+                  <div className="d-flex justify-content-around align-items-center">
+                    <img
+                      className="img-custom"
+                      src={articolo[24].img}
+                      alt="Mouse G-PRO"
+                      style={{ objectFit: "contain", padding: "1%" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <p className="text-center fw-bold fs-3 ">
+                          SCOPRI ALTRI PRODOTTI
+                        </p>
+                        <a>
+                          <button
+                            onClick={handleNextStep}
+                            className="bn632-hover bn20"
+                          >
+                            AVANTI
+                            <span className="ms-3">
+                              <GrLinkNext />
+                            </span>
+                          </button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                {currentStep === 2 && (
+                  <div className="d-flex justify-content-around align-items-center mt-5">
+                    <img
+                      className="img-custom"
+                      src={articolo[25].img}
+                      alt="mouse"
+                      style={{ objectFit: "contain" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <span class="animate-icon"></span>
+                      <a>
+                        <button
+                          onClick={handlePreviousStep}
+                          className="bn632-hover bn20"
+                        >
+                          <span className="me-3">
+                            <IoArrowBackOutline />
+                          </span>
+                          INDIETRO
+                        </button>
+                      </a>
+
                       <a>
                         <button
                           onClick={handleNextStep}
@@ -519,76 +585,38 @@ const Home = ({ light }) => {
                       </a>
                     </div>
                   </div>
-                </div>
-              )}
-              {currentStep === 2 && (
-                <div className="d-flex justify-content-around align-items-center mt-5">
-                  <img
-                    className="img-custom"
-                    src={articolo[25].img}
-                    alt="mouse"
-                    style={{ objectFit: "contain" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <span class="animate-icon"></span>
-                    <a>
-                      <button
-                        onClick={handlePreviousStep}
-                        className="bn632-hover bn20"
-                      >
-                        <span className="me-3">
-                          <IoArrowBackOutline />
-                        </span>
-                        INDIETRO
-                      </button>
-                    </a>
-
-                    <a>
-                      <button
-                        onClick={handleNextStep}
-                        className="bn632-hover bn20"
-                      >
-                        AVANTI
-                        <span className="ms-3">
-                          <GrLinkNext />
-                        </span>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              )}
-              {currentStep === 3 && (
-                <div className="d-flex justify-content-around align-items-center mt-5">
-                  <img
-                    className="img-custom"
-                    src={articolo[26].img}
-                    alt="mouse"
-                    style={{ objectFit: "contain" }}
-                    width={"350px"}
-                    height={"350px"}
-                  />
-                  <div>
-                    <div className="d-flex flex-column align-items-center justify-content-center">
-                      <p className="text-center fw-bold fs-3 ">
-                        TORNA AGLI ALTRI PRODOTTI
-                      </p>
-                      <a>
-                        <button
-                          onClick={handlePreviousStep}
-                          className="bn632-hover bn20"
-                        >
-                          <span className="me-3">
-                            <IoArrowBackOutline />
-                          </span>
-                          INDIETRO
-                        </button>
-                      </a>
+                )}
+                {currentStep === 3 && (
+                  <div className="d-flex justify-content-around align-items-center mt-5">
+                    <img
+                      className="img-custom"
+                      src={articolo[26].img}
+                      alt="mouse"
+                      style={{ objectFit: "contain" }}
+                      width={"300px"}
+                      height={"300px"}
+                    />
+                    <div>
+                      <div className="d-flex flex-column align-items-center justify-content-center">
+                        <p className="text-center fw-bold fs-3 ">
+                          TORNA AGLI ALTRI PRODOTTI
+                        </p>
+                        <a>
+                          <button
+                            onClick={handlePreviousStep}
+                            className="bn632-hover bn20"
+                          >
+                            <span className="me-3">
+                              <IoArrowBackOutline />
+                            </span>
+                            INDIETRO
+                          </button>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </Animator>
           </ScrollPage>
         </ScrollContainer>
