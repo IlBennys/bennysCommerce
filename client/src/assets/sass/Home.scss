@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 
+.white-mod {
+  color: black;
+}
+.dark-mod {
+  color: white;
+}
+
 .div-carosello {
   display: flex;
   flex-direction: column;
@@ -21,23 +28,6 @@
   }
 }
 
-.titoloGrande {
-  font-family: "Anton", sans-serif;
-  animation: tracking-in-contract 1s linear both;
-}
-@keyframes tracking-in-contract {
-  0% {
-    letter-spacing: 1em;
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    letter-spacing: 0.5rem;
-    opacity: 1;
-  }
-}
 @keyframes wide {
   0% {
     filter: blur(50px);
@@ -54,13 +44,40 @@
   margin: 300px 0;
 }
 
-.bianco {
-  color: white;
-  -moz-border-top-colors: black;
+.tappetino {
+  text-align: center;
+  align-content: center;
+  width: 1500px;
+  height: 500px;
 }
-.nero {
-  color: black;
-  border-color: white;
+
+.titolo {
+  font-family: "Anton", sans-serif;
+  animation: tracking-in-contract 2s linear both;
+  font-size: 70px;
+  color: #667eea;
+}
+.mouse {
+  color: aqua;
+}
+
+.titoloGrande {
+  font-family: "Anton", sans-serif;
+  animation: tracking-in-contract 1s linear both;
+}
+
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: 0.5rem;
+    opacity: 1;
+  }
 }
 
 .statistica {
@@ -77,6 +94,59 @@
     font-size: 50px;
   }
 }
+
+.div-specifiche {
+  width: 90%;
+  h1 {
+    margin-bottom: 100px;
+  }
+  span:nth-child(2) {
+    border: 2px solid #667eea;
+    width: 20%;
+    margin: 10px 0;
+  }
+  h4 {
+    text-transform: uppercase;
+  }
+  .img {
+    align-content: center;
+    img {
+      object-fit: contain;
+      border-radius: 10px;
+    }
+    img:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+  .paragrafo {
+    width: 400px;
+    height: 400px;
+  }
+  .button {
+    border: 1px solid;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    font-size: 30px;
+    align-content: center;
+    text-align: center;
+  }
+  .button:active {
+    box-shadow: 0 0 30px 10px #667eea;
+    .icona {
+      color: #667eea;
+    }
+  }
+}
+
+.div-preview {
+  border: 2px dotted;
+  padding: 2%;
+  width: 90%;
+  height: 560px;
+}
+
 .div-fix {
   height: 30px;
   width: 120px;
@@ -89,9 +159,11 @@
   align-items: center;
   box-shadow: inset 4px 6px 6px 4px darkred;
 }
+
 .div-fix:hover {
   animation: jello-horizontal 0.9s linear both;
 }
+
 @keyframes jello-horizontal {
   0% {
     transform: scale3d(1, 1, 1);
@@ -119,10 +191,8 @@
 .blocco-divisione {
   height: 500px;
   background-color: rgb(63, 43, 109);
-  color: white;
-  margin: 2%;
   border-radius: 10px;
-  border: 2px solid white;
+  color: white;
   width: 90%;
   p {
     font-size: 20px;
@@ -137,10 +207,21 @@
     cursor: pointer;
   }
 }
+
+.bordo-nero {
+  border: 2px solid black;
+}
+.bordo-bianco {
+  border: 2px solid white;
+}
+
 .img-custom {
   background: rgb(27 127 204 / 96%);
   border-radius: 50%;
   padding: 1%;
+  img {
+    object-fit: contain;
+  }
 }
 
 //BUTTON

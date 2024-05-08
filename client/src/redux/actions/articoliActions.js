@@ -23,9 +23,7 @@ export const getArticoli = () => {
 export const getArticoliById = (articoloId) => {
   return async () => {
     try {
-      const response = await axios.get(
-        `http://localhost/api/articolo/${articoloId}`
-      );
+      const response = await axios.get(`http://localhost/api/articolo/${articoloId}`);
       if (response.status === 200) {
       }
     } catch (error) {
@@ -37,9 +35,7 @@ export const getArticoliById = (articoloId) => {
 export const getArticoliByPrezzo = (s1, s2) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `http://localhost/api/articolo/prezzo/${s1}/${s2}`
-      );
+      const response = await axios.get(`http://localhost/api/articolo/prezzo/${s1}/${s2}`);
       if (response.status === 200) {
         dispatch({
           type: RANGEPREZZOARTICOLI,
@@ -59,9 +55,7 @@ export const getArticoliByPrezzo = (s1, s2) => {
 export const getArticoliByPage = (pageNum, pageSize) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(
-        `http://localhost/api/articolo/page/${pageNum}/${pageSize}`
-      );
+      const response = await axios.get(`http://localhost/api/articolo/page/${pageNum}/${pageSize}`);
 
       if (response.status === 200) {
         dispatch({
@@ -78,15 +72,11 @@ export const getArticoliByPage = (pageNum, pageSize) => {
 export const updateArticolo = (articoloId, input, token) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(
-        `http://localhost/api/articolo/${articoloId}`,
-        input,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.put(`http://localhost/api/articolo/${articoloId}`, input, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status === 200) {
         dispatch({
           type: ARTICOLI,
@@ -103,14 +93,11 @@ export const updateArticolo = (articoloId, input, token) => {
 export const deleteArticolo = (articoloId, token) => {
   return async () => {
     try {
-      const response = await axios.delete(
-        `http://localhost/api/articolo/${articoloId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`http://localhost/api/articolo/${articoloId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response.status === 200) {
       }
     } catch (error) {
