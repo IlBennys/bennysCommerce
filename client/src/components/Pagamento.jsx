@@ -83,6 +83,7 @@ const Pagamento = () => {
               parseInt(month, 10) < currentMonth)
           ) {
             alert("Errore: La carta di credito è scaduta.");
+            window.location.reload();
           }
         }
         setExpirationDate(formattedInput);

@@ -1,8 +1,23 @@
 import "../assets/sass/Articoli.scss";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getArticoli, getArticoliByPage, getArticoliByPrezzo, svuotaArticoli } from "../redux/actions/articoliActions";
-import { Badge, Button, Card, Col, Container, Row, Modal, Form, Toast } from "react-bootstrap";
+import {
+  getArticoli,
+  getArticoliByPage,
+  getArticoliByPrezzo,
+  svuotaArticoli,
+} from "../redux/actions/articoliActions";
+import {
+  Badge,
+  Button,
+  Card,
+  Col,
+  Container,
+  Row,
+  Modal,
+  Form,
+  Toast,
+} from "react-bootstrap";
 import cart from "../assets/img/shopping-cart.png";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { postCarrello } from "../redux/actions/carrelloActions";
@@ -11,7 +26,9 @@ import Slider from "react-slider";
 const Articoli = ({ light }) => {
   const articolo = useSelector((state) => state.articolo.articoli);
   const pageArticoli = useSelector((state) => state.articolo.paginaArticoli);
-  const rangePrezzoArticoli = useSelector((state) => state.articolo.rangePrezzoArticoli);
+  const rangePrezzoArticoli = useSelector(
+    (state) => state.articolo.rangePrezzoArticoli
+  );
   const idCarrello = useSelector((state) => state.carrello.idCarrello);
   const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
@@ -34,7 +51,8 @@ const Articoli = ({ light }) => {
     localStorage.setItem("ricerca", ev);
     const item = localStorage.getItem("ricerca");
     if (item !== "") {
-      const searchTermsArray = typeof item === "string" ? item.toLowerCase().split(" ") : [];
+      const searchTermsArray =
+        typeof item === "string" ? item.toLowerCase().split(" ") : [];
       setFiltroRicerca(
         rangePrezzoArticoli.filter((art) =>
           searchTermsArray.every(
@@ -51,9 +69,9 @@ const Articoli = ({ light }) => {
   };
 
   useEffect(() => {
-    dispatch(getArticoli()).then(() => setIsOnline(true));
+    setIsOnline(true);
     dispatch(getArticoliByPrezzo(min, max));
-  }, [dispatch, max]);
+  }, [min, max]);
   return (
     <>
       {articolo ? (
@@ -97,7 +115,10 @@ const Articoli = ({ light }) => {
 
                   {clicked && (
                     <>
-                      <Button onClick={toggleShowA} className={light ? " nero" : " bianco"}>
+                      <Button
+                        onClick={toggleShowA}
+                        className={light ? " nero" : " bianco"}
+                      >
                         Scegli Prezzo
                       </Button>
 
@@ -125,7 +146,9 @@ const Articoli = ({ light }) => {
                               max={max}
                               onChange={(e) => {
                                 setValues(e || min, e || max);
-                                dispatch(getArticoliByPrezzo(values[0], values[1]));
+                                dispatch(
+                                  getArticoliByPrezzo(values[0], values[1])
+                                );
                               }}
                             />
                           </div>
@@ -154,39 +177,58 @@ const Articoli = ({ light }) => {
                     <p className="loader"></p>
                   </div>
                 ) : pageArticoli.content ? (
-                  pageArticoli.content.map((e) => {
+                  pageArticoli.content?.map((e) => {
                     return (
-                      <>
-                        <Card key={e.id} className="m-1 card-main">
-                          <Card.Img variant="top" className="img-card rounded-3 " src={e.img} />
-                          <div className="invi rounded-3 text-white">
-                            <p> {e.descrizioneArticolo}</p>
+                      <Card key={e.id} className="m-1 card-main">
+                        <Card.Img
+                          variant="top"
+                          className="img-card rounded-3 "
+                          src={e.img}
+                        />
+                        <div className="invi rounded-3 text-white">
+                          <p> {e.descrizioneArticolo}</p>
+                        </div>
+                        <h6 className="badge-h6">
+                          <Badge>Promo</Badge>
+                        </h6>
+                        {token !== "" ? (
+                          <div
+                            title="Aggiungi al carrello"
+                            onClick={() =>
+                              dispatch(
+                                postCarrello(idCarrello, e.id, token),
+                                handleShow()
+                              )
+                            }
+                            className="carrello-btn rounded-2"
+                          >
+                            <img src={cart} alt="cart-pic" />
                           </div>
-                          <h6 className="badge-h6">
-                            <Badge>Promo</Badge>
-                          </h6>
-                          {token !== "" ? (
-                            <div
-                              title="Aggiungi al carrello"
-                              onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
-                              className="carrello-btn rounded-2"
-                            >
-                              <img src={cart} alt="cart-pic" />
-                            </div>
-                          ) : (
-                            <div></div>
-                          )}
-                          <Card.Body className="body-card-main">
-                            <Card.Title className={`titolo-card text-start ${light ? " nero" : " bianco"}`}>
-                              {e.nomeArticolo}
-                            </Card.Title>
-                            <Card.Text className={`text-brand text-start ${light ? " nero" : " bianco"}`}>
-                              Brand: {e.brand}
-                            </Card.Text>
-                            <Card.Text className={`${light ? " nero" : " bianco"}`}>{e.prezzo}€</Card.Text>
-                          </Card.Body>
-                        </Card>
-                      </>
+                        ) : (
+                          <div></div>
+                        )}
+                        <Card.Body className="body-card-main">
+                          <Card.Title
+                            className={`titolo-card text-start ${
+                              light ? " nero" : " bianco"
+                            }`}
+                          >
+                            {e.nomeArticolo}
+                          </Card.Title>
+                          <Card.Text
+                            className={`text-brand text-start ${
+                              light ? " nero" : " bianco"
+                            }`}
+                          >
+                            Brand: {e.brand}
+                          </Card.Text>
+                          <Card.Text
+                            className={`${light ? " nero" : " bianco"}`}
+                          >
+                            {e.prezzo}€
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
                     );
                   })
                 ) : (
@@ -202,50 +244,18 @@ const Articoli = ({ light }) => {
                     </div>
                     {filtroRicerca !== undefined
                       ? filtroRicerca
-                          .filter((art) => art.prezzo >= values[0] && art.prezzo <= values[1])
+                          .filter(
+                            (art) =>
+                              art.prezzo >= values[0] && art.prezzo <= values[1]
+                          )
                           .map((e) => {
                             return (
-                              <>
-                                <Card key={e.id} className="m-1 card-main">
-                                  <Card.Img variant="top" className="img-card rounded-3 h-50" src={e.img} />
-                                  <div className="invi rounded-3 text-white">
-                                    <p> {e.descrizioneArticolo}</p>
-                                  </div>
-                                  <h6 className="badge-h6">
-                                    <Badge>Promo</Badge>
-                                  </h6>
-                                  {token !== "" ? (
-                                    <div
-                                      title="Aggiungi al carrello"
-                                      onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
-                                      className="carrello-btn rounded-2"
-                                    >
-                                      <img src={cart} alt="" />
-                                    </div>
-                                  ) : (
-                                    <div></div>
-                                  )}
-                                  <Card.Body className="body-card-main">
-                                    <Card.Title className={`titolo-card text-start ${light ? " nero" : " bianco"}`}>
-                                      {e.nomeArticolo}
-                                    </Card.Title>
-                                    <Card.Text className={`text-brand text-start ${light ? " nero" : " bianco"}`}>
-                                      Brand: {e.brand}
-                                    </Card.Text>
-                                    <Card.Text className={` ${light ? " nero" : " bianco"}`}>{e.prezzo}€</Card.Text>
-                                  </Card.Body>
-                                </Card>
-                              </>
-                            );
-                          })
-                      : filtroRicerca === undefined &&
-                        (values[0] === min || values[0] !== min) &&
-                        (values[1] === max || values[1] !== max)
-                      ? rangePrezzoArticoli.map((e) => {
-                          return (
-                            <>
                               <Card key={e.id} className="m-1 card-main">
-                                <Card.Img variant="top" className="img-card rounded-3 h-50" src={e.img} />
+                                <Card.Img
+                                  variant="top"
+                                  className="img-card rounded-3 h-50"
+                                  src={e.img}
+                                />
                                 <div className="invi rounded-3 text-white">
                                   <p> {e.descrizioneArticolo}</p>
                                 </div>
@@ -255,7 +265,12 @@ const Articoli = ({ light }) => {
                                 {token !== "" ? (
                                   <div
                                     title="Aggiungi al carrello"
-                                    onClick={() => dispatch(postCarrello(idCarrello, e.id, token), handleShow())}
+                                    onClick={() =>
+                                      dispatch(
+                                        postCarrello(idCarrello, e.id, token),
+                                        handleShow()
+                                      )
+                                    }
                                     className="carrello-btn rounded-2"
                                   >
                                     <img src={cart} alt="" />
@@ -264,16 +279,86 @@ const Articoli = ({ light }) => {
                                   <div></div>
                                 )}
                                 <Card.Body className="body-card-main">
-                                  <Card.Title className={`titolo-card text-start ${light ? " nero" : " bianco"}`}>
+                                  <Card.Title
+                                    className={`titolo-card text-start ${
+                                      light ? " nero" : " bianco"
+                                    }`}
+                                  >
                                     {e.nomeArticolo}
                                   </Card.Title>
-                                  <Card.Text className={`text-brand text-start ${light ? " nero" : " bianco"}`}>
+                                  <Card.Text
+                                    className={`text-brand text-start ${
+                                      light ? " nero" : " bianco"
+                                    }`}
+                                  >
                                     Brand: {e.brand}
                                   </Card.Text>
-                                  <Card.Text className={light ? " nero" : " bianco"}>{e.prezzo}€</Card.Text>
+                                  <Card.Text
+                                    className={` ${
+                                      light ? " nero" : " bianco"
+                                    }`}
+                                  >
+                                    {e.prezzo}€
+                                  </Card.Text>
                                 </Card.Body>
                               </Card>
-                            </>
+                            );
+                          })
+                      : filtroRicerca === undefined &&
+                        (values[0] === min || values[0] !== min) &&
+                        (values[1] === max || values[1] !== max)
+                      ? rangePrezzoArticoli.map((e) => {
+                          return (
+                            <Card key={e.id} className="m-1 card-main">
+                              <Card.Img
+                                variant="top"
+                                className="img-card rounded-3 h-50"
+                                src={e.img}
+                              />
+                              <div className="invi rounded-3 text-white">
+                                <p> {e.descrizioneArticolo}</p>
+                              </div>
+                              <h6 className="badge-h6">
+                                <Badge>Promo</Badge>
+                              </h6>
+                              {token !== "" ? (
+                                <div
+                                  title="Aggiungi al carrello"
+                                  onClick={() =>
+                                    dispatch(
+                                      postCarrello(idCarrello, e.id, token),
+                                      handleShow()
+                                    )
+                                  }
+                                  className="carrello-btn rounded-2"
+                                >
+                                  <img src={cart} alt="" />
+                                </div>
+                              ) : (
+                                <div></div>
+                              )}
+                              <Card.Body className="body-card-main">
+                                <Card.Title
+                                  className={`titolo-card text-start ${
+                                    light ? " nero" : " bianco"
+                                  }`}
+                                >
+                                  {e.nomeArticolo}
+                                </Card.Title>
+                                <Card.Text
+                                  className={`text-brand text-start ${
+                                    light ? " nero" : " bianco"
+                                  }`}
+                                >
+                                  Brand: {e.brand}
+                                </Card.Text>
+                                <Card.Text
+                                  className={light ? " nero" : " bianco"}
+                                >
+                                  {e.prezzo}€
+                                </Card.Text>
+                              </Card.Body>
+                            </Card>
                           );
                         })
                       : null}
